@@ -124,7 +124,8 @@ I hope you enjoyed this demo, and it helped you understand how to build
 better microservice architectures with micro frontends.
 
 ☕️ Find the code on GitHub:
-[@oktadev/auth0-micro-frontends-jhipster-example](https://github.com/oktadev/auth0-micro-frontends-jhipster-example)
+<https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example>
 
-🤓 Read the blog post: [Micro Frontends for Java
+🤓 Read the following blog post that was used as inspiration for this
+project: [Micro Frontends for Java
 Microservices](https://auth0.com/blog/micro-frontends-for-java-microservices/)
