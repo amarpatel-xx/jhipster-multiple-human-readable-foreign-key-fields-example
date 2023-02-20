@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["gateway", "blog", "store"],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "0.0.0"
+      }
+    ],
+    "clusteredDbApps": ["store"],
+    "deploymentType": "kubernetes",
+    "directoryPath": "../",
+    "dockerPushCommand": "docker push",
+    "dockerRepositoryName": "amarppatel",
+    "ingressDomain": "",
+    "istio": false,
+    "jwtSecretKey": "OTVlNzJjNjRjZTRjNzUwMjgxMDE4Yjc0MDRhYTNkNzZlZDI2N2YzZjc3NzRlYjJjODNiYzBjNzljZDFmMWE3OGY1MjRmODQ1M2VmNTI3OTU2OGIzZDdjMDdiYmZkNjg5NGQwMQ==",
+    "kubernetesNamespace": "demo",
+    "kubernetesServiceType": "LoadBalancer",
+    "kubernetesStorageClassName": "",
+    "kubernetesUseDynamicStorage": true,
+    "monitoring": "no",
+    "monorepository": true,
+    "otherModules": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "0.0.0"
+      }
+    ],
+    "serviceDiscoveryType": "eureka",
+    "skipJhipsterDependencies": true
+  }
+}
