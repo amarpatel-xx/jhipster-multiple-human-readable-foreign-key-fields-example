@@ -1,21 +1,20 @@
 {
-  "applications": ["store"],
-  "changelogDate": "20230220192539",
-  "clientRootFolder": "store",
-  "databaseType": "mongodb",
-  "dto": "no",
-  "embedded": false,
-  "entityTableName": "product",
+  "name": "Product",
   "fields": [
     {
       "fieldName": "title",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldName": "price",
       "fieldType": "BigDecimal",
-      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRules": [
+        "required",
+        "min"
+      ],
       "fieldValidateRulesMin": "0"
     },
     {
@@ -24,12 +23,16 @@
       "fieldTypeBlobContent": "image"
     }
   ],
-  "fluentMethods": true,
-  "jpaMetamodelFiltering": false,
-  "microserviceName": "store",
-  "name": "Product",
-  "pagination": "pagination",
-  "readOnly": false,
   "relationships": [],
-  "service": "no"
+  "entityTableName": "product",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": [
+    "store"
+  ]
 }

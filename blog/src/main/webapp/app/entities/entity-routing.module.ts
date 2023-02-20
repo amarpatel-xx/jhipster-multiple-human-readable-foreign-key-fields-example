@@ -5,14 +5,14 @@ import { RouterModule } from '@angular/router';
   imports: [
     RouterModule.forChild([
       {
-        path: 'tag',
-        data: { pageTitle: 'blogApp.blogTag.home.title' },
-        loadChildren: () => import('./blog/tag/tag.module').then(m => m.BlogTagModule),
-      },
-      {
         path: 'blog',
         data: { pageTitle: 'blogApp.blogBlog.home.title' },
         loadChildren: () => import('./blog/blog/blog.module').then(m => m.BlogBlogModule),
+      },
+      {
+        path: 'tag',
+        data: { pageTitle: 'blogApp.blogTag.home.title' },
+        loadChildren: () => import('./blog/tag/tag.module').then(m => m.BlogTagModule),
       },
       {
         path: 'post',

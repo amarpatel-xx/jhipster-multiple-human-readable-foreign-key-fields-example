@@ -54,7 +54,6 @@ example JDL file included as part of this project).
 
 2.  You should see the message:
 
-        Run `npm audit` for details.
         Congratulations, JHipster execution is complete!
         Sponsored with ❤️  by @oktadev.
 
@@ -74,36 +73,21 @@ example JDL file included as part of this project).
         npm run docker:db:up
         ./mvnw spring-boot:run
 
-3.  Open your favorite browser to `\http://localhost:8080`, and log in
-    with the credentials displayed on the page.
+3.  Start `blog` database with Docker by opening a terminal and
+    navigating to its directory and running the Docker command. Then,
+    start the `blog` microservice.
 
-4.  Show missing links in entities menu.
-
-5.  Start `blog` database with Docker by opening a terminal and
-    navigating to its directory and running the Docker command. Then
-    start the `gateway` by running the Maven command.
-
+        cd blog
         npm run docker:db:up
         ./mvnw spring-boot:run
 
-6.  Open a new terminal and do the same for the `store` microservice.
+4.  Start `store` database with Docker by opening a terminal and
+    navigating to its directory and running the Docker command. Then,
+    start the `store` microservice.
 
-7.  Verify everything is started using Eureka at
-    `\http://localhost:8761`.
-
-8.  Refresh the gateway app to see menu items.
-
-9.  To make Keycloak work, you must add the following line to your hosts
-    file (`/etc/hosts` on Mac/Linux,
-    `c:\Windows\System32\Drivers\etc\hosts` on Windows).
-
-        127.0.0.1  keycloak
-
-10. Prove everything works at `\http://localhost:8500`
-
-11. Run Cypress e2e tests:
-
-        npm run e2e -ws
+        cd store
+        npm run docker:db:up
+        ./mvnw spring-boot:run
 
 # Switch Identity Providers
 
@@ -118,10 +102,31 @@ CLI](https://cli.okta.com):
 
     okta apps create jhipster
 
+# See the Code in Action
+
+Now you can open your favorite browser to <http://localhost:8080>, and
+log in with the credentials displayed on the page.
+
+Then create a Blog
+
+1.  Open your favorite browser to <http://localhost:8080>, and log in
+    with the credentials displayed on the page.
+
+2.  Then, add a blog by giving it a name, handle and selecting a user.
+
+3.  Add a tag by giving it a name.
+
+4.  Finally, create a post by giving it a title, content, selecting a
+    blog and a tag.
+
+Notice the Blog column shows &lt;blog-name&gt;-&lt;blog-handle&gt; and
+not the UUID of the blog. That is success!
+
 # Have Fun with Micro Frontends and JHipster!
 
 I hope you enjoyed this demo, and it helped you understand how to build
-better microservice architectures with micro frontends.
+better microservice architectures with human-readable foreign key
+fields.
 
 ☕️ Find the code on GitHub:
 <https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example>
