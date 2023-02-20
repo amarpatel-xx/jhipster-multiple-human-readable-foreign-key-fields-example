@@ -105,7 +105,7 @@ example JDL file included as part of this project).
 
         npm run e2e -ws
 
-# Switch identity providers
+# Switch Identity Providers
 
 JHipster ships with Keycloak when you choose OAuth 2.0 / OIDC as the
 authentication type.
@@ -118,7 +118,7 @@ CLI](https://cli.okta.com):
 
     okta apps create jhipster
 
-# Have fun with Micro Frontends and JHipster!
+# Have Fun with Micro Frontends and JHipster!
 
 I hope you enjoyed this demo, and it helped you understand how to build
 better microservice architectures with micro frontends.

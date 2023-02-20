@@ -49,7 +49,6 @@ sh generate-code-non-reactive-mf.sh
 +
 [source,shell]
 ----
-Run `npm audit` for details.
 Congratulations, JHipster execution is complete!
 Sponsored with ❤️  by @oktadev.
 ----

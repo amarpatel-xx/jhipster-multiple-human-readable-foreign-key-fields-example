@@ -66,8 +66,7 @@ To generate a microservices architecture with human-readable foreign key fields 
 <simpara>
 You should see the message:
 </simpara>
-<programlisting language="shell" linenumbering="unnumbered">Run `npm audit` for details.
-Congratulations, JHipster execution is complete!
+<programlisting language="shell" linenumbering="unnumbered">Congratulations, JHipster execution is complete!
 Sponsored with ❤️  by @oktadev.</programlisting>
 </listitem>
 </orderedlist>
