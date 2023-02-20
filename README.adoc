@@ -72,38 +72,24 @@ npm run docker:db:up
 ./mvnw spring-boot:run
 ----
 
-. Open your favorite browser to `\http://localhost:8080`, and log in with the credentials displayed on the page.
-
-. Show missing links in entities menu.
-
-. Start `blog` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then start the `gateway` by running the Maven command.
+. Start `blog` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then, start the `blog` microservice.
 +
 [source,shell]
 ----
+cd blog
 npm run docker:db:up
 ./mvnw spring-boot:run
 ----
 
-. Open a new terminal and do the same for the `store` microservice.
-
-. Verify everything is started using Eureka at `\http://localhost:8761`.
-
-. Refresh the gateway app to see menu items.
-
-. To make Keycloak work, you must add the following line to your hosts file (`/etc/hosts` on Mac/Linux, `c:\Windows\System32\Drivers\etc\hosts` on Windows).
-+
-----
-127.0.0.1  keycloak
-----
-
-. Prove everything works at `\http://localhost:8500`
-
-. Run Cypress e2e tests:
+. Start `store` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then, start the `store` microservice.
 +
 [source,shell]
 ----
-npm run e2e -ws
+cd store
+npm run docker:db:up
+./mvnw spring-boot:run
 ----
+
 
 == Switch Identity Providers
 
@@ -122,7 +108,7 @@ okta apps create jhipster
 
 == Have Fun with Micro Frontends and JHipster!
 
-I hope you enjoyed this demo, and it helped you understand how to build better microservice architectures with micro frontends.
+I hope you enjoyed this demo, and it helped you understand how to build better microservice architectures with human-readable foreign key fields.
 
 ☕️ Find the code on GitHub: https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example
 
