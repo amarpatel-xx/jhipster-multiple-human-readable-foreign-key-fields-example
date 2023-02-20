@@ -36,7 +36,7 @@ relationship ManyToOne {
 
 toc::[]
 
-=== Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint
+== Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint
 
 . To generate a microservices architecture with human-readable foreign key fields support, run the following command:
 +
@@ -54,7 +54,7 @@ Congratulations, JHipster execution is complete!
 Sponsored with ❤️  by @oktadev.
 ----
 
-=== Run your Multiple Human-readable Foreign Key Fields Example
+== Run your Multiple Human-readable Foreign Key Fields Example
 
 . When the process is complete, cd into the `gateway` directory and start Keycloak and Eureka using Docker Compose.
 +

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>JHipster Example for Human-Readable Foreign Keys in User Interface</title>
+</articleinfo>
+<simpara>This code was generated using the JHipster blueprint "generator-jhipster-multiple-human-readable-foreign-key-fields" (the source code is available at: <ulink url="https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields">https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields</ulink>).  This code has a JDL which shows 2 foreign keys that will concatenated and shown, in the Angular user interface, in replacement of the UUID.  The JDL can be modified and the @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") can be used with any fields of an entity which would make it easier to identify that entity when displayed (as part of a relationship). Sometimes having a UUID makes it difficult for the human in the loop to figure out what the entity on a relationship&#8217;s other side actually is. If multiple entity fields are necessary to replace the UUID, the fields can be delimmited via a specified delimiter using a @customAnnotation, as well (see the example JDL file included as part of this project).</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+Below is the example using the @customAnnotation and specifying the delimiter also.
+</simpara>
+</listitem>
+</orderedlist>
+<programlisting language="shell" linenumbering="unnumbered">entity Blog {
+  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
+  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("") handle String required minlength(2)
+}
+
+entity Post {
+  title String required
+  content TextBlob required
+  date Instant required
+}
+
+relationship ManyToOne {
+  Blog{user(login)} to User
+  Post{blog} to Blog
+}</programlisting>
+<simpara><emphasis role="strong">Prerequisites</emphasis>:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<ulink url="https://sdkman.io/">Java</ulink> 11+
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://nodejs.com/">Node.js</ulink> 16+
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://www.docker.com/products/docker-desktop/">Docker Desktop</ulink>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<ulink url="https://www.jhipster.tech/installation/">JHipster</ulink> 7.9.3
+</simpara>
+</listitem>
+</itemizedlist>
+<section id="_build_java_microservices_using_the_multiple_human_readable_foreign_key_fields_blueprint">
+<title>Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint</title>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+To generate a microservices architecture with human-readable foreign key fields support, run the following command:
+</simpara>
+<programlisting language="shell" linenumbering="unnumbered">sh generate-code-non-reactive-mf.sh</programlisting>
+</listitem>
+<listitem>
+<simpara>
+You should see the message:
+</simpara>
+<programlisting language="shell" linenumbering="unnumbered">Run `npm audit` for details.
+Congratulations, JHipster execution is complete!
+Sponsored with ❤️  by @oktadev.</programlisting>
+</listitem>
+</orderedlist>
+</section>
+<section id="_run_your_multiple_human_readable_foreign_key_fields_example">
+<title>Run your Multiple Human-readable Foreign Key Fields Example</title>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+When the process is complete, cd into the <literal>gateway</literal> directory and start Keycloak and Eureka using Docker Compose.
+</simpara>
+<programlisting language="shell" linenumbering="unnumbered">cd gateway
+docker compose -f src/main/docker/keycloak.yml up -d
+docker compose -f src/main/docker/jhipster-registry.yml up -d</programlisting>
+</listitem>
+<listitem>
+<simpara>
+Start <literal>gateway</literal> database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then start the <literal>gateway</literal> by running the Maven command.
+</simpara>
+<programlisting language="shell" linenumbering="unnumbered">npm run docker:db:up
+./mvnw spring-boot:run</programlisting>
+</listitem>
+<listitem>
+<simpara>
+Open your favorite browser to <literal>\http://localhost:8080</literal>, and log in with the credentials displayed on the page.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Show missing links in entities menu.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Start <literal>blog</literal> database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then start the <literal>gateway</literal> by running the Maven command.
+</simpara>
+<programlisting language="shell" linenumbering="unnumbered">npm run docker:db:up
+./mvnw spring-boot:run</programlisting>
+</listitem>
+<listitem>
+<simpara>
+Open a new terminal and do the same for the <literal>store</literal> microservice.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Verify everything is started using Eureka at <literal>\http://localhost:8761</literal>.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Refresh the gateway app to see menu items.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+To make Keycloak work, you must add the following line to your hosts file (<literal>/etc/hosts</literal> on Mac/Linux, <literal>c:\Windows\System32\Drivers\etc\hosts</literal> on Windows).
+</simpara>
+<screen>127.0.0.1  keycloak</screen>
+</listitem>
+<listitem>
+<simpara>
+Prove everything works at <literal>\http://localhost:8500</literal>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Run Cypress e2e tests:
+</simpara>
+<programlisting language="shell" linenumbering="unnumbered">npm run e2e -ws</programlisting>
+</listitem>
+</orderedlist>
+</section>
+<section id="_switch_identity_providers">
+<title>Switch identity providers</title>
+<simpara>JHipster ships with Keycloak when you choose OAuth 2.0 / OIDC as the authentication type.</simpara>
+<simpara>If you&#8217;d like to use Okta for your identity provider, see <ulink url="https://www.jhipster.tech/security/#okta">JHipster&#8217;s documentation</ulink>.</simpara>
+<tip>
+<simpara>You can configure JHipster quickly with the <ulink url="https://cli.okta.com">Okta CLI</ulink>:</simpara>
+<programlisting language="shell" linenumbering="unnumbered">okta apps create jhipster</programlisting>
+</tip>
+</section>
+<section id="_have_fun_with_micro_frontends_and_jhipster">
+<title>Have fun with Micro Frontends and JHipster!</title>
+<simpara>I hope you enjoyed this demo, and it helped you understand how to build better microservice architectures with micro frontends.</simpara>
+<simpara>☕️ Find the code on GitHub: <ulink url="https://github.com/oktadev/auth0-micro-frontends-jhipster-example">@oktadev/auth0-micro-frontends-jhipster-example</ulink></simpara>
+<simpara>🤓 Read the blog post: <ulink url="https://auth0.com/blog/micro-frontends-for-java-microservices/">Micro Frontends for Java Microservices</ulink></simpara>
+</section>
+</article>
