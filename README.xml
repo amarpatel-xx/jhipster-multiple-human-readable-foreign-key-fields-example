@@ -153,7 +153,7 @@ Run Cypress e2e tests:
 <section id="_have_fun_with_micro_frontends_and_jhipster">
 <title>Have fun with Micro Frontends and JHipster!</title>
 <simpara>I hope you enjoyed this demo, and it helped you understand how to build better microservice architectures with micro frontends.</simpara>
-<simpara>☕️ Find the code on GitHub: <ulink url="https://github.com/oktadev/auth0-micro-frontends-jhipster-example">@oktadev/auth0-micro-frontends-jhipster-example</ulink></simpara>
-<simpara>🤓 Read the blog post: <ulink url="https://auth0.com/blog/micro-frontends-for-java-microservices/">Micro Frontends for Java Microservices</ulink></simpara>
+<simpara>☕️ Find the code on GitHub: <ulink url="https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example">https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example</ulink></simpara>
+<simpara>🤓 Read the following blog post that was used as inspiration for this project: <ulink url="https://auth0.com/blog/micro-frontends-for-java-microservices/">Micro Frontends for Java Microservices</ulink></simpara>
 </section>
 </article>
