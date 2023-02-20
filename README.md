@@ -126,6 +126,6 @@ better microservice architectures with micro frontends.
 ☕️ Find the code on GitHub:
 <https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example>
 
-🤓 Read the following blog post that was used as inspiration for this
-project: [Micro Frontends for Java
+🤓 Read the following blog post, by Matt Raible, that was used as
+inspiration for this project: [Micro Frontends for Java
 Microservices](https://auth0.com/blog/micro-frontends-for-java-microservices/)
