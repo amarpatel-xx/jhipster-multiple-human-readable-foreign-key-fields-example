@@ -18,7 +18,7 @@ describe('Post e2e test', () => {
   const postSample = {
     title: 'Associate programming transmitter',
     content: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-    date: '2023-02-20T16:05:31.287Z',
+    date: '2023-02-20T16:14:44.287Z',
   };
 
   let post;
@@ -171,7 +171,7 @@ describe('Post e2e test', () => {
         .invoke('val')
         .should('match', new RegExp('../fake-data/blob/hipster.txt'));
 
-      cy.get(`[data-cy="date"]`).type('2023-02-20T13:57').blur().should('have.value', '2023-02-20T13:57');
+      cy.get(`[data-cy="date"]`).type('2023-02-20T14:06').blur().should('have.value', '2023-02-20T14:06');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

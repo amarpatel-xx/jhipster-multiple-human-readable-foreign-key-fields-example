@@ -14,7 +14,7 @@
     "dockerRepositoryName": "amarppatel",
     "ingressDomain": "",
     "istio": false,
-    "jwtSecretKey": "Mjg4MTU1NTQ5YzIwNTJjOTgyMDMxMmVlZmYxYTYwZWFkNWFiM2FhNmMzNDdmMzY2YTlmMjVjNDM1MmZiYWI3M2M4YzNhOWRlZmY1MzM2OWIyYzQ4MDc0MjlkNjY3ZTIxNWFiZg==",
+    "jwtSecretKey": "ZmViOTEzMzk0MWIxZTI3NjVjMTY0NjVjYzRmMDI4MDZiZWNiMmE3ZWJhNmFjN2FlNjFhYjI1YWFmM2Q0MDhhZTdiY2E4OWZmMGQ5NTFjOGYzNWVmN2NmNmY3MjFlZDExOTQwOA==",
     "kubernetesNamespace": "demo",
     "kubernetesServiceType": "LoadBalancer",
     "kubernetesStorageClassName": "",
