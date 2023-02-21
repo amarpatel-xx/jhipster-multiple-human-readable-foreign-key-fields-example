@@ -4,7 +4,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "clusteredDbApps": ["store"],
@@ -14,7 +14,7 @@
     "dockerRepositoryName": "amarppatel",
     "ingressDomain": "",
     "istio": false,
-    "jwtSecretKey": "ZDk0OTBjOTAzNTI4ZDRmOTZiYTAyOTAxNmFmMDgyODQ2OWI2Zjg2ZTY0NmUzMzRlNzI4NWYwMGI5MDFjMmEzODQ1NDBmYzYzODY4ZGViM2RmM2U3ZGQyOGU0NDNhNmU1ZDA5OA==",
+    "jwtSecretKey": "NjM1ODBkOTZjMjRiNWQ5Y2I5NTdlMjI1NTJkNmRhM2Q0OTE3MWU3MDhjOGU5MmEzNWY2NDIxZjY0ZDllMjg2NDAxYjA1Mzk3YWRkZjJhNDFlOTJiZTUyZmZkOTdkNjk2YmNjZg==",
     "kubernetesNamespace": "demo",
     "kubernetesServiceType": "LoadBalancer",
     "kubernetesStorageClassName": "",
@@ -24,7 +24,7 @@
     "otherModules": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "serviceDiscoveryType": "eureka",

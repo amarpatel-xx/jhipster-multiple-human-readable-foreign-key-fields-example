@@ -7,7 +7,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "buildTool": "maven",
@@ -16,7 +16,7 @@
     "clientPackageManager": "npm",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "creationTimestamp": 1676929688025,
+    "creationTimestamp": 1676983337942,
     "databaseType": "mongodb",
     "devDatabaseType": "mongodb",
     "devServerPort": 4201,
@@ -30,7 +30,7 @@
     "gradleEnterpriseHost": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.9.3",
-    "jwtSecretKey": "MGZiMTU0MzhhNGQzMzI0ZDBjYmM0MDgyNTk3Nzc5NTc3Y2UwZTFmMmRlZmMwZTQwZGI1MmJlMDk2ZjU1MDU0ZjM4ZTc2NzQxMmY4MTJiZjE0ZjQ0OWUxYWVmNjc1MTkzNTVhYzBjZjg2NDVmYWE4N2U3ZTZjMzFiNjVjZWZlYTQ=",
+    "jwtSecretKey": "ZDQ4ODQyZTI1MWE1OGE1ZDBjOTYyN2M3ZWQxZTJkNjJhNjEyZThjMTk4YmU4OGNjZjhiMTAxMWQ4ODQxZTg4YmJkZTc2YWZmNjZmMjA3MDVkMGNmZmJlMmUzYWRiOTI0MTJkODE2N2YzMTg3MjMzYTJjNmU4OWJjZDRhNTNhNGI=",
     "languages": ["en"],
     "messageBroker": false,
     "microfrontend": false,
@@ -39,7 +39,7 @@
     "otherModules": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "packageFolder": "com/okta/developer/store",

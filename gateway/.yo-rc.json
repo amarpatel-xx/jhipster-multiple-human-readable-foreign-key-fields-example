@@ -7,7 +7,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "buildTool": "maven",
@@ -16,7 +16,7 @@
     "clientPackageManager": "npm",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "creationTimestamp": 1676929694070,
+    "creationTimestamp": 1676983345921,
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
     "devServerPort": 4202,
@@ -30,7 +30,7 @@
     "gradleEnterpriseHost": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.9.3",
-    "jwtSecretKey": "YjBlMWMxN2M1NmU0ZjY2ZmYwYTIwMTYxOTJjOGM4ZmUzMDgzOGY4YmNiMDAzM2U3ZGM5YmQwYTU0MWJlNTY1YzhlZWJmY2ZkMmY1MjUwYmUzMDA5NmUxMGNiYjRmNWIxYjZlMjdhZmIyNGQ2YjMwMjNkNDAyOTY4MTc4ZTE5Njk=",
+    "jwtSecretKey": "YTAyNTUyZWJiMTkzOTQyY2ZjZDNiYjFjNGYyZDhjZWYwZTM2ZmI5MGNjMGNmYzYyYjEyMjllZWU4MWUxMDVjOWFjZGE3MjliYjRlZjM3NDA2M2Y2NDQ1NDZlMThlY2EzMzM5ODY0MGVmOTU1NWI2MDAzYjQxNjFkMjRhMDg0MzA=",
     "languages": ["en"],
     "messageBroker": false,
     "microfrontends": [
@@ -46,7 +46,7 @@
     "otherModules": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "packageFolder": "com/okta/developer/gateway",

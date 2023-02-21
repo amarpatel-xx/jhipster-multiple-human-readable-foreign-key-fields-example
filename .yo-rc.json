@@ -3,7 +3,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "clientPackageManager": "npm",
@@ -12,7 +12,7 @@
     "otherModules": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "packages": ["blog", "store", "gateway"],

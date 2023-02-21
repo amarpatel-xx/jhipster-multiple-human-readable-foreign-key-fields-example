@@ -7,7 +7,7 @@ export interface IPost {
   title?: string | null;
   content?: string | null;
   date?: dayjs.Dayjs | null;
-  blog?: Pick<IBlog, 'id'> | null;
+  blog?: Pick<IBlog, 'id' | 'name' | 'handle'> | null;
   tags?: Pick<ITag, 'id' | 'name'>[] | null;
 }
 

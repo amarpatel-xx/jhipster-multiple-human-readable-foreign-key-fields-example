@@ -7,7 +7,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "buildTool": "maven",
@@ -16,7 +16,7 @@
     "clientPackageManager": "npm",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "creationTimestamp": 1676929675564,
+    "creationTimestamp": 1676983304357,
     "databaseType": "neo4j",
     "devDatabaseType": "neo4j",
     "devServerPort": 4200,
@@ -30,9 +30,9 @@
     "gradleEnterpriseHost": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.9.3",
-    "jwtSecretKey": "OTAxNDNjNmQwZDA1MmE5YWZiNjVkNGQ0OTRlMDlkMTRlODJmY2E2ODQzNjlkOTJlYzFmYzNjZWE0NDY4MGZlMzIwMjliNjZkYzZjY2U2OWExYzU3MDViZjE4Njg3NTRiMGIxODNkMjAzMjIzY2Q5YTBjNzJkMDUwODdjNTA1ZWI=",
+    "jwtSecretKey": "ZmU2YzA1ZTA2YTMyNTEwZGI5MmY3NWM0NTljMTFhNzJlNGZiNjQxYTI5MGY1M2NjODExYjk0OGJhY2MzNmFkOWUxODJkMmY4ZjQ2MzgyNDYxYTEwNjM0MTVlZTM0YWZiMDYyNDE0YzcwNGQxMWI0YzYxODRmM2M0NTU1OWRiNmI=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1676929680000,
+    "lastLiquibaseTimestamp": 1676983309000,
     "messageBroker": false,
     "microfrontend": false,
     "monorepository": true,
@@ -40,7 +40,7 @@
     "otherModules": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "0.0.0"
+        "version": "1.0.0"
       }
     ],
     "packageFolder": "com/okta/developer/blog",
