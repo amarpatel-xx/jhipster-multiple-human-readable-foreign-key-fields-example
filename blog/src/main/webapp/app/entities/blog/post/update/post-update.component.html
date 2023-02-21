@@ -68,7 +68,10 @@
           <label class="form-label" jhiTranslate="blogApp.blogPost.blog" for="field_blog">Blog</label>
           <select class="form-control" id="field_blog" data-cy="blog" name="blog" formControlName="blog" [compareWith]="compareBlog">
             <option [ngValue]="null"></option>
-            <option [ngValue]="blogOption" *ngFor="let blogOption of blogsSharedCollection">{{ blogOption.id }}</option>
+
+            <option [ngValue]="blogOption" *ngFor="let blogOption of blogsSharedCollection">
+              {{ blogOption.name + &#39;true&#39; + blogOption.handle  }}
+            </option>
           </select>
         </div>
 

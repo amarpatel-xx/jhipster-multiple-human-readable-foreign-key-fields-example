@@ -1,13 +1,13 @@
 export const EntityNavbarItems = [
   {
-    name: 'Blog',
-    route: 'blog/blog',
-    translationKey: 'global.menu.entities.blogBlog',
-  },
-  {
     name: 'Tag',
     route: 'blog/tag',
     translationKey: 'global.menu.entities.blogTag',
+  },
+  {
+    name: 'Blog',
+    route: 'blog/blog',
+    translationKey: 'global.menu.entities.blogBlog',
   },
   {
     name: 'Post',
