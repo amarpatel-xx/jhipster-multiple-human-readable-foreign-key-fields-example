@@ -5,8 +5,10 @@
 
 <article lang="en">
 <articleinfo>
-    <title>JHipster Example for Human-Readable Foreign Keys in User Interface</title>
+    <date>2023-02-21</date>
 </articleinfo>
+<section id="_jhipster_example_for_human_readable_foreign_keys_in_user_interface">
+<title>JHipster Example for Human-Readable Foreign Keys in User Interface</title>
 <simpara>This code was generated using the JHipster blueprint "generator-jhipster-multiple-human-readable-foreign-key-fields" (the source code is available at: <ulink url="https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields">https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields</ulink>).  This code has a JDL which shows 2 foreign keys that will concatenated and shown, in the Angular user interface, in replacement of the UUID.  The JDL can be modified and the @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") can be used with any fields of an entity which would make it easier to identify that entity when displayed (as part of a relationship). Sometimes having a UUID makes it difficult for the human in the loop to figure out what the entity on a relationship&#8217;s other side actually is. If multiple entity fields are necessary to replace the UUID, the fields can be delimmited via a specified delimiter using a @customAnnotation, as well (see the example JDL file included as part of this project).</simpara>
 <orderedlist numeration="arabic">
 <listitem>
@@ -17,7 +19,7 @@ Below is the example using the @customAnnotation and specifying the delimiter al
 </orderedlist>
 <programlisting language="shell" linenumbering="unnumbered">entity Blog {
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
-  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("") handle String required minlength(2)
+  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation(" ") handle String required minlength(2)
 }
 
 entity Post {
@@ -53,6 +55,7 @@ relationship ManyToOne {
 </simpara>
 </listitem>
 </itemizedlist>
+</section>
 <section id="_build_java_microservices_using_the_multiple_human_readable_foreign_key_fields_blueprint">
 <title>Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint</title>
 <orderedlist numeration="arabic">
