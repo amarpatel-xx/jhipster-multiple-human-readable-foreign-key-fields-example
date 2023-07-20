@@ -2,7 +2,7 @@ package com.okta.developer.blog.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import javax.validation.constraints.*;
@@ -35,7 +35,7 @@ public class Post implements Serializable {
 
     @NotNull
     @Property("date")
-    private Instant date;
+    private LocalDate date;
 
     @Relationship(value = "HAS_", direction = Relationship.Direction.INCOMING)
     @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
@@ -86,16 +86,16 @@ public class Post implements Serializable {
         this.content = content;
     }
 
-    public Instant getDate() {
+    public LocalDate getDate() {
         return this.date;
     }
 
-    public Post date(Instant date) {
+    public Post date(LocalDate date) {
         this.setDate(date);
         return this;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

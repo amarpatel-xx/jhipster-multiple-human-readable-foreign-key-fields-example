@@ -19,7 +19,7 @@ metadata:
     app: blog-neo4j
 type: Opaque
 data:
-  neo4j-password: OGIyZWRlMmVlZWIxYmYxODI0MThmNjUxN2Y2NzYzYjdhZjhiNDU0MGZmNWI0YzBlZmJjZmI4NjQ1M2Iw
+  neo4j-password: ZjE4ODU3NmQyNmRjZmQ2NmE3MDNkMGFjNzZiNzMyNDcyZjAyNDQ5MGU2ZjlhOTJhM2FmMTA2OTA3OGEw
 ---
 apiVersion: apps/v1
 kind: StatefulSet

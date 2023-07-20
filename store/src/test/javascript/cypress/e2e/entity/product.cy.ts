@@ -15,7 +15,7 @@ describe('Product e2e test', () => {
   const productPageUrlPattern = new RegExp('/store/product(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const productSample = { title: 'infomediaries Corporate', price: 38555 };
+  const productSample = { title: 'Balboa Sausages', price: 87107, date: '2023-05-09' };
 
   let product;
 
@@ -165,6 +165,8 @@ describe('Product e2e test', () => {
       cy.get(`[data-cy="price"]`).type('57804').should('have.value', '57804');
 
       cy.setFieldImageAsBytesOfEntity('image', 'integration-test.png', 'image/png');
+
+      cy.get(`[data-cy="date"]`).type('2023-05-09').blur().should('have.value', '2023-05-09');
 
       // since cypress clicks submit too fast before the blob fields are validated
       cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting

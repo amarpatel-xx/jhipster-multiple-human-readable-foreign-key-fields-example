@@ -2,6 +2,7 @@ package com.okta.developer.store.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -33,6 +34,10 @@ public class Product implements Serializable {
 
     @Field("image_content_type")
     private String imageContentType;
+
+    @NotNull
+    @Field("date")
+    private LocalDate date;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -101,6 +106,19 @@ public class Product implements Serializable {
         this.imageContentType = imageContentType;
     }
 
+    public LocalDate getDate() {
+        return this.date;
+    }
+
+    public Product date(LocalDate date) {
+        this.setDate(date);
+        return this;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -129,6 +147,7 @@ public class Product implements Serializable {
             ", price=" + getPrice() +
             ", image='" + getImage() + "'" +
             ", imageContentType='" + getImageContentType() + "'" +
+            ", date='" + getDate() + "'" +
             "}";
     }
 }

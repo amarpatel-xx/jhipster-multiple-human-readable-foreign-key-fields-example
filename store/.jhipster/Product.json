@@ -1,6 +1,6 @@
 {
   "applications": ["store"],
-  "changelogDate": "20230221125633",
+  "changelogDate": "20230509220615",
   "clientRootFolder": "store",
   "databaseType": "mongodb",
   "dto": "no",
@@ -22,6 +22,11 @@
       "fieldName": "image",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     }
   ],
   "fluentMethods": true,

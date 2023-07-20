@@ -77,7 +77,7 @@
           </td>
           <td>{{ post.title }}</td>
           <td>{{ post.content }}</td>
-          <td>{{ post.date | formatMediumDatetime }}</td>
+          <td>{{ post.date | formatMediumDate }}</td>
           <td>
             <div *ngIf="post.blog">
               <a [routerLink]="['/blog/blog', post.blog.id, 'view']">{{ post.blog.name + &#39; &#39; + post.blog.handle }}</a>

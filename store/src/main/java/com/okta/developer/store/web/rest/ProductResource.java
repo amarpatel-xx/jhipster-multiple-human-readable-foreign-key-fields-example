@@ -141,6 +141,9 @@ public class ProductResource {
                 if (product.getImageContentType() != null) {
                     existingProduct.setImageContentType(product.getImageContentType());
                 }
+                if (product.getDate() != null) {
+                    existingProduct.setDate(product.getDate());
+                }
 
                 return existingProduct;
             })

@@ -11,6 +11,8 @@ import com.okta.developer.store.IntegrationTest;
 import com.okta.developer.store.domain.Product;
 import com.okta.developer.store.repository.ProductRepository;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,6 +43,9 @@ class ProductResourceIT {
     private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
+    private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
+
     private static final String ENTITY_API_URL = "/api/products";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -63,7 +68,8 @@ class ProductResourceIT {
             .title(DEFAULT_TITLE)
             .price(DEFAULT_PRICE)
             .image(DEFAULT_IMAGE)
-            .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
+            .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
+            .date(DEFAULT_DATE);
         return product;
     }
 
@@ -78,7 +84,8 @@ class ProductResourceIT {
             .title(UPDATED_TITLE)
             .price(UPDATED_PRICE)
             .image(UPDATED_IMAGE)
-            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
+            .date(UPDATED_DATE);
         return product;
     }
 
@@ -109,6 +116,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPrice()).isEqualByComparingTo(DEFAULT_PRICE);
         assertThat(testProduct.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testProduct.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
+        assertThat(testProduct.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -176,6 +184,27 @@ class ProductResourceIT {
     }
 
     @Test
+    void checkDateIsRequired() throws Exception {
+        int databaseSizeBeforeTest = productRepository.findAll().size();
+        // set the field null
+        product.setDate(null);
+
+        // Create the Product, which fails.
+
+        restProductMockMvc
+            .perform(
+                post(ENTITY_API_URL)
+                    .with(csrf())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(product))
+            )
+            .andExpect(status().isBadRequest());
+
+        List<Product> productList = productRepository.findAll();
+        assertThat(productList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
     void getAllProducts() throws Exception {
         // Initialize the database
         productRepository.save(product);
@@ -189,7 +218,8 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].price").value(hasItem(sameNumber(DEFAULT_PRICE))))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
+            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
     }
 
     @Test
@@ -206,7 +236,8 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.price").value(sameNumber(DEFAULT_PRICE)))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
+            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
     }
 
     @Test
@@ -224,7 +255,12 @@ class ProductResourceIT {
 
         // Update the product
         Product updatedProduct = productRepository.findById(product.getId()).get();
-        updatedProduct.title(UPDATED_TITLE).price(UPDATED_PRICE).image(UPDATED_IMAGE).imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+        updatedProduct
+            .title(UPDATED_TITLE)
+            .price(UPDATED_PRICE)
+            .image(UPDATED_IMAGE)
+            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
+            .date(UPDATED_DATE);
 
         restProductMockMvc
             .perform(
@@ -243,6 +279,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPrice()).isEqualByComparingTo(UPDATED_PRICE);
         assertThat(testProduct.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testProduct.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
+        assertThat(testProduct.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test
@@ -330,6 +367,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPrice()).isEqualByComparingTo(DEFAULT_PRICE);
         assertThat(testProduct.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testProduct.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
+        assertThat(testProduct.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -343,7 +381,12 @@ class ProductResourceIT {
         Product partialUpdatedProduct = new Product();
         partialUpdatedProduct.setId(product.getId());
 
-        partialUpdatedProduct.title(UPDATED_TITLE).price(UPDATED_PRICE).image(UPDATED_IMAGE).imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+        partialUpdatedProduct
+            .title(UPDATED_TITLE)
+            .price(UPDATED_PRICE)
+            .image(UPDATED_IMAGE)
+            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
+            .date(UPDATED_DATE);
 
         restProductMockMvc
             .perform(
@@ -362,6 +405,7 @@ class ProductResourceIT {
         assertThat(testProduct.getPrice()).isEqualByComparingTo(UPDATED_PRICE);
         assertThat(testProduct.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testProduct.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
+        assertThat(testProduct.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test

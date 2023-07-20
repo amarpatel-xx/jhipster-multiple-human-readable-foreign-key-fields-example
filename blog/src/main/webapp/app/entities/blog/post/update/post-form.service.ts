@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import dayjs from 'dayjs/esm';
-import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 import { IPost, NewPost } from '../post.model';
 
 /**
@@ -16,26 +14,15 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type PostFormGroupInput = IPost | PartialWithRequiredKeyOf<NewPost>;
 
-/**
- * Type that converts some properties for forms.
- */
-type FormValueOf<T extends IPost | NewPost> = Omit<T, 'date'> & {
-  date?: string | null;
-};
-
-type PostFormRawValue = FormValueOf<IPost>;
-
-type NewPostFormRawValue = FormValueOf<NewPost>;
-
-type PostFormDefaults = Pick<NewPost, 'id' | 'date' | 'tags'>;
+type PostFormDefaults = Pick<NewPost, 'id' | 'tags'>;
 
 type PostFormGroupContent = {
-  id: FormControl<PostFormRawValue['id'] | NewPost['id']>;
-  title: FormControl<PostFormRawValue['title']>;
-  content: FormControl<PostFormRawValue['content']>;
-  date: FormControl<PostFormRawValue['date']>;
-  blog: FormControl<PostFormRawValue['blog']>;
-  tags: FormControl<PostFormRawValue['tags']>;
+  id: FormControl<IPost['id'] | NewPost['id']>;
+  title: FormControl<IPost['title']>;
+  content: FormControl<IPost['content']>;
+  date: FormControl<IPost['date']>;
+  blog: FormControl<IPost['blog']>;
+  tags: FormControl<IPost['tags']>;
 };
 
 export type PostFormGroup = FormGroup<PostFormGroupContent>;
@@ -43,10 +30,10 @@ export type PostFormGroup = FormGroup<PostFormGroupContent>;
 @Injectable({ providedIn: 'root' })
 export class PostFormService {
   createPostFormGroup(post: PostFormGroupInput = { id: null }): PostFormGroup {
-    const postRawValue = this.convertPostToPostRawValue({
+    const postRawValue = {
       ...this.getFormDefaults(),
       ...post,
-    });
+    };
     return new FormGroup<PostFormGroupContent>({
       id: new FormControl(
         { value: postRawValue.id, disabled: true },
@@ -70,11 +57,11 @@ export class PostFormService {
   }
 
   getPost(form: PostFormGroup): IPost | NewPost {
-    return this.convertPostRawValueToPost(form.getRawValue() as PostFormRawValue | NewPostFormRawValue);
+    return form.getRawValue() as IPost | NewPost;
   }
 
   resetForm(form: PostFormGroup, post: PostFormGroupInput): void {
-    const postRawValue = this.convertPostToPostRawValue({ ...this.getFormDefaults(), ...post });
+    const postRawValue = { ...this.getFormDefaults(), ...post };
     form.reset(
       {
         ...postRawValue,
@@ -84,29 +71,9 @@ export class PostFormService {
   }
 
   private getFormDefaults(): PostFormDefaults {
-    const currentTime = dayjs();
-
     return {
       id: null,
-      date: currentTime,
       tags: [],
-    };
-  }
-
-  private convertPostRawValueToPost(rawPost: PostFormRawValue | NewPostFormRawValue): IPost | NewPost {
-    return {
-      ...rawPost,
-      date: dayjs(rawPost.date, DATE_TIME_FORMAT),
-    };
-  }
-
-  private convertPostToPostRawValue(
-    post: IPost | (Partial<NewPost> & PostFormDefaults)
-  ): PostFormRawValue | PartialWithRequiredKeyOf<NewPostFormRawValue> {
-    return {
-      ...post,
-      date: post.date ? post.date.format(DATE_TIME_FORMAT) : undefined,
-      tags: post.tags ?? [],
     };
   }
 }

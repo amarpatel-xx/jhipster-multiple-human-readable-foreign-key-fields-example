@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
+import { DATE_FORMAT } from 'app/config/input.constants';
 import { IProduct } from '../product.model';
 import { sampleWithRequiredData, sampleWithNewData, sampleWithPartialData, sampleWithFullData } from '../product.test-samples';
 
-import { ProductService } from './product.service';
+import { ProductService, RestProduct } from './product.service';
 
-const requireRestSample: IProduct = {
+const requireRestSample: RestProduct = {
   ...sampleWithRequiredData,
+  date: sampleWithRequiredData.date?.format(DATE_FORMAT),
 };
 
 describe('Product Service', () => {

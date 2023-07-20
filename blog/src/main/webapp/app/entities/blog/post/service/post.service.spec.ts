@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
+import { DATE_FORMAT } from 'app/config/input.constants';
 import { IPost } from '../post.model';
 import { sampleWithRequiredData, sampleWithNewData, sampleWithPartialData, sampleWithFullData } from '../post.test-samples';
 
@@ -8,7 +9,7 @@ import { PostService, RestPost } from './post.service';
 
 const requireRestSample: RestPost = {
   ...sampleWithRequiredData,
-  date: sampleWithRequiredData.date?.toJSON(),
+  date: sampleWithRequiredData.date?.format(DATE_FORMAT),
 };
 
 describe('Post Service', () => {

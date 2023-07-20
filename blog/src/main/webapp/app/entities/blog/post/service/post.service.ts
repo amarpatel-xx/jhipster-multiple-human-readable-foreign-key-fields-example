@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import dayjs from 'dayjs/esm';
 
 import { isPresent } from 'app/core/util/operators';
+import { DATE_FORMAT } from 'app/config/input.constants';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IPost, NewPost } from '../post.model';
@@ -97,7 +98,7 @@ export class PostService {
   protected convertDateFromClient<T extends IPost | NewPost | PartialUpdatePost>(post: T): RestOf<T> {
     return {
       ...post,
-      date: post.date?.toJSON() ?? null,
+      date: post.date?.format(DATE_FORMAT) ?? null,
     };
   }
 

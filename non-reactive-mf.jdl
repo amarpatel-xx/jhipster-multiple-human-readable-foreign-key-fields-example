@@ -59,7 +59,7 @@ entity Blog {
 entity Post {
   title String required
   content TextBlob required
-  date Instant required
+  date LocalDate required
 }
 
 entity Tag {
@@ -70,6 +70,7 @@ entity Product {
   title String required
   price BigDecimal required min(0)
   image ImageBlob
+  date LocalDate required
 }
 
 relationship ManyToOne {
