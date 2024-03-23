@@ -5,7 +5,7 @@ application {
     packageName com.saathratri.developer.gateway
     applicationType gateway
     authenticationType oauth2
-    buildTool gradle
+    buildTool maven
     clientFramework vue
     prodDatabaseType postgresql
     serviceDiscoveryType eureka
@@ -21,7 +21,7 @@ application {
     packageName com.saathratri.developer.blog
     applicationType microservice
     authenticationType oauth2
-    buildTool gradle
+    buildTool maven
     databaseType neo4j
     devDatabaseType neo4j
     prodDatabaseType neo4j
@@ -39,7 +39,7 @@ application {
     packageName com.saathratri.developer.store
     applicationType microservice
     authenticationType oauth2
-    buildTool gradle
+    buildTool maven
     databaseType mongodb
     devDatabaseType mongodb
     prodDatabaseType mongodb

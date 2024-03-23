@@ -14,7 +14,7 @@
     "dockerRepositoryName": "mraible",
     "gatewayType": "SpringCloudGateway",
     "jhipsterVersion": "8.2.1",
-    "jwtSecretKey": "NjBiMjlhYjFlYzUyZWU3NzZiM2RiNjg0ZGM0OTAzMTNiZTI1ZWFjZmI0M2I4NjE0NTFhZjJkNjU1ZGRkY2ZlYWI4YzQ1M2YxMzEyMzVmNjIxMjQ2MTcxMGZiNjViZjYxMzgzOA==",
+    "jwtSecretKey": "ZWMyMWZjNGMwZDE3ZGEwZDdjZWE3NjdiZDAzZWIzZDkyYjQ5Mzc1MjNiOTQ2NWUyY2I1Yzk1MmU0ZGZiNjIyMjcwMzM5YmVhM2Y0NWRjZjAzNmZhYWVmOWU2YjNiY2JmNWI1Mw==",
     "monitoring": "no",
     "serviceDiscoveryType": "eureka"
   }

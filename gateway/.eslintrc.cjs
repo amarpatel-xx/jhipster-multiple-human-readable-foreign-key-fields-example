@@ -30,5 +30,5 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/consistent-type-imports': 'error',
   },
-  ignorePatterns: ['build/'],
+  ignorePatterns: ['target/'],
 };

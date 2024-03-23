@@ -10,15 +10,15 @@
         "version": "0.0.0"
       }
     ],
-    "buildTool": "gradle",
+    "buildTool": "maven",
     "databaseType": "mongodb",
     "devDatabaseType": "mongodb",
     "enableHibernateCache": false,
     "entities": ["Product"],
     "jhipsterVersion": "8.2.1",
-    "jwtSecretKey": "NTUxMWJjZGFjNzY4ZGVlYzJkYTFjN2E0ZDEzYzQxMzI1MDM2NGE3YWUwNjhmMTkzMDY0OGRjZDAxOThkNzM4NjZlNGRhY2Q3ZjliMzk2YTdmYTY2MGQxZWYxNGFhM2M2YTdkNWFkZTJhNmI4MDc1YjU2NDBlYWQ3ZTZhODdmOGU=",
+    "jwtSecretKey": "ZmRhMWQ2MGRkOWU4MDgxMWY2ZmI0MTk5Nzk0MmQ3ZGExMDU4NTBiOWFjMmFlNTYxYjA0MmM2NjI3NDY2OGUzMDE3NmQ3NGM3ZjVhMzYyZjgyMzRkNDljZDhhYWVmOTg3NDlkNWJjNjJjMTdiOTY4YTA1MDBmOWU0ZjUzNDIzOTM=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1711208379000,
+    "lastLiquibaseTimestamp": 1711214829000,
     "monorepository": true,
     "nativeLanguage": "en",
     "packageFolder": "com/saathratri/developer/store",

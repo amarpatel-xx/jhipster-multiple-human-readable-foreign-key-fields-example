@@ -32,11 +32,11 @@ let config = defineConfig({
     }),
   ],
   root: fileURLToPath(new URL('./src/main/webapp/', import.meta.url)),
-  publicDir: fileURLToPath(new URL('./build/resources/main/static/public', import.meta.url)),
-  cacheDir: fileURLToPath(new URL('./build/.vite-cache', import.meta.url)),
+  publicDir: fileURLToPath(new URL('./target/classes/static/public', import.meta.url)),
+  cacheDir: fileURLToPath(new URL('./target/.vite-cache', import.meta.url)),
   build: {
     emptyOutDir: true,
-    outDir: fileURLToPath(new URL('./build/resources/main/static/', import.meta.url)),
+    outDir: fileURLToPath(new URL('./target/classes/static/', import.meta.url)),
     rollupOptions: {
       input: {
         app: fileURLToPath(new URL('./src/main/webapp/index.html', import.meta.url)),

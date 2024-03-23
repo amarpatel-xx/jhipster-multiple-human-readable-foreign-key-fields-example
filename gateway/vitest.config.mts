@@ -16,7 +16,7 @@ export default mergeConfig(
       setupFiles: [fileURLToPath(new URL('./src/main/webapp/app/test-setup.ts', import.meta.url))],
       reporters: ['default', 'vitest-sonar-reporter'],
       outputFile: {
-        'vitest-sonar-reporter': fileURLToPath(new URL('./build/test-results/TESTS-results-vitest.xml', import.meta.url)),
+        'vitest-sonar-reporter': fileURLToPath(new URL('./target/test-results/TESTS-results-vitest.xml', import.meta.url)),
       },
       coverage: {
         provider: 'v8',
