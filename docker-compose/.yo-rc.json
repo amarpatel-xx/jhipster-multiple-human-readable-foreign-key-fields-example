@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "adminPassword": "admin",
+    "appsFolders": ["gateway", "blog", "store"],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "0.0.0"
+      }
+    ],
+    "clusteredDbApps": [],
+    "deploymentType": "docker-compose",
+    "directoryPath": "../",
+    "dockerRepositoryName": "mraible",
+    "gatewayType": "SpringCloudGateway",
+    "jhipsterVersion": "8.2.1",
+    "jwtSecretKey": "NjBiMjlhYjFlYzUyZWU3NzZiM2RiNjg0ZGM0OTAzMTNiZTI1ZWFjZmI0M2I4NjE0NTFhZjJkNjU1ZGRkY2ZlYWI4YzQ1M2YxMzEyMzVmNjIxMjQ2MTcxMGZiNjViZjYxMzgzOA==",
+    "monitoring": "no",
+    "serviceDiscoveryType": "eureka"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 2,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "store",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "0.0.0"
+      }
+    ],
+    "buildTool": "gradle",
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "enableHibernateCache": false,
+    "entities": ["Product"],
+    "jhipsterVersion": "8.2.1",
+    "jwtSecretKey": "NTUxMWJjZGFjNzY4ZGVlYzJkYTFjN2E0ZDEzYzQxMzI1MDM2NGE3YWUwNjhmMTkzMDY0OGRjZDAxOThkNzM4NjZlNGRhY2Q3ZjliMzk2YTdmYTY2MGQxZWYxNGFhM2M2YTdkNWFkZTJhNmI4MDc1YjU2NDBlYWQ3ZTZhODdmOGU=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1711208379000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageFolder": "com/saathratri/developer/store",
+    "packageName": "com.saathratri.developer.store",
+    "prodDatabaseType": "mongodb",
+    "reactive": true,
+    "serverPort": "8082",
+    "serviceDiscoveryType": "eureka",
+    "skipClient": true,
+    "skipCommitHook": true,
+    "skipJhipsterDependencies": true,
+    "skipUserManagement": true,
+    "syncUserWithIdp": false
+  }
+}

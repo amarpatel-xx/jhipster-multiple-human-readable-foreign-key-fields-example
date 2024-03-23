@@ -1,7 +1,7 @@
 application {
   config {
     baseName gateway
-    packageName com.okta.developer.gateway
+    packageName com.saathratri.developer.gateway
     applicationType gateway
     authenticationType oauth2
     buildTool maven
@@ -16,7 +16,7 @@ application {
 application {
   config {
     baseName blog
-    packageName com.okta.developer.blog
+    packageName com.saathratri.developer.blog
     applicationType microservice
     authenticationType oauth2
     buildTool maven
@@ -35,7 +35,7 @@ application {
 application {
   config {
     baseName store
-    packageName com.okta.developer.store
+    packageName com.saathratri.developer.store
     applicationType microservice
     authenticationType oauth2
     buildTool maven
@@ -52,8 +52,8 @@ application {
 }
 
 entity Blog {
-  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
-  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation(" ") handle String required minlength(2)
+  name String required minlength(3)
+  handle String required minlength(2)
 }
 
 entity Post {

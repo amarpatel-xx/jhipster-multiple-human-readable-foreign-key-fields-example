@@ -2,7 +2,7 @@ application {
   config {
     baseName gateway
     reactive true
-    packageName com.okta.developer.gateway
+    packageName com.saathratri.developer.gateway
     applicationType gateway
     authenticationType oauth2
     buildTool gradle
@@ -18,7 +18,7 @@ application {
   config {
     baseName blog
     reactive true
-    packageName com.okta.developer.blog
+    packageName com.saathratri.developer.blog
     applicationType microservice
     authenticationType oauth2
     buildTool gradle
@@ -36,7 +36,7 @@ application {
   config {
     baseName store
     reactive true
-    packageName com.okta.developer.store
+    packageName com.saathratri.developer.store
     applicationType microservice
     authenticationType oauth2
     buildTool gradle
@@ -72,7 +72,7 @@ entity Product {
 }
 
 relationship ManyToOne {
-  Blog{user(login)} to User
+  Blog{user(login)} to User with builtInEntity,
   Post{blog(name)} to Blog
 }
 

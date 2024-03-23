@@ -1,0 +1,36 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 1,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "blog",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "0.0.0"
+      }
+    ],
+    "buildTool": "gradle",
+    "databaseType": "neo4j",
+    "devDatabaseType": "neo4j",
+    "enableHibernateCache": false,
+    "entities": ["Blog", "Post", "Tag"],
+    "jhipsterVersion": "8.2.1",
+    "jwtSecretKey": "ZjE5ZWZmMTYwMjI4ODZjY2YwZmE2NWFlOWNjZDM3MTAzY2VmZTJjZGYyZWE5NGQ0NjNjMmRhYWJiNGFhMjkyYzkwZTY3MzI3NmNhYzE2ZmRhYzY5MWVhMjhkZjc0ODYzZDE5NjY5MjNhY2VjMDM4YmZlMWFhMjk4MGJhY2M1MzY=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1711208499000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageFolder": "com/saathratri/developer/blog",
+    "packageName": "com.saathratri.developer.blog",
+    "prodDatabaseType": "neo4j",
+    "reactive": true,
+    "serverPort": "8081",
+    "serviceDiscoveryType": "eureka",
+    "skipClient": true,
+    "skipCommitHook": true,
+    "skipJhipsterDependencies": true,
+    "skipUserManagement": true,
+    "syncUserWithIdp": true
+  }
+}

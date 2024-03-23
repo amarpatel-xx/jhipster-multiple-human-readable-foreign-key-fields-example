@@ -1,0 +1,44 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "gateway",
+    "applications": {
+      "blog": {
+        "applicationIndex": 1,
+        "serverPort": "8081"
+      },
+      "store": {
+        "applicationIndex": 2,
+        "serverPort": "8082"
+      }
+    },
+    "authenticationType": "oauth2",
+    "baseName": "gateway",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "0.0.0"
+      }
+    ],
+    "buildTool": "gradle",
+    "clientFramework": "vue",
+    "devServerPort": 9060,
+    "entities": ["Blog", "Post", "Tag", "Product"],
+    "jhipsterVersion": "8.2.1",
+    "jwtSecretKey": "YmM2ZjE0MTUzMDM4NTI1MGM5Y2QzZWYyOTViMDIxYzY2ZGM1MmJlMzQ2MDEyNTYyMTAwNTM3ZTBiNDhkYzJkZWZjZmI5N2JmYzI1YjQzMzM3M2JlMWYzZDhkYTFmNzZjNjMyNmRkMjYzZTU4ZWZkZmJjN2VkMjhhMTI2NDk2ZGY=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1711208559000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageFolder": "com/saathratri/developer/gateway",
+    "packageName": "com.saathratri.developer.gateway",
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "serviceDiscoveryType": "eureka",
+    "skipCommitHook": true,
+    "skipJhipsterDependencies": true,
+    "skipUserManagement": true,
+    "syncUserWithIdp": true,
+    "testFrameworks": ["cypress"]
+  }
+}
