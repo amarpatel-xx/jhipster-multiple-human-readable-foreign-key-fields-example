@@ -92,3 +92,9 @@ deployment {
   appsFolders [gateway, blog, store]
   dockerRepositoryName "mraible"
 }
+
+// Use DTO
+dto all with mapstruct
+
+// Set service options to all
+service all with serviceImpl

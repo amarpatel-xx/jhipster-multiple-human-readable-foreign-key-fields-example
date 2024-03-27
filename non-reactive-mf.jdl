@@ -102,3 +102,9 @@ deployment {
   serviceDiscoveryType eureka
   dockerRepositoryName "amarppatel"
 }
+
+// Use DTO
+dto all with mapstruct
+
+// Set service options to all
+service all with serviceImpl
