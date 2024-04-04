@@ -11,12 +11,11 @@
                 "jdl",
                 "${workspaceFolder}/reactive-mf.jdl",
                 "-d",
-                "--skip-checks",
                 "--skip-git",
                 "--skip-cache",
                 "--skip-install",
                 "--blueprint",
-                "multiple-human-readable-foreign-key-fields",
+                "multiple-human-readable-foreign-key-fields-8",
             ],
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}"

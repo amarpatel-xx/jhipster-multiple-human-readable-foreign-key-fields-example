@@ -1,1 +1,1 @@
-jhipster --blueprints multiple-human-readable-foreign-key-fields jdl reactive-mf.jdl --monorepository --workspaces --skip-jhipster-dependencies
+jhipster --blueprints multiple-human-readable-foreign-key-fields-8 jdl reactive-mf.jdl --monorepository --workspaces --skip-jhipster-dependencies
