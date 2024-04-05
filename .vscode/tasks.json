@@ -6,7 +6,7 @@
         {
             "label": "link generator",
             "type": "shell",
-            "command": "cd /Users/amarppatel/workspace/jhipster-multiple-human-readable-foreign-key-fields-example && npm link generator-jhipster-multiple-human-readable-foreign-key-fields"
+            "command": "cd ~/workspace/jhipster-multiple-human-readable-foreign-key-fields-example"
         }
     ]
 }
