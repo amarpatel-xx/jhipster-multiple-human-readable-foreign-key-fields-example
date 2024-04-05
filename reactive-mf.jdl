@@ -40,9 +40,9 @@ application {
     applicationType microservice
     authenticationType oauth2
     buildTool maven
-    databaseType mongodb
-    devDatabaseType mongodb
-    prodDatabaseType mongodb
+    databaseType sql
+    devDatabaseType postgresql
+    prodDatabaseType postgresql
     enableHibernateCache false
     serverPort 8082
     serviceDiscoveryType eureka
@@ -76,7 +76,6 @@ entity Product {
 }
 
 relationship ManyToOne {
-  Blog{user(login)} to User with builtInEntity,
   Post{blog(name)} to Blog
 }
 
