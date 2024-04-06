@@ -53,31 +53,32 @@ application {
 }
 
 entity Blog {
-  id String required,
+  id UUID required,
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation(" ") handle String required minlength(2)
 }
 
 entity Post {
-  id String required
+  id UUID required
   title String required
   content TextBlob required
   date Instant required
 }
 
 entity Tag {
-  id String required
+  id UUID required
   name String required minlength(2)
 }
 
 entity Product {
-  id String required
+  id UUID required
   title String required
   price BigDecimal required min(0)
   image ImageBlob
 }
 
 relationship ManyToOne {
+  Blog{user(login)} to User with builtInEntity
   Post{blog(name)} to Blog
 }
 
@@ -85,8 +86,7 @@ relationship ManyToMany {
   Post{tag(name)} to Tag{post}
 }
 
-paginate Post, Tag with infinite-scroll
-paginate Product with pagination
+paginate Post, Tag, Product with pagination
 
 microservice Product with store
 microservice Blog, Post, Tag with blog
