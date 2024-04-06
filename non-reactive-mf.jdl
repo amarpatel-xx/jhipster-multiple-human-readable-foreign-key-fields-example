@@ -29,7 +29,7 @@ application {
     serviceDiscoveryType eureka
     testFrameworks [cypress]
   }
-  entities Blog, Post, Tag
+  entities Blog, Post, Tag, User
 }
 
 application {
@@ -57,6 +57,11 @@ entity Blog {
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation(" ") handle String required minlength(2)
 }
 
+entity User {
+  id UUID required
+  login String required minlength(48)
+}
+
 entity Post {
   id UUID required
   title String required
@@ -78,7 +83,7 @@ entity Product {
 }
 
 relationship ManyToOne {
-  Blog{user(login)} to User with builtInEntity
+  Blog{user(login)} to User
   Post{blog} to Blog
 }
 

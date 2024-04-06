@@ -1,3 +1,5 @@
+sh copy-files.sh custom-files/ .
+
 cd gateway
 npm run docker:db:up
 ttab ./mvnw spring-boot:run
