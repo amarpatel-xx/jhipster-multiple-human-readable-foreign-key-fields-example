@@ -1,0 +1,17 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["gateway", "blog", "store"],
+    "baseName": "workspaces",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields-8",
+        "version": "0.0.0"
+      }
+    ],
+    "clientPackageManager": "npm",
+    "directoryPath": "./",
+    "dockerCompose": true,
+    "jhipsterVersion": "8.2.1",
+    "monorepository": true
+  }
+}

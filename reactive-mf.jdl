@@ -6,12 +6,12 @@ application {
     applicationType gateway
     authenticationType oauth2
     buildTool maven
-    clientFramework vue
+    clientFramework angularX
     prodDatabaseType postgresql
     serviceDiscoveryType eureka
     testFrameworks [cypress]
+    microfrontends [blog, store]
   }
-  entities Blog, Post, Tag, Product
 }
 
 application {
@@ -28,6 +28,7 @@ application {
     enableHibernateCache false
     serverPort 8081
     serviceDiscoveryType eureka
+    clientFramework angularX
   }
   entities Blog, Post, Tag
 }
@@ -46,6 +47,7 @@ application {
     enableHibernateCache false
     serverPort 8082
     serviceDiscoveryType eureka
+    clientFramework angularX
   }
   entities Product
 }
