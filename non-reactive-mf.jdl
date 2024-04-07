@@ -52,30 +52,30 @@ application {
 }
 
 entity Blog {
-  id UUID required
+  id UUID
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation(" ") handle String required minlength(2)
 }
 
 entity User {
-  id UUID required
+  id UUID
   login String required minlength(48)
 }
 
 entity Post {
-  id UUID required
+  id UUID
   title String required
   content TextBlob required
   date LocalDate required
 }
 
 entity Tag {
-  id UUID required
+  id UUID
   name String required minlength(2)
 }
 
 entity Product {
-  id UUID required
+  id UUID
   title String required
   price BigDecimal required min(0)
   image ImageBlob
