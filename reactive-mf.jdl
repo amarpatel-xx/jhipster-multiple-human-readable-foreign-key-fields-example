@@ -30,7 +30,7 @@ application {
     serviceDiscoveryType eureka
     clientFramework angularX
   }
-  entities Blog, Post, Tag, User
+  entities Blog, Post, Tag, TajUser
 }
 
 application {
@@ -52,7 +52,7 @@ application {
   entities Product
 }
 
-entity User {
+entity TajUser {
   id UUID
   login String required minlength(48)
 }
@@ -83,7 +83,7 @@ entity Product {
 }
 
 relationship ManyToOne {
-  Blog{user(login)} to User
+  Blog{tajUser(login)} to TajUser
   Post{blog(name)} to Blog
 }
 
