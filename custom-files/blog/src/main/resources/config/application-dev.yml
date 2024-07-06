@@ -53,16 +53,19 @@ spring:
       profile: dev
       label: main # toggle to switch to a different version of the configuration as stored in git
       # it can be set to any label, branch or commit of the configuration source Git repository
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5433/blog
+    username: blog
+    password:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev
-    url: jdbc:postgresql://localhost:5433/blog
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5433/blog
-    username: blog
-    password:
   thymeleaf:
     cache: false
 
@@ -76,6 +79,10 @@ server:
 # ===================================================================
 
 jhipster:
+  cache: # Cache configuration
+    hazelcast: # Hazelcast distributed cache
+      time-to-live-seconds: 3600
+      backup-count: 1
   registry:
     password: admin
   # CORS is disabled by default on microservices, as you should access them through a gateway.

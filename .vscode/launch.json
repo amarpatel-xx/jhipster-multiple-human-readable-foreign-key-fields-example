@@ -15,7 +15,7 @@
                 "--skip-cache",
                 "--skip-install",
                 "--blueprint",
-                "multiple-human-readable-foreign-key-fields-8",
+                "multiple-human-readable-foreign-key-fields",
             ],
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}"
