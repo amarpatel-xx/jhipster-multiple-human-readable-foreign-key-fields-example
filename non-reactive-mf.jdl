@@ -57,7 +57,7 @@ entity TajUser {
 entity Blog {
   id UUID,
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
-  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation(" ") handle String required minlength(2)
+  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") handle String required minlength(2)
 }
 
 entity Post {
