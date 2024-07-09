@@ -2,7 +2,7 @@
 # JHipster Example for Human-Readable Foreign Keys in User Interface
 :::
 
-::::::::::::::::::::::::::::::::::: {#content}
+:::::::::::::::::::::::::::::::::::: {#content}
 :::::::::::: {#preamble}
 ::::::::::: sectionbody
 ::: paragraph
@@ -240,10 +240,10 @@ UUID of the blog. That is success!
 :::::::
 ::::::::
 
-::::::: sect1
+:::::::: sect1
 ## Have Fun with Micro Frontends and JHipster! {#_have_fun_with_micro_frontends_and_jhipster}
 
-:::::: sectionbody
+::::::: sectionbody
 ::: paragraph
 I hope you enjoyed this demo, and it helped you understand how to build
 better microservice architectures with human-readable foreign key
@@ -253,6 +253,9 @@ fields.
 ::: paragraph
 ☕️ Find the example code on GitHub:
 [https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example](https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example){.bare}
+:::
+
+::: paragraph
 ☕️ Find the JHipster blueprint code on GitHub:
 [https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields](https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields){.bare}
 :::
@@ -262,12 +265,12 @@ fields.
 inspiration for this project: [Micro Frontends for Java
 Microservices](https://auth0.com/blog/micro-frontends-for-java-microservices/)
 :::
-::::::
 :::::::
-:::::::::::::::::::::::::::::::::::
+::::::::
+::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
 ::: {#footer-text}
-Last updated 2024-07-09 16:54:13 -0400
+Last updated 2024-07-09 17:00:25 -0400
 :::
 ::::
