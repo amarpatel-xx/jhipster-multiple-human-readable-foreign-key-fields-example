@@ -7,9 +7,9 @@
 ::::::::::: sectionbody
 ::: paragraph
 This code was generated using the JHipster blueprint
-\"generator-jhipster-cassandra-composite-primary-key\" (the source code
-is available at:
-[https://github.com/amarpatel-xx/generator-jhipster-cassandra-composite-primary-key](https://github.com/amarpatel-xx/generator-jhipster-cassandra-composite-primary-key){.bare}).
+\"generator-jhipster-multiple-human-readable-foreign-key-fields\" (the
+source code is available at:
+[https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields](https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields){.bare}).
 This code has a JDL which shows 2 foreign keys that will concatenated
 and shown, in the Angular user interface, in replacement of the UUID.
 The JDL can be modified and the
@@ -271,6 +271,6 @@ Microservices](https://auth0.com/blog/micro-frontends-for-java-microservices/)
 
 :::: {#footer}
 ::: {#footer-text}
-Last updated 2024-07-09 17:00:25 -0400
+Last updated 2024-07-09 17:15:08 -0400
 :::
 ::::

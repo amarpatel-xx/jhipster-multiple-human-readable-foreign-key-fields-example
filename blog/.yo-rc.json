@@ -1,0 +1,35 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 1,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "blog",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "2.0.1"
+      }
+    ],
+    "buildTool": "maven",
+    "clientFramework": "angular",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "devServerPort": 4201,
+    "enableHibernateCache": false,
+    "entities": ["Blog", "Post", "Tag", "TajUser"],
+    "jhipsterVersion": "8.5.0",
+    "jwtSecretKey": "MTc5ZGI5MzVkNTVlNmU5M2RhMjFmMTVhNzExZTk0ZTYzZjVkMWRmYjlmNjcyNWZjNWFjMmU5ZTQ3ZGU3ZGZkZTI4MzZiODI5ZmIzMjhiMzkwZTBhNWUyYWQzN2RlMWZmYjhhNTg4NzVkY2VmNmEwZDEwMjU5ZTlkYjY3OWY3ZjA=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1720559622000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageFolder": "com/saathratri/developer/blog",
+    "packageName": "com.saathratri.developer.blog",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8081",
+    "serviceDiscoveryType": "eureka",
+    "skipCommitHook": true,
+    "skipJhipsterDependencies": true,
+    "skipUserManagement": true
+  }
+}
