@@ -456,7 +456,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre>entity Blog {
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
-  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation(" ") handle String required minlength(2)
+  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") handle String required minlength(2)
 }
 
 entity Post {
@@ -511,7 +511,8 @@ relationship ManyToOne {
 <p>To generate a microservices architecture with human-readable foreign key fields support, run the following command:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sh generate-code-non-reactive-mf.sh</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">npm install -g generator-jhipster-multiple-human-readable-foreign-key-fields
+sh generate-code.sh</code></pre>
 </div>
 </div>
 </li>
@@ -642,7 +643,8 @@ npm run docker:db:up
 <p>I hope you enjoyed this demo, and it helped you understand how to build better microservice architectures with human-readable foreign key fields.</p>
 </div>
 <div class="paragraph">
-<p>☕️ Find the code on GitHub: <a href="https://github.com/amarpatel-xx/jhipster-cassandra-composite-primary-key-example" class="bare">https://github.com/amarpatel-xx/jhipster-cassandra-composite-primary-key-example</a></p>
+<p>☕️ Find the example code on GitHub: <a href="https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example" class="bare">https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example</a>
+☕️ Find the JHipster blueprint code on GitHub: <a href="https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields" class="bare">https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields</a></p>
 </div>
 <div class="paragraph">
 <p>🤓 Read the following blog post, by Matt Raible, that was used as inspiration for this project: <a href="https://auth0.com/blog/micro-frontends-for-java-microservices/">Micro Frontends for Java Microservices</a></p>
@@ -652,7 +654,7 @@ npm run docker:db:up
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-06 10:25:21 -0400
+Last updated 2024-07-09 16:54:13 -0400
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
