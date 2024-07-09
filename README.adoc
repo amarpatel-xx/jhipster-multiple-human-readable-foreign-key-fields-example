@@ -12,7 +12,7 @@ This code was generated using the JHipster blueprint "generator-jhipster-cassand
 ----
 entity Blog {
   @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
-  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation(" ") handle String required minlength(2)
+  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") handle String required minlength(2)
 }
 
 entity Post {
@@ -123,6 +123,7 @@ Notice the Blog column shows <blog-name>-<blog-handle> and not the UUID of the b
 
 I hope you enjoyed this demo, and it helped you understand how to build better microservice architectures with human-readable foreign key fields.
 
-☕️ Find the code on GitHub: https://github.com/amarpatel-xx/jhipster-cassandra-composite-primary-key-example
+☕️ Find the example code on GitHub: https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example
+☕️ Find the JHipster blueprint code on GitHub: https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields
 
 🤓 Read the following blog post, by Matt Raible, that was used as inspiration for this project: https://auth0.com/blog/micro-frontends-for-java-microservices/[Micro Frontends for Java Microservices]
