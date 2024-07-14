@@ -5,7 +5,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "2.0.1"
+        "version": "2.0.4"
       }
     ],
     "clientPackageManager": "npm",
