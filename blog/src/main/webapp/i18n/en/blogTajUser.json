@@ -1,0 +1,24 @@
+{
+  "blogApp": {
+    "blogTajUser": {
+      "home": {
+        "title": "Taj Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Taj User",
+        "createOrEditLabel": "Create or edit a Taj User",
+        "notFound": "No Taj Users found"
+      },
+      "created": "A new Taj User is created with identifier {{ param }}",
+      "updated": "A Taj User is updated with identifier {{ param }}",
+      "deleted": "A Taj User is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Taj User {{ id }}?"
+      },
+      "detail": {
+        "title": "Taj User"
+      },
+      "id": "Id",
+      "login": "Login"
+    }
+  }
+}

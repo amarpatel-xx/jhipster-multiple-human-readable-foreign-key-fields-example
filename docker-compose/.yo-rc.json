@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "adminPassword": "admin",
+    "appsFolders": ["gateway", "blog", "store"],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "2.0.5"
+      }
+    ],
+    "clusteredDbApps": [],
+    "deploymentType": "docker-compose",
+    "directoryPath": "../",
+    "dockerRepositoryName": "amarppatel",
+    "gatewayType": "SpringCloudGateway",
+    "jhipsterVersion": "8.6.0",
+    "jwtSecretKey": "YTZmNWUxYTZkZDM4ODc3YTQxY2Q0OTg1Y2U2ODUxNzI1MGE0MDJiNTM5NDYwMzRhZDIxMGQ0YTQ3NmZhYjAzNmRkOTMwOTNiNGFkZGFiNWY3MGQ2ODg4YjkwZTA0NjMwZDhmMA==",
+    "monitoring": "no",
+    "serviceDiscoveryType": "eureka"
+  }
+}

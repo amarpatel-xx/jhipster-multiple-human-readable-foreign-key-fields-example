@@ -1,0 +1,9 @@
+{
+  "store": {
+    "port": 5433
+  },
+  "lastUsedPort": 5434,
+  "blog": {
+    "port": 5434
+  }
+}
