@@ -29,10 +29,10 @@ Matt Raible's frequently used the blog and store examples in his capability demo
 
 ## Prerequisites:
 
-- https://sdkman.io/[Java] 21+
-- https://nodejs.com/[Node.js] 20+
-- https://www.docker.com/products/docker-desktop/[Docker Desktop]
-- https://www.jhipster.tech/installation/[JHipster] 8.6.0
+- [Java](https://sdkman.io/) 21+
+- [Node.js](https://nodejs.com/) 20+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [JHipster](https://www.jhipster.tech/installation/) 8.6.0
 
 ### Build
 ### Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint 
