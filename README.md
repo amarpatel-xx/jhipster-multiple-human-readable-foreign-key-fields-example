@@ -30,7 +30,7 @@ Matt Raible's frequently used the blog and store examples in his capability demo
 ## Prerequisites:
 
 - [Java](https://sdkman.io/) 21+
-- [Node.js](https://nodejs.com/) 20+
+- [Node.js](https://nodejs.org/) 20+
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [JHipster](https://www.jhipster.tech/installation/) 8.6.0
 
