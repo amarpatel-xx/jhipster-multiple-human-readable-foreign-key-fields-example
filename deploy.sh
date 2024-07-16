@@ -5,16 +5,16 @@ cd ..
 
 cd gateway
 npm run docker:db:up
-ttab ./mvnw spring-boot:run
+ttab ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 cd ..
 
 cd store
 npm run docker:db:up
-ttab ./mvnw spring-boot:run
+ttab ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 cd ..
 
 cd blog
 npm run docker:db:up
-ttab ./mvnw spring-boot:run
+ttab ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 cd ..
 
