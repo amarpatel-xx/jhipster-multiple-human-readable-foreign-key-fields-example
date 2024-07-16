@@ -40,6 +40,9 @@ Matt Raible's frequently used the blog and store examples in his capability demo
 1.  To generate a microservices architecture with human-readable foreign key fields support, run the following command:
 ```console
 npm install -g generator-jhipster-multiple-human-readable-foreign-key-fields
+
+git@github.com:amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example.git
+cd jhipster-multiple-human-readable-foreign-key-fields-example
 sh generate-code.sh
 ```
 
