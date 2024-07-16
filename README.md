@@ -9,7 +9,7 @@ This code has a JDL which shows 2 foreign keys that will concatenated and shown,
 Matt Raible's frequently used the blog and store examples in his capability demonstrations.
 1.  Below is the example using the \@customAnnotation and specifying the
     delimiter also.
-```shell
+```console
     entity Blog {
       @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") name String required minlength(3)
       @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("-") handle String required minlength(2)
@@ -38,40 +38,40 @@ Matt Raible's frequently used the blog and store examples in his capability demo
 ### Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint 
 
 1.  To generate a microservices architecture with human-readable foreign key fields support, run the following command:
-```shell
+```console
 npm install -g generator-jhipster-multiple-human-readable-foreign-key-fields
 sh generate-code.sh
 ```
 
 2.  You should see the message:
-```shell
+```console
 Congratulations, JHipster execution is complete!
 ```
 
 ### Run your Multiple Human-readable Foreign Key Fields Example 
 
 1.  When the process is complete, cd into the `gateway` directory and start Keycloak and Eureka using Docker Compose.
-```shell
+```console
 cd gateway
 docker compose -f src/main/docker/keycloak.yml up -d
 docker compose -f src/main/docker/jhipster-registry.yml up -d
 ```
 
 2.  Start `gateway` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then start the `gateway` by running the Maven command.
-```shell
+```console
 npm run docker:db:up
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
 3.  Start `blog` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then, start the `blog` microservice.
-```shell
+```console
 cd blog
 npm run docker:db:up
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
 4.  Start `store` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then, start the `store` microservice.
-```shell
+```console
 cd store
 npm run docker:db:up
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
@@ -84,7 +84,7 @@ JHipster ships with Keycloak when you choose OAuth 2.0 / OIDC as the authenticat
 If you'd like to use Okta for your identity provider, see [JHipster's documentation](https://www.jhipster.tech/security/#okta).
 
 ## You can configure JHipster quickly with the [Okta CLI](https://cli.okta.com):
-```shell
+```console
 okta apps create jhipster
 ```
 
