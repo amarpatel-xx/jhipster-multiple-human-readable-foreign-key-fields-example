@@ -1,9 +1,0 @@
-{
-  "blog": {
-    "port": 5433
-  },
-  "lastUsedPort": 5434,
-  "store": {
-    "port": 5434
-  }
-}
