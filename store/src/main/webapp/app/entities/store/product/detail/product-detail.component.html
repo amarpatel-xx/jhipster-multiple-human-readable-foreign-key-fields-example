@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (product()) {
+      <div>
+        <h2 data-cy="productDetailsHeading"><span jhiTranslate="storeApp.storeProduct.detail.title">Product</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="storeApp.storeProduct.id">Id</span></dt>
+          <dd>
+            <span>{{ product()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="storeApp.storeProduct.title">Title</span></dt>
+          <dd>
+            <span>{{ product()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="storeApp.storeProduct.price">Price</span></dt>
+          <dd>
+            <span>{{ product()!.price }}</span>
+          </dd>
+          <dt><span jhiTranslate="storeApp.storeProduct.image">Image</span></dt>
+          <dd>
+            @if (product()!.image) {
+              <div>
+                <a (click)="openFile(product()!.image ?? '', product()!.imageContentType)">
+                  <img
+                    [src]="'data:' + product()!.imageContentType + ';base64,' + product()!.image"
+                    style="max-width: 100%"
+                    alt="product"
+                  />
+                </a>
+                {{ product()!.imageContentType }}, {{ byteSize(product()!.image ?? '') }}
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/store/product', product()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
