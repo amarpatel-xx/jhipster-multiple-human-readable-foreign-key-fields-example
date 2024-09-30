@@ -1,7 +1,11 @@
 {
   "generator-jhipster": {
     "adminPassword": "admin",
-    "appsFolders": ["gateway", "blog", "store"],
+    "appsFolders": [
+      "gateway",
+      "blog",
+      "store"
+    ],
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
