@@ -1,21 +1,18 @@
 import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
-import { PostComponent } from './list/post.component';
-import { PostDetailComponent } from './detail/post-detail.component';
-import { PostUpdateComponent } from './update/post-update.component';
 import PostResolve from './route/post-routing-resolve.service';
 
 const postRoute: Routes = [
   {
     path: '',
-    component: PostComponent,
+    loadComponent: () => import('./list/post.component').then(m => m.PostComponent),
     data: {},
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: PostDetailComponent,
+    loadComponent: () => import('./detail/post-detail.component').then(m => m.PostDetailComponent),
     resolve: {
       post: PostResolve,
     },
@@ -23,7 +20,7 @@ const postRoute: Routes = [
   },
   {
     path: 'new',
-    component: PostUpdateComponent,
+    loadComponent: () => import('./update/post-update.component').then(m => m.PostUpdateComponent),
     resolve: {
       post: PostResolve,
     },
@@ -31,7 +28,7 @@ const postRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: PostUpdateComponent,
+    loadComponent: () => import('./update/post-update.component').then(m => m.PostUpdateComponent),
     resolve: {
       post: PostResolve,
     },

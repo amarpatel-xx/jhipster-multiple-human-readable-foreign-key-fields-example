@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { IPost } from 'app/entities/blog/post/post.model';
 import { PostService } from 'app/entities/blog/post/service/post.service';
@@ -49,10 +49,10 @@ describe('Tag Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Post query and add missing value', () => {
       const tag: ITag = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const posts: IPost[] = [{ id: 'ca3a792d-e3da-4b21-83ac-41eb28085713' }];
+      const posts: IPost[] = [{ id: '739137db-2de4-4978-a80a-f4fda6287f34' }];
       tag.posts = posts;
 
-      const postCollection: IPost[] = [{ id: 'c030e59a-3458-4043-8f3a-60ccdecd3ecd' }];
+      const postCollection: IPost[] = [{ id: '22d357b4-6a4c-4aeb-a563-c22bd60b675a' }];
       jest.spyOn(postService, 'query').mockReturnValue(of(new HttpResponse({ body: postCollection })));
       const additionalPosts = [...posts];
       const expectedCollection: IPost[] = [...additionalPosts, ...postCollection];
@@ -71,7 +71,7 @@ describe('Tag Management Update Component', () => {
 
     it('Should update editForm', () => {
       const tag: ITag = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const post: IPost = { id: 'd0f2ecfd-6b00-4280-ab6f-f5536ad9476d' };
+      const post: IPost = { id: '08424921-2921-4b5d-969d-0317372143c1' };
       tag.posts = [post];
 
       activatedRoute.data = of({ tag });

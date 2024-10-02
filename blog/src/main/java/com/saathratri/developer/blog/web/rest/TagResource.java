@@ -32,7 +32,7 @@ import tech.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api/tags")
 public class TagResource {
 
-    private static final Logger log = LoggerFactory.getLogger(TagResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TagResource.class);
 
     private static final String ENTITY_NAME = "blogTag";
 
@@ -57,7 +57,7 @@ public class TagResource {
      */
     @PostMapping("")
     public ResponseEntity<TagDTO> createTag(@Valid @RequestBody TagDTO tagDTO) throws URISyntaxException {
-        log.debug("REST request to save Tag : {}", tagDTO);
+        LOG.debug("REST request to save Tag : {}", tagDTO);
         if (tagDTO.getId() != null) {
             throw new BadRequestAlertException("A new tag cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -80,7 +80,7 @@ public class TagResource {
     @PutMapping("/{id}")
     public ResponseEntity<TagDTO> updateTag(@PathVariable(value = "id", required = false) final UUID id, @Valid @RequestBody TagDTO tagDTO)
         throws URISyntaxException {
-        log.debug("REST request to update Tag : {}, {}", id, tagDTO);
+        LOG.debug("REST request to update Tag : {}, {}", id, tagDTO);
         if (tagDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -114,7 +114,7 @@ public class TagResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @NotNull @RequestBody TagDTO tagDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Tag partially : {}, {}", id, tagDTO);
+        LOG.debug("REST request to partial update Tag partially : {}, {}", id, tagDTO);
         if (tagDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -142,7 +142,7 @@ public class TagResource {
      */
     @GetMapping("")
     public ResponseEntity<List<TagDTO>> getAllTags(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Tags");
+        LOG.debug("REST request to get a page of Tags");
         Page<TagDTO> page = tagService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -156,7 +156,7 @@ public class TagResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<TagDTO> getTag(@PathVariable("id") UUID id) {
-        log.debug("REST request to get Tag : {}", id);
+        LOG.debug("REST request to get Tag : {}", id);
         Optional<TagDTO> tagDTO = tagService.findOne(id);
         return ResponseUtil.wrapOrNotFound(tagDTO);
     }
@@ -169,7 +169,7 @@ public class TagResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTag(@PathVariable("id") UUID id) {
-        log.debug("REST request to delete Tag : {}", id);
+        LOG.debug("REST request to delete Tag : {}", id);
         tagService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

@@ -32,7 +32,7 @@ import tech.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api/posts")
 public class PostResource {
 
-    private static final Logger log = LoggerFactory.getLogger(PostResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PostResource.class);
 
     private static final String ENTITY_NAME = "blogPost";
 
@@ -57,7 +57,7 @@ public class PostResource {
      */
     @PostMapping("")
     public ResponseEntity<PostDTO> createPost(@Valid @RequestBody PostDTO postDTO) throws URISyntaxException {
-        log.debug("REST request to save Post : {}", postDTO);
+        LOG.debug("REST request to save Post : {}", postDTO);
         if (postDTO.getId() != null) {
             throw new BadRequestAlertException("A new post cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -82,7 +82,7 @@ public class PostResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @Valid @RequestBody PostDTO postDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Post : {}, {}", id, postDTO);
+        LOG.debug("REST request to update Post : {}, {}", id, postDTO);
         if (postDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -116,7 +116,7 @@ public class PostResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @NotNull @RequestBody PostDTO postDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Post partially : {}, {}", id, postDTO);
+        LOG.debug("REST request to partial update Post partially : {}, {}", id, postDTO);
         if (postDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -148,7 +148,7 @@ public class PostResource {
         @org.springdoc.core.annotations.ParameterObject Pageable pageable,
         @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
     ) {
-        log.debug("REST request to get a page of Posts");
+        LOG.debug("REST request to get a page of Posts");
         Page<PostDTO> page;
         if (eagerload) {
             page = postService.findAllWithEagerRelationships(pageable);
@@ -167,7 +167,7 @@ public class PostResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<PostDTO> getPost(@PathVariable("id") UUID id) {
-        log.debug("REST request to get Post : {}", id);
+        LOG.debug("REST request to get Post : {}", id);
         Optional<PostDTO> postDTO = postService.findOne(id);
         return ResponseUtil.wrapOrNotFound(postDTO);
     }
@@ -180,7 +180,7 @@ public class PostResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable("id") UUID id) {
-        log.debug("REST request to delete Post : {}", id);
+        LOG.debug("REST request to delete Post : {}", id);
         postService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

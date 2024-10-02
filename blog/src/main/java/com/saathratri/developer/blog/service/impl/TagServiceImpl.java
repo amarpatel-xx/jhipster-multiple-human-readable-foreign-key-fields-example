@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class TagServiceImpl implements TagService {
 
-    private static final Logger log = LoggerFactory.getLogger(TagServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TagServiceImpl.class);
 
     private final TagRepository tagRepository;
 
@@ -34,7 +34,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public TagDTO save(TagDTO tagDTO) {
-        log.debug("Request to save Tag : {}", tagDTO);
+        LOG.debug("Request to save Tag : {}", tagDTO);
         Tag tag = tagMapper.toEntity(tagDTO);
         tag = tagRepository.save(tag);
         return tagMapper.toDto(tag);
@@ -42,7 +42,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public TagDTO update(TagDTO tagDTO) {
-        log.debug("Request to update Tag : {}", tagDTO);
+        LOG.debug("Request to update Tag : {}", tagDTO);
         Tag tag = tagMapper.toEntity(tagDTO);
         tag = tagRepository.save(tag);
         return tagMapper.toDto(tag);
@@ -50,7 +50,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Optional<TagDTO> partialUpdate(TagDTO tagDTO) {
-        log.debug("Request to partially update Tag : {}", tagDTO);
+        LOG.debug("Request to partially update Tag : {}", tagDTO);
 
         return tagRepository
             .findById(tagDTO.getId())
@@ -66,20 +66,20 @@ public class TagServiceImpl implements TagService {
     @Override
     @Transactional(readOnly = true)
     public Page<TagDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Tags");
+        LOG.debug("Request to get all Tags");
         return tagRepository.findAll(pageable).map(tagMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<TagDTO> findOne(UUID id) {
-        log.debug("Request to get Tag : {}", id);
+        LOG.debug("Request to get Tag : {}", id);
         return tagRepository.findById(id).map(tagMapper::toDto);
     }
 
     @Override
     public void delete(UUID id) {
-        log.debug("Request to delete Tag : {}", id);
+        LOG.debug("Request to delete Tag : {}", id);
         tagRepository.deleteById(id);
     }
 }

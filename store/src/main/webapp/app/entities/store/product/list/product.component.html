@@ -67,7 +67,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (product of products; track trackId) {
+          @for (product of products; track trackId(product)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/store/product', product.id, 'view']">{{ product.id }}</a>

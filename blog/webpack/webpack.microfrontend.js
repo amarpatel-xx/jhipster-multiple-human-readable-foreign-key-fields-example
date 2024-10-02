@@ -4,7 +4,6 @@ const packageJson = require('../package.json');
 const apiVersion = '0.0.1';
 
 const sharedDefaults = { singleton: true, strictVersion: true, requiredVersion: apiVersion };
-const shareAllDefaults = { ...sharedDefaults, requiredVersion: 'auto' };
 const shareMappings = (...mappings) => Object.fromEntries(mappings.map(map => [map, { ...sharedDefaults, version: apiVersion }]));
 
 const shareDependencies = ({ skipList = [] } = {}) =>
@@ -21,6 +20,7 @@ sharedDependencies = {
   'rxjs/operators': sharedDependencies.rxjs,
 };
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (config, options, targetOptions) => {
   return withModuleFederationPlugin({
     name: 'blog',

@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240922184654"
+    "changelogDate": "20241002181136"
   },
   "applications": ["store"],
   "clientRootFolder": "store",
@@ -24,8 +24,7 @@
     },
     {
       "fieldName": "image",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "image"
+      "fieldType": "ImageBlob"
     }
   ],
   "microserviceName": "store",

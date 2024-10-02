@@ -1,21 +1,18 @@
 import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
-import { TajUserComponent } from './list/taj-user.component';
-import { TajUserDetailComponent } from './detail/taj-user-detail.component';
-import { TajUserUpdateComponent } from './update/taj-user-update.component';
 import TajUserResolve from './route/taj-user-routing-resolve.service';
 
 const tajUserRoute: Routes = [
   {
     path: '',
-    component: TajUserComponent,
+    loadComponent: () => import('./list/taj-user.component').then(m => m.TajUserComponent),
     data: {},
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: TajUserDetailComponent,
+    loadComponent: () => import('./detail/taj-user-detail.component').then(m => m.TajUserDetailComponent),
     resolve: {
       tajUser: TajUserResolve,
     },
@@ -23,7 +20,7 @@ const tajUserRoute: Routes = [
   },
   {
     path: 'new',
-    component: TajUserUpdateComponent,
+    loadComponent: () => import('./update/taj-user-update.component').then(m => m.TajUserUpdateComponent),
     resolve: {
       tajUser: TajUserResolve,
     },
@@ -31,7 +28,7 @@ const tajUserRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: TajUserUpdateComponent,
+    loadComponent: () => import('./update/taj-user-update.component').then(m => m.TajUserUpdateComponent),
     resolve: {
       tajUser: TajUserResolve,
     },

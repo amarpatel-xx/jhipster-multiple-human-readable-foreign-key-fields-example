@@ -1,8 +1,8 @@
-import { inject, NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateService, TranslateLoader, MissingTranslationHandler } from '@ngx-translate/core';
+import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { translatePartialLoader, missingTranslationHandler } from 'app/config/translation.config';
+import { missingTranslationHandler, translatePartialLoader } from 'app/config/translation.config';
 import { StateStorageService } from 'app/core/auth/state-storage.service';
 
 function lazyTranslatePartialLoader(http: HttpClient): TranslateLoader {
@@ -28,7 +28,7 @@ export class LazyTranslationModule {
   private stateStorageService = inject(StateStorageService);
 
   constructor() {
-    const currentLang = this.translateService.store.currentLang;
+    const { currentLang } = this.translateService.store;
     this.translateLoader.getTranslation(currentLang).subscribe(translation => {
       this.translateService.setTranslation(currentLang, translation);
     });

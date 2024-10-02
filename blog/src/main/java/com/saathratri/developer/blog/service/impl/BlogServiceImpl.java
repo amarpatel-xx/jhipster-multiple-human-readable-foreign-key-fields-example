@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class BlogServiceImpl implements BlogService {
 
-    private static final Logger log = LoggerFactory.getLogger(BlogServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BlogServiceImpl.class);
 
     private final BlogRepository blogRepository;
 
@@ -37,7 +37,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogDTO save(BlogDTO blogDTO) {
-        log.debug("Request to save Blog : {}", blogDTO);
+        LOG.debug("Request to save Blog : {}", blogDTO);
         Blog blog = blogMapper.toEntity(blogDTO);
         blog = blogRepository.save(blog);
         return blogMapper.toDto(blog);
@@ -45,7 +45,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogDTO update(BlogDTO blogDTO) {
-        log.debug("Request to update Blog : {}", blogDTO);
+        LOG.debug("Request to update Blog : {}", blogDTO);
         Blog blog = blogMapper.toEntity(blogDTO);
         blog = blogRepository.save(blog);
         return blogMapper.toDto(blog);
@@ -53,7 +53,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Optional<BlogDTO> partialUpdate(BlogDTO blogDTO) {
-        log.debug("Request to partially update Blog : {}", blogDTO);
+        LOG.debug("Request to partially update Blog : {}", blogDTO);
 
         return blogRepository
             .findById(blogDTO.getId())
@@ -69,7 +69,7 @@ public class BlogServiceImpl implements BlogService {
     @Override
     @Transactional(readOnly = true)
     public List<BlogDTO> findAll() {
-        log.debug("Request to get all Blogs");
+        LOG.debug("Request to get all Blogs");
         return blogRepository.findAll().stream().map(blogMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
@@ -80,13 +80,13 @@ public class BlogServiceImpl implements BlogService {
     @Override
     @Transactional(readOnly = true)
     public Optional<BlogDTO> findOne(UUID id) {
-        log.debug("Request to get Blog : {}", id);
+        LOG.debug("Request to get Blog : {}", id);
         return blogRepository.findOneWithEagerRelationships(id).map(blogMapper::toDto);
     }
 
     @Override
     public void delete(UUID id) {
-        log.debug("Request to delete Blog : {}", id);
+        LOG.debug("Request to delete Blog : {}", id);
         blogRepository.deleteById(id);
     }
 }

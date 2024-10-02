@@ -27,7 +27,7 @@ import tech.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api/taj-users")
 public class TajUserResource {
 
-    private static final Logger log = LoggerFactory.getLogger(TajUserResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TajUserResource.class);
 
     private static final String ENTITY_NAME = "blogTajUser";
 
@@ -52,7 +52,7 @@ public class TajUserResource {
      */
     @PostMapping("")
     public ResponseEntity<TajUserDTO> createTajUser(@Valid @RequestBody TajUserDTO tajUserDTO) throws URISyntaxException {
-        log.debug("REST request to save TajUser : {}", tajUserDTO);
+        LOG.debug("REST request to save TajUser : {}", tajUserDTO);
         if (tajUserDTO.getId() != null) {
             throw new BadRequestAlertException("A new tajUser cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -77,7 +77,7 @@ public class TajUserResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @Valid @RequestBody TajUserDTO tajUserDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update TajUser : {}, {}", id, tajUserDTO);
+        LOG.debug("REST request to update TajUser : {}, {}", id, tajUserDTO);
         if (tajUserDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -111,7 +111,7 @@ public class TajUserResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @NotNull @RequestBody TajUserDTO tajUserDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update TajUser partially : {}, {}", id, tajUserDTO);
+        LOG.debug("REST request to partial update TajUser partially : {}, {}", id, tajUserDTO);
         if (tajUserDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -138,7 +138,7 @@ public class TajUserResource {
      */
     @GetMapping("")
     public List<TajUserDTO> getAllTajUsers() {
-        log.debug("REST request to get all TajUsers");
+        LOG.debug("REST request to get all TajUsers");
         return tajUserService.findAll();
     }
 
@@ -150,7 +150,7 @@ public class TajUserResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<TajUserDTO> getTajUser(@PathVariable("id") UUID id) {
-        log.debug("REST request to get TajUser : {}", id);
+        LOG.debug("REST request to get TajUser : {}", id);
         Optional<TajUserDTO> tajUserDTO = tajUserService.findOne(id);
         return ResponseUtil.wrapOrNotFound(tajUserDTO);
     }
@@ -163,7 +163,7 @@ public class TajUserResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTajUser(@PathVariable("id") UUID id) {
-        log.debug("REST request to delete TajUser : {}", id);
+        LOG.debug("REST request to delete TajUser : {}", id);
         tajUserService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

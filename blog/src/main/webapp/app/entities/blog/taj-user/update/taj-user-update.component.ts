@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ITajUser } from '../taj-user.model';
 import { TajUserService } from '../service/taj-user.service';
-import { TajUserFormService, TajUserFormGroup } from './taj-user-form.service';
+import { TajUserFormGroup, TajUserFormService } from './taj-user-form.service';
 
 @Component({
   standalone: true,

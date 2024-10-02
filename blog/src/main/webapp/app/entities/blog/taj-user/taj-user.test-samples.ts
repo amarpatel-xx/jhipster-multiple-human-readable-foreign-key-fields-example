@@ -1,22 +1,22 @@
 import { ITajUser, NewTajUser } from './taj-user.model';
 
 export const sampleWithRequiredData: ITajUser = {
-  id: 'a717857b-9dc5-4497-bb6f-f29fcd17ff28',
-  login: 'nervously',
+  id: 'cf36ec63-8024-46f7-815f-3f5ff9e8438f',
+  login: 'fastXXX',
 };
 
 export const sampleWithPartialData: ITajUser = {
-  id: '88bba90c-4280-4299-bc35-c6f19b30925b',
-  login: 'seldomX',
+  id: '63f03077-22d2-4497-8b3c-ceb824843aed',
+  login: 'mortise zowie',
 };
 
 export const sampleWithFullData: ITajUser = {
-  id: '8ea7634a-8f37-46a4-b10c-8f93864e6c86',
-  login: 'foolishly',
+  id: '3bd219be-510d-497b-bc70-8141a7677f83',
+  login: 'suspiciously vacation',
 };
 
 export const sampleWithNewData: NewTajUser = {
-  login: 'selfishly',
+  login: 'quizzically milky',
   id: null,
 };
 

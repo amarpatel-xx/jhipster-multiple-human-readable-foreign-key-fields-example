@@ -4,7 +4,6 @@ import static org.springframework.security.test.web.reactive.server.SecurityMock
 
 import com.saathratri.developer.gateway.IntegrationTest;
 import com.saathratri.developer.gateway.domain.User;
-import com.saathratri.developer.gateway.repository.EntityManager;
 import com.saathratri.developer.gateway.repository.UserRepository;
 import com.saathratri.developer.gateway.security.AuthoritiesConstants;
 import java.util.Set;
@@ -25,13 +24,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @IntegrationTest
 class PublicUserResourceIT {
 
-    private static final String DEFAULT_LOGIN = "johndoe";
-
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private EntityManager em;
 
     @Autowired
     private WebTestClient webTestClient;
@@ -45,7 +39,7 @@ class PublicUserResourceIT {
 
     @BeforeEach
     public void initTest() {
-        user = UserResourceIT.initTestUser(em);
+        user = UserResourceIT.initTestUser();
     }
 
     @AfterEach

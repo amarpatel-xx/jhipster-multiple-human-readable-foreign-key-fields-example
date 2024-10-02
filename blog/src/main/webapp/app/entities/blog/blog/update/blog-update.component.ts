@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { ITajUser } from 'app/entities/blog/taj-user/taj-user.model';
 import { TajUserService } from 'app/entities/blog/taj-user/service/taj-user.service';
 import { IBlog } from '../blog.model';
 import { BlogService } from '../service/blog.service';
-import { BlogFormService, BlogFormGroup } from './blog-form.service';
+import { BlogFormGroup, BlogFormService } from './blog-form.service';
 
 @Component({
   standalone: true,

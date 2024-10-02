@@ -65,9 +65,8 @@ class TajUserResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static TajUser createEntity(EntityManager em) {
-        TajUser tajUser = new TajUser().login(DEFAULT_LOGIN);
-        return tajUser;
+    public static TajUser createEntity() {
+        return new TajUser().login(DEFAULT_LOGIN);
     }
 
     /**
@@ -76,14 +75,13 @@ class TajUserResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static TajUser createUpdatedEntity(EntityManager em) {
-        TajUser tajUser = new TajUser().login(UPDATED_LOGIN);
-        return tajUser;
+    public static TajUser createUpdatedEntity() {
+        return new TajUser().login(UPDATED_LOGIN);
     }
 
     @BeforeEach
     public void initTest() {
-        tajUser = createEntity(em);
+        tajUser = createEntity();
     }
 
     @AfterEach

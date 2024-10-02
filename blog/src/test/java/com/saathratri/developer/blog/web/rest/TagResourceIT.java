@@ -65,9 +65,8 @@ class TagResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Tag createEntity(EntityManager em) {
-        Tag tag = new Tag().name(DEFAULT_NAME);
-        return tag;
+    public static Tag createEntity() {
+        return new Tag().name(DEFAULT_NAME);
     }
 
     /**
@@ -76,14 +75,13 @@ class TagResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Tag createUpdatedEntity(EntityManager em) {
-        Tag tag = new Tag().name(UPDATED_NAME);
-        return tag;
+    public static Tag createUpdatedEntity() {
+        return new Tag().name(UPDATED_NAME);
     }
 
     @BeforeEach
     public void initTest() {
-        tag = createEntity(em);
+        tag = createEntity();
     }
 
     @AfterEach
@@ -294,6 +292,8 @@ class TagResourceIT {
         // Update the tag using partial update
         Tag partialUpdatedTag = new Tag();
         partialUpdatedTag.setId(tag.getId());
+
+        partialUpdatedTag.name(UPDATED_NAME);
 
         restTagMockMvc
             .perform(

@@ -1,26 +1,26 @@
 import { IBlog, NewBlog } from './blog.model';
 
 export const sampleWithRequiredData: IBlog = {
-  id: '0494c3cf-9c6a-431e-87e9-3c4e48c726a0',
-  name: 'nose',
-  handle: 'practitioner',
+  id: 'cc963ee3-44c2-4a31-9769-c7aaa9082fd6',
+  name: 'numeric kissingly',
+  handle: 'gah yuck per',
 };
 
 export const sampleWithPartialData: IBlog = {
-  id: '3ae9d048-c24f-43df-96c5-d7d6c2435b1e',
-  name: 'until knavishly',
-  handle: 'rustle',
+  id: '96ddc17c-e9e4-4c2e-ad2e-19bbd6d50493',
+  name: 'proceed dreamily factorize',
+  handle: 'oh who',
 };
 
 export const sampleWithFullData: IBlog = {
-  id: '12d1ac6f-77f1-4f20-918b-77a260408be0',
-  name: 'famous terrible majestically',
-  handle: 'rainstorm under pfft',
+  id: 'd2b85c96-20f7-4a8e-afea-3219a68dfa18',
+  name: 'than ha however',
+  handle: 'pace',
 };
 
 export const sampleWithNewData: NewBlog = {
-  name: 'mid',
-  handle: 'praise depopulate worrisome',
+  name: 'exhausted ah',
+  handle: 'mobility onto',
   id: null,
 };
 

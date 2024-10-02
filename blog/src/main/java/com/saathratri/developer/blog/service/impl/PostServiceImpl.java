@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PostServiceImpl implements PostService {
 
-    private static final Logger log = LoggerFactory.getLogger(PostServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PostServiceImpl.class);
 
     private final PostRepository postRepository;
 
@@ -34,7 +34,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostDTO save(PostDTO postDTO) {
-        log.debug("Request to save Post : {}", postDTO);
+        LOG.debug("Request to save Post : {}", postDTO);
         Post post = postMapper.toEntity(postDTO);
         post = postRepository.save(post);
         return postMapper.toDto(post);
@@ -42,7 +42,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostDTO update(PostDTO postDTO) {
-        log.debug("Request to update Post : {}", postDTO);
+        LOG.debug("Request to update Post : {}", postDTO);
         Post post = postMapper.toEntity(postDTO);
         post = postRepository.save(post);
         return postMapper.toDto(post);
@@ -50,7 +50,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Optional<PostDTO> partialUpdate(PostDTO postDTO) {
-        log.debug("Request to partially update Post : {}", postDTO);
+        LOG.debug("Request to partially update Post : {}", postDTO);
 
         return postRepository
             .findById(postDTO.getId())
@@ -66,7 +66,7 @@ public class PostServiceImpl implements PostService {
     @Override
     @Transactional(readOnly = true)
     public Page<PostDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Posts");
+        LOG.debug("Request to get all Posts");
         return postRepository.findAll(pageable).map(postMapper::toDto);
     }
 
@@ -77,13 +77,13 @@ public class PostServiceImpl implements PostService {
     @Override
     @Transactional(readOnly = true)
     public Optional<PostDTO> findOne(UUID id) {
-        log.debug("Request to get Post : {}", id);
+        LOG.debug("Request to get Post : {}", id);
         return postRepository.findOneWithEagerRelationships(id).map(postMapper::toDto);
     }
 
     @Override
     public void delete(UUID id) {
-        log.debug("Request to delete Post : {}", id);
+        LOG.debug("Request to delete Post : {}", id);
         postRepository.deleteById(id);
     }
 }

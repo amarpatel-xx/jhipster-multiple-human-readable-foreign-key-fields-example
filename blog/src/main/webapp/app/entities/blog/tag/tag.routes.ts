@@ -1,21 +1,18 @@
 import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
-import { TagComponent } from './list/tag.component';
-import { TagDetailComponent } from './detail/tag-detail.component';
-import { TagUpdateComponent } from './update/tag-update.component';
 import TagResolve from './route/tag-routing-resolve.service';
 
 const tagRoute: Routes = [
   {
     path: '',
-    component: TagComponent,
+    loadComponent: () => import('./list/tag.component').then(m => m.TagComponent),
     data: {},
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: TagDetailComponent,
+    loadComponent: () => import('./detail/tag-detail.component').then(m => m.TagDetailComponent),
     resolve: {
       tag: TagResolve,
     },
@@ -23,7 +20,7 @@ const tagRoute: Routes = [
   },
   {
     path: 'new',
-    component: TagUpdateComponent,
+    loadComponent: () => import('./update/tag-update.component').then(m => m.TagUpdateComponent),
     resolve: {
       tag: TagResolve,
     },
@@ -31,7 +28,7 @@ const tagRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: TagUpdateComponent,
+    loadComponent: () => import('./update/tag-update.component').then(m => m.TagUpdateComponent),
     resolve: {
       tag: TagResolve,
     },

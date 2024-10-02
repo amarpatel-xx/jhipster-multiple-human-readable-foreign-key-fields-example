@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { IBlog } from 'app/entities/blog/blog/blog.model';
 import { BlogService } from 'app/entities/blog/blog/service/blog.service';
@@ -53,10 +53,10 @@ describe('Post Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Blog query and add missing value', () => {
       const post: IPost = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const blog: IBlog = { id: 'fd947042-d3ae-4f3c-96dc-c6bd6e2aa492' };
+      const blog: IBlog = { id: 'fbcb9140-68f4-4a55-a812-919fd551bd8b' };
       post.blog = blog;
 
-      const blogCollection: IBlog[] = [{ id: 'cf878765-494e-4db6-9dd1-b8fae0413246' }];
+      const blogCollection: IBlog[] = [{ id: 'ebc13ab7-5546-472a-89ca-c377b22c3bb1' }];
       jest.spyOn(blogService, 'query').mockReturnValue(of(new HttpResponse({ body: blogCollection })));
       const additionalBlogs = [blog];
       const expectedCollection: IBlog[] = [...additionalBlogs, ...blogCollection];
@@ -75,10 +75,10 @@ describe('Post Management Update Component', () => {
 
     it('Should call Tag query and add missing value', () => {
       const post: IPost = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const tags: ITag[] = [{ id: '0df8a9cf-7e4c-4e2f-8da0-c490c0744275' }];
+      const tags: ITag[] = [{ id: 'fac74efa-c9c7-4473-ae0c-aec0db75cf8d' }];
       post.tags = tags;
 
-      const tagCollection: ITag[] = [{ id: '0ee08c2a-de2c-4706-8d7b-17657c9f28ad' }];
+      const tagCollection: ITag[] = [{ id: '2f1df3fe-4c1d-4354-8347-a3a49632e4f0' }];
       jest.spyOn(tagService, 'query').mockReturnValue(of(new HttpResponse({ body: tagCollection })));
       const additionalTags = [...tags];
       const expectedCollection: ITag[] = [...additionalTags, ...tagCollection];
@@ -94,9 +94,9 @@ describe('Post Management Update Component', () => {
 
     it('Should update editForm', () => {
       const post: IPost = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const blog: IBlog = { id: '7c8804ee-d323-4b28-9058-c99d6a2503fa' };
+      const blog: IBlog = { id: '0916f54e-1358-4be5-b3e3-3f6fc820b87c' };
       post.blog = blog;
-      const tag: ITag = { id: '8a2ff911-d1ff-431f-95e2-41c918d63450' };
+      const tag: ITag = { id: 'c47135c5-d3a3-40d9-85ac-02f8081d4ba3' };
       post.tags = [tag];
 
       activatedRoute.data = of({ post });

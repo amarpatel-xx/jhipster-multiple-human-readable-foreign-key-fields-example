@@ -26,7 +26,7 @@
     "clientFramework": "angular",
     "devServerPort": 4200,
     "entities": [],
-    "jhipsterVersion": "8.6.0",
+    "jhipsterVersion": "8.7.1",
     "languages": ["en"],
     "microfrontends": [
       {
@@ -38,7 +38,6 @@
     ],
     "monorepository": true,
     "nativeLanguage": "en",
-    "packageFolder": "com/saathratri/developer/gateway",
     "packageName": "com.saathratri.developer.gateway",
     "prodDatabaseType": "postgresql",
     "reactive": true,

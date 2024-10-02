@@ -27,7 +27,7 @@ import tech.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api/blogs")
 public class BlogResource {
 
-    private static final Logger log = LoggerFactory.getLogger(BlogResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BlogResource.class);
 
     private static final String ENTITY_NAME = "blogBlog";
 
@@ -52,7 +52,7 @@ public class BlogResource {
      */
     @PostMapping("")
     public ResponseEntity<BlogDTO> createBlog(@Valid @RequestBody BlogDTO blogDTO) throws URISyntaxException {
-        log.debug("REST request to save Blog : {}", blogDTO);
+        LOG.debug("REST request to save Blog : {}", blogDTO);
         if (blogDTO.getId() != null) {
             throw new BadRequestAlertException("A new blog cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -77,7 +77,7 @@ public class BlogResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @Valid @RequestBody BlogDTO blogDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Blog : {}, {}", id, blogDTO);
+        LOG.debug("REST request to update Blog : {}, {}", id, blogDTO);
         if (blogDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -111,7 +111,7 @@ public class BlogResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @NotNull @RequestBody BlogDTO blogDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Blog partially : {}, {}", id, blogDTO);
+        LOG.debug("REST request to partial update Blog partially : {}, {}", id, blogDTO);
         if (blogDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -139,7 +139,7 @@ public class BlogResource {
      */
     @GetMapping("")
     public List<BlogDTO> getAllBlogs(@RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload) {
-        log.debug("REST request to get all Blogs");
+        LOG.debug("REST request to get all Blogs");
         return blogService.findAll();
     }
 
@@ -151,7 +151,7 @@ public class BlogResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<BlogDTO> getBlog(@PathVariable("id") UUID id) {
-        log.debug("REST request to get Blog : {}", id);
+        LOG.debug("REST request to get Blog : {}", id);
         Optional<BlogDTO> blogDTO = blogService.findOne(id);
         return ResponseUtil.wrapOrNotFound(blogDTO);
     }
@@ -164,7 +164,7 @@ public class BlogResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBlog(@PathVariable("id") UUID id) {
-        log.debug("REST request to delete Blog : {}", id);
+        LOG.debug("REST request to delete Blog : {}", id);
         blogService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

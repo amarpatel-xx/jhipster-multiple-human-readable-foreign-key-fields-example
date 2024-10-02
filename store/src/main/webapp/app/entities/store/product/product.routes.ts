@@ -1,21 +1,18 @@
 import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
-import { ProductComponent } from './list/product.component';
-import { ProductDetailComponent } from './detail/product-detail.component';
-import { ProductUpdateComponent } from './update/product-update.component';
 import ProductResolve from './route/product-routing-resolve.service';
 
 const productRoute: Routes = [
   {
     path: '',
-    component: ProductComponent,
+    loadComponent: () => import('./list/product.component').then(m => m.ProductComponent),
     data: {},
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: ProductDetailComponent,
+    loadComponent: () => import('./detail/product-detail.component').then(m => m.ProductDetailComponent),
     resolve: {
       product: ProductResolve,
     },
@@ -23,7 +20,7 @@ const productRoute: Routes = [
   },
   {
     path: 'new',
-    component: ProductUpdateComponent,
+    loadComponent: () => import('./update/product-update.component').then(m => m.ProductUpdateComponent),
     resolve: {
       product: ProductResolve,
     },
@@ -31,7 +28,7 @@ const productRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: ProductUpdateComponent,
+    loadComponent: () => import('./update/product-update.component').then(m => m.ProductUpdateComponent),
     resolve: {
       product: ProductResolve,
     },

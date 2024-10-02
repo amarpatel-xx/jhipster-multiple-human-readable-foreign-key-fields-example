@@ -11,7 +11,9 @@
     "clientPackageManager": "npm",
     "directoryPath": "./",
     "dockerCompose": true,
-    "jhipsterVersion": "8.6.0",
-    "monorepository": true
+    "entities": [],
+    "jhipsterVersion": "8.7.1",
+    "monorepository": true,
+    "skipJhipsterDependencies": true
   }
 }

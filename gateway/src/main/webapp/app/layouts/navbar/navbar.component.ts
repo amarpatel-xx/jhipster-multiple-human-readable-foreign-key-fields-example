@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit, createNgModule, Injector } from '@angular/core';
+import { Component, Injector, OnInit, createNgModule, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -96,7 +96,7 @@ export default class NavbarComponent implements OnInit {
           console.log('Error loading blog translation module', error);
         }
       },
-      error => {
+      (error: unknown) => {
         // eslint-disable-next-line no-console
         console.log('Error loading blog entities', error);
       },
@@ -112,7 +112,7 @@ export default class NavbarComponent implements OnInit {
           console.log('Error loading store translation module', error);
         }
       },
-      error => {
+      (error: unknown) => {
         // eslint-disable-next-line no-console
         console.log('Error loading store entities', error);
       },

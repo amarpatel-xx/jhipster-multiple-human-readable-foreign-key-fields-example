@@ -56,5 +56,7 @@ public class TajUserAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertTajUserUpdatableRelationshipsEquals(TajUser expected, TajUser actual) {}
+    public static void assertTajUserUpdatableRelationshipsEquals(TajUser expected, TajUser actual) {
+        // empty method
+    }
 }

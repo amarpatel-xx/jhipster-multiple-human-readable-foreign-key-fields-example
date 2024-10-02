@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (product()) {
+    @if (product(); as productRef) {
       <div>
         <h2 data-cy="productDetailsHeading"><span jhiTranslate="storeApp.storeProduct.detail.title">Product</span></h2>
 
@@ -13,28 +13,28 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="storeApp.storeProduct.id">Id</span></dt>
           <dd>
-            <span>{{ product()!.id }}</span>
+            <span>{{ productRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="storeApp.storeProduct.title">Title</span></dt>
           <dd>
-            <span>{{ product()!.title }}</span>
+            <span>{{ productRef.title }}</span>
           </dd>
           <dt><span jhiTranslate="storeApp.storeProduct.price">Price</span></dt>
           <dd>
-            <span>{{ product()!.price }}</span>
+            <span>{{ productRef.price }}</span>
           </dd>
           <dt><span jhiTranslate="storeApp.storeProduct.image">Image</span></dt>
           <dd>
-            @if (product()!.image) {
+            @if (productRef.image) {
               <div>
-                <a (click)="openFile(product()!.image ?? '', product()!.imageContentType)">
+                <a (click)="openFile(productRef.image ?? '', productRef.imageContentType)">
                   <img
-                    [src]="'data:' + product()!.imageContentType + ';base64,' + product()!.image"
+                    [src]="'data:' + productRef.imageContentType + ';base64,' + productRef.image"
                     style="max-width: 100%"
                     alt="product"
                   />
                 </a>
-                {{ product()!.imageContentType }}, {{ byteSize(product()!.image ?? '') }}
+                {{ productRef.imageContentType }}, {{ byteSize(productRef.image ?? '') }}
               </div>
             }
           </dd>
@@ -44,7 +44,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/store/product', product()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/store/product', productRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

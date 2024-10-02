@@ -76,13 +76,8 @@ class ProductResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Product createEntity(EntityManager em) {
-        Product product = new Product()
-            .title(DEFAULT_TITLE)
-            .price(DEFAULT_PRICE)
-            .image(DEFAULT_IMAGE)
-            .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
-        return product;
+    public static Product createEntity() {
+        return new Product().title(DEFAULT_TITLE).price(DEFAULT_PRICE).image(DEFAULT_IMAGE).imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
     }
 
     /**
@@ -91,18 +86,13 @@ class ProductResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Product createUpdatedEntity(EntityManager em) {
-        Product product = new Product()
-            .title(UPDATED_TITLE)
-            .price(UPDATED_PRICE)
-            .image(UPDATED_IMAGE)
-            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
-        return product;
+    public static Product createUpdatedEntity() {
+        return new Product().title(UPDATED_TITLE).price(UPDATED_PRICE).image(UPDATED_IMAGE).imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
     }
 
     @BeforeEach
     public void initTest() {
-        product = createEntity(em);
+        product = createEntity();
     }
 
     @AfterEach
@@ -339,7 +329,7 @@ class ProductResourceIT {
         Product partialUpdatedProduct = new Product();
         partialUpdatedProduct.setId(product.getId());
 
-        partialUpdatedProduct.title(UPDATED_TITLE).price(UPDATED_PRICE).image(UPDATED_IMAGE).imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+        partialUpdatedProduct.image(UPDATED_IMAGE).imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
 
         restProductMockMvc
             .perform(

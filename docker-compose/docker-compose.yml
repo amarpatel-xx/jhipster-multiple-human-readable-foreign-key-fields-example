@@ -14,12 +14,12 @@ services:
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=web_app
       - JHIPSTER_REGISTRY_PASSWORD=admin
     ports:
-      - "8080:8080"
+      - 8080:8080
     healthcheck:
       test:
         - CMD
         - curl
-        - "-f"
+        - -f
         - http://localhost:8080/management/health
       interval: 5s
       timeout: 5s
@@ -32,10 +32,10 @@ services:
       jhipster-registry:
         condition: service_healthy
   gateway-postgresql:
-    image: postgres:16.3
+    image: postgres:16.4
     environment:
       - POSTGRES_USER=gateway
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=password
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test:
@@ -63,7 +63,7 @@ services:
       test:
         - CMD
         - curl
-        - "-f"
+        - -f
         - http://localhost:8081/management/health
       interval: 5s
       timeout: 5s
@@ -76,10 +76,10 @@ services:
       jhipster-registry:
         condition: service_healthy
   blog-postgresql:
-    image: postgres:16.3
+    image: postgres:16.4
     environment:
       - POSTGRES_USER=blog
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=password
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test:
@@ -107,7 +107,7 @@ services:
       test:
         - CMD
         - curl
-        - "-f"
+        - -f
         - http://localhost:8082/management/health
       interval: 5s
       timeout: 5s
@@ -120,10 +120,10 @@ services:
       jhipster-registry:
         condition: service_healthy
   store-postgresql:
-    image: postgres:16.3
+    image: postgres:16.4
     environment:
       - POSTGRES_USER=store
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=password
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test:
@@ -157,17 +157,17 @@ services:
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=jhipster-registry
     depends_on:
       keycloak:
-        condition: "service_healthy"
+        condition: 'service_healthy'
     ports:
       - 8761:8761
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8761/management/health"]
+      test: ['CMD', 'curl', '-f', 'http://localhost:8761/management/health']
       interval: 5s
       timeout: 5s
       retries: 10
   keycloak:
     image: quay.io/keycloak/keycloak:25.0.1
-    command: "start-dev --import-realm"
+    command: 'start-dev --import-realm'
     volumes:
       - ./realm-config:/opt/keycloak/data/import
       - ./realm-config/keycloak-health-check.sh:/opt/keycloak/health-check.sh
@@ -184,7 +184,7 @@ services:
       - 9080:9080
       - 9443:9443
     healthcheck:
-      test: "bash /opt/keycloak/health-check.sh"
+      test: 'bash /opt/keycloak/health-check.sh'
       interval: 5s
       timeout: 5s
       retries: 20

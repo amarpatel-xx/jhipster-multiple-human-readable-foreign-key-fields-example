@@ -32,7 +32,7 @@ import tech.jhipster.web.util.ResponseUtil;
 @RequestMapping("/api/products")
 public class ProductResource {
 
-    private static final Logger log = LoggerFactory.getLogger(ProductResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ProductResource.class);
 
     private static final String ENTITY_NAME = "storeProduct";
 
@@ -57,7 +57,7 @@ public class ProductResource {
      */
     @PostMapping("")
     public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO) throws URISyntaxException {
-        log.debug("REST request to save Product : {}", productDTO);
+        LOG.debug("REST request to save Product : {}", productDTO);
         if (productDTO.getId() != null) {
             throw new BadRequestAlertException("A new product cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -82,7 +82,7 @@ public class ProductResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @Valid @RequestBody ProductDTO productDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Product : {}, {}", id, productDTO);
+        LOG.debug("REST request to update Product : {}, {}", id, productDTO);
         if (productDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -116,7 +116,7 @@ public class ProductResource {
         @PathVariable(value = "id", required = false) final UUID id,
         @NotNull @RequestBody ProductDTO productDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Product partially : {}, {}", id, productDTO);
+        LOG.debug("REST request to partial update Product partially : {}, {}", id, productDTO);
         if (productDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -144,7 +144,7 @@ public class ProductResource {
      */
     @GetMapping("")
     public ResponseEntity<List<ProductDTO>> getAllProducts(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Products");
+        LOG.debug("REST request to get a page of Products");
         Page<ProductDTO> page = productService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -158,7 +158,7 @@ public class ProductResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProduct(@PathVariable("id") UUID id) {
-        log.debug("REST request to get Product : {}", id);
+        LOG.debug("REST request to get Product : {}", id);
         Optional<ProductDTO> productDTO = productService.findOne(id);
         return ResponseUtil.wrapOrNotFound(productDTO);
     }
@@ -171,7 +171,7 @@ public class ProductResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable("id") UUID id) {
-        log.debug("REST request to delete Product : {}", id);
+        LOG.debug("REST request to delete Product : {}", id);
         productService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

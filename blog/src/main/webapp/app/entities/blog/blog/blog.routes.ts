@@ -1,21 +1,18 @@
 import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
-import { BlogComponent } from './list/blog.component';
-import { BlogDetailComponent } from './detail/blog-detail.component';
-import { BlogUpdateComponent } from './update/blog-update.component';
 import BlogResolve from './route/blog-routing-resolve.service';
 
 const blogRoute: Routes = [
   {
     path: '',
-    component: BlogComponent,
+    loadComponent: () => import('./list/blog.component').then(m => m.BlogComponent),
     data: {},
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: BlogDetailComponent,
+    loadComponent: () => import('./detail/blog-detail.component').then(m => m.BlogDetailComponent),
     resolve: {
       blog: BlogResolve,
     },
@@ -23,7 +20,7 @@ const blogRoute: Routes = [
   },
   {
     path: 'new',
-    component: BlogUpdateComponent,
+    loadComponent: () => import('./update/blog-update.component').then(m => m.BlogUpdateComponent),
     resolve: {
       blog: BlogResolve,
     },
@@ -31,7 +28,7 @@ const blogRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: BlogUpdateComponent,
+    loadComponent: () => import('./update/blog-update.component').then(m => m.BlogUpdateComponent),
     resolve: {
       blog: BlogResolve,
     },

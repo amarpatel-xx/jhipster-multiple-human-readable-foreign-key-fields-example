@@ -17,7 +17,7 @@ describe('TajUser Management Detail Component', () => {
           [
             {
               path: '**',
-              component: TajUserDetailComponent,
+              loadComponent: () => import('./taj-user-detail.component').then(m => m.TajUserDetailComponent),
               resolve: { tajUser: () => of({ id: '9fec3727-3421-4967-b213-ba36557ca194' }) },
             },
           ],

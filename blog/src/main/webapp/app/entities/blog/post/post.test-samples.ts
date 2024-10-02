@@ -3,30 +3,30 @@ import dayjs from 'dayjs/esm';
 import { IPost, NewPost } from './post.model';
 
 export const sampleWithRequiredData: IPost = {
-  id: '47ec573f-ca80-4731-b52d-10c903306619',
-  title: 'divine retouch',
+  id: '3c87121c-0361-4db6-854a-4a6ddbf6ef30',
+  title: 'notwithstanding into infatuated',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2024-09-22T09:08'),
+  date: dayjs('2024-10-02T14:42'),
 };
 
 export const sampleWithPartialData: IPost = {
-  id: '8d9d8bbf-f62e-4dfa-a3d0-c17a0982aafa',
-  title: 'gee notable honest',
+  id: '34aa4e3e-a96c-4e41-a3fa-c120a561405a',
+  title: 'before dandelion',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2024-09-21T20:46'),
+  date: dayjs('2024-10-02T15:28'),
 };
 
 export const sampleWithFullData: IPost = {
-  id: 'c526ba0b-96bd-453c-a44a-5a54eee3fe6a',
-  title: 'giddy oof',
+  id: '9350336c-dc3c-4302-acdb-08bf53a97d8c',
+  title: 'bob fooey dislocate',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2024-09-22T13:17'),
+  date: dayjs('2024-10-02T16:56'),
 };
 
 export const sampleWithNewData: NewPost = {
-  title: 'chew imbibe meh',
+  title: 'purple irk mad',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2024-09-22T09:53'),
+  date: dayjs('2024-10-02T01:39'),
   id: null,
 };
 

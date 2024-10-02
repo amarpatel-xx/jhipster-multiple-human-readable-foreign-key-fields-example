@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
-    private static final Logger log = LoggerFactory.getLogger(ProductServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     private final ProductRepository productRepository;
 
@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO save(ProductDTO productDTO) {
-        log.debug("Request to save Product : {}", productDTO);
+        LOG.debug("Request to save Product : {}", productDTO);
         Product product = productMapper.toEntity(productDTO);
         product = productRepository.save(product);
         return productMapper.toDto(product);
@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO update(ProductDTO productDTO) {
-        log.debug("Request to update Product : {}", productDTO);
+        LOG.debug("Request to update Product : {}", productDTO);
         Product product = productMapper.toEntity(productDTO);
         product = productRepository.save(product);
         return productMapper.toDto(product);
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<ProductDTO> partialUpdate(ProductDTO productDTO) {
-        log.debug("Request to partially update Product : {}", productDTO);
+        LOG.debug("Request to partially update Product : {}", productDTO);
 
         return productRepository
             .findById(productDTO.getId())
@@ -66,20 +66,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(readOnly = true)
     public Page<ProductDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Products");
+        LOG.debug("Request to get all Products");
         return productRepository.findAll(pageable).map(productMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<ProductDTO> findOne(UUID id) {
-        log.debug("Request to get Product : {}", id);
+        LOG.debug("Request to get Product : {}", id);
         return productRepository.findById(id).map(productMapper::toDto);
     }
 
     @Override
     public void delete(UUID id) {
-        log.debug("Request to delete Product : {}", id);
+        LOG.debug("Request to delete Product : {}", id);
         productRepository.deleteById(id);
     }
 }

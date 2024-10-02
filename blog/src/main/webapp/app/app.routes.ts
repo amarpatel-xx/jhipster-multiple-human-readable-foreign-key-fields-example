@@ -2,18 +2,15 @@ import { Routes } from '@angular/router';
 
 import { errorRoute } from './layouts/error/error.route';
 
-import HomeComponent from './home/home.component';
-import NavbarComponent from './layouts/navbar/navbar.component';
-
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadComponent: () => import('./home/home.component'),
     title: 'home.title',
   },
   {
     path: '',
-    component: NavbarComponent,
+    loadComponent: () => import('./layouts/navbar/navbar.component'),
     outlet: 'navbar',
   },
   {

@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { ITajUser } from 'app/entities/blog/taj-user/taj-user.model';
 import { TajUserService } from 'app/entities/blog/taj-user/service/taj-user.service';
@@ -49,10 +49,10 @@ describe('Blog Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call TajUser query and add missing value', () => {
       const blog: IBlog = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const tajUser: ITajUser = { id: '9ac11241-3552-4f9c-83f3-72d81fcf3969' };
+      const tajUser: ITajUser = { id: 'c1435fcf-7d1c-4363-bd6e-8ad38de60bd9' };
       blog.tajUser = tajUser;
 
-      const tajUserCollection: ITajUser[] = [{ id: 'ddc61e48-2aad-493a-888d-2e6630abed49' }];
+      const tajUserCollection: ITajUser[] = [{ id: 'daf0578c-9e98-4c72-8775-bd59bf2fd7f8' }];
       jest.spyOn(tajUserService, 'query').mockReturnValue(of(new HttpResponse({ body: tajUserCollection })));
       const additionalTajUsers = [tajUser];
       const expectedCollection: ITajUser[] = [...additionalTajUsers, ...tajUserCollection];
@@ -71,7 +71,7 @@ describe('Blog Management Update Component', () => {
 
     it('Should update editForm', () => {
       const blog: IBlog = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const tajUser: ITajUser = { id: 'f3d0a6f9-0f5e-47b8-81cb-97e99583c178' };
+      const tajUser: ITajUser = { id: '0218ba04-8293-4cf9-8395-fcd5be73af7a' };
       blog.tajUser = tajUser;
 
       activatedRoute.data = of({ blog });

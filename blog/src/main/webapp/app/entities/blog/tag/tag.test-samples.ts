@@ -1,22 +1,22 @@
 import { ITag, NewTag } from './tag.model';
 
 export const sampleWithRequiredData: ITag = {
-  id: '9344473a-c34a-4e41-8986-13e2de843fb0',
-  name: 'vice',
+  id: '3b3f5cd2-d328-4274-94c4-848141e1aca1',
+  name: 'however',
 };
 
 export const sampleWithPartialData: ITag = {
-  id: '1e3e51cd-5bd4-431a-803b-06d09851a4cc',
-  name: 'and',
+  id: 'c11a615f-00a3-4058-afed-2bac536771ae',
+  name: 'obediently reorganisation',
 };
 
 export const sampleWithFullData: ITag = {
-  id: 'a8715dd4-8bca-4332-8203-8b938f25acdd',
-  name: 'incidentally',
+  id: '0bd1f616-6e63-4621-a000-38cdc1b600cb',
+  name: 'well correctly gigantic',
 };
 
 export const sampleWithNewData: NewTag = {
-  name: 'pish malfunction',
+  name: 'veto',
   id: null,
 };
 
