@@ -68,9 +68,22 @@ spring:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
     cache: false
+  security:
+    oauth2:
+      client:
+        provider:
+          oidc:
+            issuer-uri: http://localhost:9080/realms/jhipster
+        registration:
+          oidc:
+            client-id: internal
+            client-secret: internal
+            scope: openid, profile, email, offline_access # last one for refresh tokens
 
 server:
   port: 8081
+  # make sure requests the proxy uri instead of the server one
+  forward-headers-strategy: native
 
 # ===================================================================
 # JHipster specific properties
@@ -102,6 +115,12 @@ jhipster:
       host: localhost
       port: 5000
       ring-buffer-size: 512
+
+  security:
+    oauth2:
+      audience:
+        - account
+        - api://default
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
