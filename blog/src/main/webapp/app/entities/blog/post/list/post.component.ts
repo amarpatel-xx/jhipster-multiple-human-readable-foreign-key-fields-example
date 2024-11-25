@@ -44,10 +44,10 @@ export class PostComponent implements OnInit {
   totalItems = 0;
   page = 1;
 
-  public router = inject(Router);
-  protected postService = inject(PostService);
-  protected activatedRoute = inject(ActivatedRoute);
-  protected sortService = inject(SortService);
+  public readonly router = inject(Router);
+  protected readonly postService = inject(PostService);
+  protected readonly activatedRoute = inject(ActivatedRoute);
+  protected readonly sortService = inject(SortService);
   protected dataUtils = inject(DataUtils);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);

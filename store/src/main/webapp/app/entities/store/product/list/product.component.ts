@@ -44,10 +44,10 @@ export class ProductComponent implements OnInit {
   totalItems = 0;
   page = 1;
 
-  public router = inject(Router);
-  protected productService = inject(ProductService);
-  protected activatedRoute = inject(ActivatedRoute);
-  protected sortService = inject(SortService);
+  public readonly router = inject(Router);
+  protected readonly productService = inject(ProductService);
+  protected readonly activatedRoute = inject(ActivatedRoute);
+  protected readonly sortService = inject(SortService);
   protected dataUtils = inject(DataUtils);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);

@@ -34,13 +34,13 @@ export default class NavbarComponent implements OnInit {
   blogEntityNavbarItems: NavbarItem[] = [];
   storeEntityNavbarItems: NavbarItem[] = [];
 
-  private loginService = inject(LoginService);
-  private translateService = inject(TranslateService);
-  private stateStorageService = inject(StateStorageService);
-  private injector = inject(Injector);
-  private accountService = inject(AccountService);
-  private profileService = inject(ProfileService);
-  private router = inject(Router);
+  private readonly loginService = inject(LoginService);
+  private readonly translateService = inject(TranslateService);
+  private readonly stateStorageService = inject(StateStorageService);
+  private readonly injector = inject(Injector);
+  private readonly accountService = inject(AccountService);
+  private readonly profileService = inject(ProfileService);
+  private readonly router = inject(Router);
 
   constructor() {
     if (VERSION) {

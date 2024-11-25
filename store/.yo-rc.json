@@ -7,7 +7,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "2.0.7"
+        "version": "2.0.9"
       }
     ],
     "buildTool": "maven",
@@ -17,10 +17,10 @@
     "devServerPort": 4202,
     "enableHibernateCache": false,
     "entities": ["Product"],
-    "jhipsterVersion": "8.7.1",
-    "jwtSecretKey": "OWI5NWMxYTcyNTEyNmUzN2ZkMGJkMDg5NzNlNGQ3MmQ0YjkwNmE4ZTUxOTU5NDc4NDVmNTFkY2Q3MjZiNjQ4M2FiMzQ3MWJjYjllYmMzYTE0NzIwY2QzZjc2Mzk2ZWE4ZTAwMTE2NTRhYTc5YWRhMjIwN2VhODhjYTgwMjY4NmI=",
+    "jhipsterVersion": "8.7.3",
+    "jwtSecretKey": "OGI4NTVlNWEwOWQ4ZTY0ZGM4NjJmNDkyZGQzYThjMGY5NGY5M2ZmNDRmYmZlNDYzODFhNTg2ODIzODRmYWY2NTY1MTY0NDRlYTQ1ZTVmMjM2ZjgxODhhYWNiZDY2OTQxZjI4MzI4ZTEzNjg3YmUyMTI1ZjZiZTZkMjQzY2RkODA=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1728306249000,
+    "lastLiquibaseTimestamp": 1732553446000,
     "monorepository": true,
     "nativeLanguage": "en",
     "packageName": "com.saathratri.developer.store",

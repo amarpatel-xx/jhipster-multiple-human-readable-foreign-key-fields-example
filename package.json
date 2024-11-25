@@ -4,7 +4,6 @@
   "private": true,
   "description": "Description for Workspaces",
   "license": "UNLICENSED",
-  "type": "commonjs",
   "workspaces": {
     "packages": [
       "gateway",
@@ -42,13 +41,13 @@
   "devDependencies": {
     "concurrently": "9.0.1",
     "prettier": "3.3.3",
-    "prettier-plugin-java": "2.6.4",
-    "prettier-plugin-packagejson": "2.5.2",
+    "prettier-plugin-java": "2.6.5",
+    "prettier-plugin-packagejson": "2.5.3",
     "rxjs": "7.8.1"
   },
   "engines": {},
   "overrides": {
-    "browser-sync": "3.0.2",
-    "webpack": "5.94.0"
+    "browser-sync": "3.0.3",
+    "webpack": "5.95.0"
   }
 }

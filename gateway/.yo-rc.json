@@ -19,14 +19,14 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "2.0.7"
+        "version": "2.0.9"
       }
     ],
     "buildTool": "maven",
     "clientFramework": "angular",
     "devServerPort": 4200,
     "entities": [],
-    "jhipsterVersion": "8.7.1",
+    "jhipsterVersion": "8.7.3",
     "languages": ["en"],
     "microfrontends": [
       {

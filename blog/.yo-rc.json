@@ -7,7 +7,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "2.0.7"
+        "version": "2.0.9"
       }
     ],
     "buildTool": "maven",
@@ -17,10 +17,10 @@
     "devServerPort": 4201,
     "enableHibernateCache": false,
     "entities": ["Blog", "Post", "Tag", "TajUser"],
-    "jhipsterVersion": "8.7.1",
-    "jwtSecretKey": "YjRkMjA1ODA2NWMyZmFhZDdjZmM5Y2NlNmFiYzExZGQzOTJkMzJiMjFlMjRjM2UxYzdhZDhjNmVlNDA2YzdjMmFhYmNiMGMwNzBkZDU1YjlhMGEyZThlMjk4YTM3N2E0MTAwM2U3YjNkM2QwNmYyOWIxYjY1OGE5MTc5OWUxODI=",
+    "jhipsterVersion": "8.7.3",
+    "jwtSecretKey": "ODlmNmQ1ZjQ4MWNkZTAwOGMzMjMyNzQwNDZkNDBiYTg3ZjNhNmUzMDcxMDg2NTgwMTQ4YTMxNGE1YTAwNDdiMDE1MjIyMjliNWVkMzA1MTljMjQwNDEwYTllZWFmMjU2NTI4YzgwYjM1MjFmMDY0ODM2N2E0MDRlZjUzOTg4M2E=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1728306429000,
+    "lastLiquibaseTimestamp": 1732553626000,
     "monorepository": true,
     "nativeLanguage": "en",
     "packageName": "com.saathratri.developer.blog",

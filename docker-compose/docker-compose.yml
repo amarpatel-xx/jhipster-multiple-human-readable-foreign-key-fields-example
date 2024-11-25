@@ -32,7 +32,7 @@ services:
       jhipster-registry:
         condition: service_healthy
   gateway-postgresql:
-    image: postgres:16.4
+    image: postgres:17.0
     environment:
       - POSTGRES_USER=gateway
       - POSTGRES_PASSWORD=password
@@ -76,7 +76,9 @@ services:
       jhipster-registry:
         condition: service_healthy
   blog-postgresql:
-    image: postgres:16.4
+    image: pgvector/pgvector:pg17
+    volumes:
+      - ./src/main/docker/postgresql-init-scripts:/docker-entrypoint-initdb.d/
     environment:
       - POSTGRES_USER=blog
       - POSTGRES_PASSWORD=password
@@ -120,7 +122,9 @@ services:
       jhipster-registry:
         condition: service_healthy
   store-postgresql:
-    image: postgres:16.4
+    image: pgvector/pgvector:pg17
+    volumes:
+      - ./src/main/docker/postgresql-init-scripts:/docker-entrypoint-initdb.d/
     environment:
       - POSTGRES_USER=store
       - POSTGRES_PASSWORD=password
