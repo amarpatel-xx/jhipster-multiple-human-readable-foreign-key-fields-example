@@ -8,7 +8,7 @@
     <!--
         Added the constraints for entity Blog.
     -->
-    <changeSet id="20241125165046-2" author="jhipster">
+    <changeSet id="20241125204431-2" author="jhipster">
 
         <addForeignKeyConstraint baseColumnNames="taj_user_id"
                                  baseTableName="blog"

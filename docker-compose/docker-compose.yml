@@ -78,7 +78,7 @@ services:
   blog-postgresql:
     image: pgvector/pgvector:pg17
     volumes:
-      - ./src/main/docker/postgresql-init-scripts:/docker-entrypoint-initdb.d/
+      - ./postgresql-init-scripts:/docker-entrypoint-initdb.d/
     environment:
       - POSTGRES_USER=blog
       - POSTGRES_PASSWORD=password
@@ -124,7 +124,7 @@ services:
   store-postgresql:
     image: pgvector/pgvector:pg17
     volumes:
-      - ./src/main/docker/postgresql-init-scripts:/docker-entrypoint-initdb.d/
+      - ./postgresql-init-scripts:/docker-entrypoint-initdb.d/
     environment:
       - POSTGRES_USER=store
       - POSTGRES_PASSWORD=password
