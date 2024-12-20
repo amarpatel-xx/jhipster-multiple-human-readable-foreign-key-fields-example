@@ -5,7 +5,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "2.0.9"
+        "version": "2.0.10"
       }
     ],
     "clusteredDbApps": [],
@@ -14,7 +14,7 @@
     "dockerRepositoryName": "amarppatel",
     "gatewayType": "SpringCloudGateway",
     "jhipsterVersion": "8.7.3",
-    "jwtSecretKey": "Y2UyOWYwYzcxNThjZWIxOWI1ZmVkNTVmMmJjNzM5MjhjM2QwNmUxM2UxMjM4YjViNTc0MTY5YWE1MjEzYTAwOWNiMDQ5MzQwZGY4MmNkNzBkZjI1MmU1NjQ1MzJiNzI3NmE3Mg==",
+    "jwtSecretKey": "ZDRmYjg0M2RjNDAyNGFlNDhjODg5ZTZlYWNjNmVhMTY2Y2NhMjg3NDUxMzVkNGI1YzY0YjlhNzU5NzljNjQyNzkwMDc1ZGRlMTNlZTgyNTJlZWZlYjQ0NTU0MzY2M2U1ZTk1NQ==",
     "monitoring": "no",
     "serviceDiscoveryType": "eureka"
   }
