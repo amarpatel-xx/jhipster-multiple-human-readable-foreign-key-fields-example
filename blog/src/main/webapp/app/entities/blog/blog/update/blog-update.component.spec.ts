@@ -47,12 +47,12 @@ describe('Blog Management Update Component', () => {
   });
 
   describe('ngOnInit', () => {
-    it('Should call TajUser query and add missing value', () => {
-      const blog: IBlog = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const tajUser: ITajUser = { id: 'c1435fcf-7d1c-4363-bd6e-8ad38de60bd9' };
+    it('should call TajUser query and add missing value', () => {
+      const blog: IBlog = { id: '0b7b7e1b-829e-42cc-b398-3eae2463fe73' };
+      const tajUser: ITajUser = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
       blog.tajUser = tajUser;
 
-      const tajUserCollection: ITajUser[] = [{ id: 'daf0578c-9e98-4c72-8775-bd59bf2fd7f8' }];
+      const tajUserCollection: ITajUser[] = [{ id: 'a30298cf-223f-4185-9984-7ec30e626f17' }];
       jest.spyOn(tajUserService, 'query').mockReturnValue(of(new HttpResponse({ body: tajUserCollection })));
       const additionalTajUsers = [tajUser];
       const expectedCollection: ITajUser[] = [...additionalTajUsers, ...tajUserCollection];
@@ -69,24 +69,24 @@ describe('Blog Management Update Component', () => {
       expect(comp.tajUsersSharedCollection).toEqual(expectedCollection);
     });
 
-    it('Should update editForm', () => {
-      const blog: IBlog = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const tajUser: ITajUser = { id: '0218ba04-8293-4cf9-8395-fcd5be73af7a' };
+    it('should update editForm', () => {
+      const blog: IBlog = { id: '0b7b7e1b-829e-42cc-b398-3eae2463fe73' };
+      const tajUser: ITajUser = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
       blog.tajUser = tajUser;
 
       activatedRoute.data = of({ blog });
       comp.ngOnInit();
 
-      expect(comp.tajUsersSharedCollection).toContain(tajUser);
+      expect(comp.tajUsersSharedCollection).toContainEqual(tajUser);
       expect(comp.blog).toEqual(blog);
     });
   });
 
   describe('save', () => {
-    it('Should call update service on save for existing entity', () => {
+    it('should call update service on save for existing entity', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<IBlog>>();
-      const blog = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const blog = { id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' };
       jest.spyOn(blogFormService, 'getBlog').mockReturnValue(blog);
       jest.spyOn(blogService, 'update').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
@@ -106,10 +106,10 @@ describe('Blog Management Update Component', () => {
       expect(comp.isSaving).toEqual(false);
     });
 
-    it('Should call create service on save for new entity', () => {
+    it('should call create service on save for new entity', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<IBlog>>();
-      const blog = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const blog = { id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' };
       jest.spyOn(blogFormService, 'getBlog').mockReturnValue({ id: null });
       jest.spyOn(blogService, 'create').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
@@ -129,10 +129,10 @@ describe('Blog Management Update Component', () => {
       expect(comp.previousState).toHaveBeenCalled();
     });
 
-    it('Should set isSaving to false on error', () => {
+    it('should set isSaving to false on error', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<IBlog>>();
-      const blog = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const blog = { id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' };
       jest.spyOn(blogService, 'update').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
       activatedRoute.data = of({ blog });
@@ -152,9 +152,9 @@ describe('Blog Management Update Component', () => {
 
   describe('Compare relationships', () => {
     describe('compareTajUser', () => {
-      it('Should forward to tajUserService', () => {
-        const entity = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
-        const entity2 = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
+      it('should forward to tajUserService', () => {
+        const entity = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
+        const entity2 = { id: '114c8b82-56a8-4249-8aa3-4ef21d3cd53c' };
         jest.spyOn(tajUserService, 'compareTajUser');
         comp.compareTajUser(entity, entity2);
         expect(tajUserService.compareTajUser).toHaveBeenCalledWith(entity, entity2);

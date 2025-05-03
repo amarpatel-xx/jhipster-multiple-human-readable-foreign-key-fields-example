@@ -12,7 +12,6 @@ import { TajUserService } from '../service/taj-user.service';
 import { TajUserFormGroup, TajUserFormService } from './taj-user-form.service';
 
 @Component({
-  standalone: true,
   selector: 'jhi-taj-user-update',
   templateUrl: './taj-user-update.component.html',
   imports: [SharedModule, FormsModule, ReactiveFormsModule],

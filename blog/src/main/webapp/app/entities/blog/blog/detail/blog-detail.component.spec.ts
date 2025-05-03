@@ -18,7 +18,7 @@ describe('Blog Management Detail Component', () => {
             {
               path: '**',
               loadComponent: () => import('./blog-detail.component').then(m => m.BlogDetailComponent),
-              resolve: { blog: () => of({ id: '9fec3727-3421-4967-b213-ba36557ca194' }) },
+              resolve: { blog: () => of({ id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' }) },
             },
           ],
           withComponentInputBinding(),
@@ -35,17 +35,17 @@ describe('Blog Management Detail Component', () => {
   });
 
   describe('OnInit', () => {
-    it('Should load blog on init', async () => {
+    it('should load blog on init', async () => {
       const harness = await RouterTestingHarness.create();
       const instance = await harness.navigateByUrl('/', BlogDetailComponent);
 
       // THEN
-      expect(instance.blog()).toEqual(expect.objectContaining({ id: '9fec3727-3421-4967-b213-ba36557ca194' }));
+      expect(instance.blog()).toEqual(expect.objectContaining({ id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' }));
     });
   });
 
   describe('PreviousState', () => {
-    it('Should navigate to previous state', () => {
+    it('should navigate to previous state', () => {
       jest.spyOn(window.history, 'back');
       comp.previousState();
       expect(window.history.back).toHaveBeenCalled();

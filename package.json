@@ -31,6 +31,8 @@
     "java:docker:blog": "npm run java:docker --workspace blog --if-present",
     "java:docker:gateway": "npm run java:docker --workspace gateway --if-present",
     "java:docker:store": "npm run java:docker --workspace store --if-present",
+    "prettier:check": "prettier --check \"{,src/**/,webpack/,.blueprint/**/}*.{md,json,yml,js,cjs,mjs,ts,cts,mts}\"",
+    "prettier:format": "prettier --write \"{,src/**/,webpack/,.blueprint/**/}*.{md,json,yml,js,cjs,mjs,ts,cts,mts}\"",
     "watch": "concurrently npm:watch:gateway npm:watch:blog npm:watch:store",
     "watch:blog": "npm run watch --workspace blog --if-present",
     "watch:gateway": "npm run watch --workspace gateway --if-present",
@@ -39,15 +41,15 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "concurrently": "9.0.1",
-    "prettier": "3.3.3",
-    "prettier-plugin-java": "2.6.5",
-    "prettier-plugin-packagejson": "2.5.3",
-    "rxjs": "7.8.1"
+    "concurrently": "9.1.2",
+    "prettier": "3.5.3",
+    "prettier-plugin-java": "2.6.7",
+    "prettier-plugin-packagejson": "2.5.10",
+    "rxjs": "7.8.2"
   },
   "engines": {},
   "overrides": {
     "browser-sync": "3.0.3",
-    "webpack": "5.95.0"
+    "webpack": "5.98.0"
   }
 }

@@ -14,7 +14,6 @@ import { TagService } from '../service/tag.service';
 import { TagFormGroup, TagFormService } from './tag-form.service';
 
 @Component({
-  standalone: true,
   selector: 'jhi-tag-update',
   templateUrl: './tag-update.component.html',
   imports: [SharedModule, FormsModule, ReactiveFormsModule],

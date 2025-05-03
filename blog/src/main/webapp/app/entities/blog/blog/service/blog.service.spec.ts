@@ -155,7 +155,7 @@ describe('Blog Service', () => {
     });
 
     describe('compareBlog', () => {
-      it('Should return true if both entities are null', () => {
+      it('should return true if both entities are null', () => {
         const entity1 = null;
         const entity2 = null;
 
@@ -164,8 +164,8 @@ describe('Blog Service', () => {
         expect(compareResult).toEqual(true);
       });
 
-      it('Should return false if one entity is null', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      it('should return false if one entity is null', () => {
+        const entity1 = { id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' };
         const entity2 = null;
 
         const compareResult1 = service.compareBlog(entity1, entity2);
@@ -175,9 +175,9 @@ describe('Blog Service', () => {
         expect(compareResult2).toEqual(false);
       });
 
-      it('Should return false if primaryKey differs', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
-        const entity2 = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
+      it('should return false if primaryKey differs', () => {
+        const entity1 = { id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' };
+        const entity2 = { id: '0b7b7e1b-829e-42cc-b398-3eae2463fe73' };
 
         const compareResult1 = service.compareBlog(entity1, entity2);
         const compareResult2 = service.compareBlog(entity2, entity1);
@@ -186,9 +186,9 @@ describe('Blog Service', () => {
         expect(compareResult2).toEqual(false);
       });
 
-      it('Should return false if primaryKey matches', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
-        const entity2 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      it('should return false if primaryKey matches', () => {
+        const entity1 = { id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' };
+        const entity2 = { id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' };
 
         const compareResult1 = service.compareBlog(entity1, entity2);
         const compareResult2 = service.compareBlog(entity2, entity1);

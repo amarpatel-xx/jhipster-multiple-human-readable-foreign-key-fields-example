@@ -14,7 +14,6 @@ import { BlogService } from '../service/blog.service';
 import { BlogFormGroup, BlogFormService } from './blog-form.service';
 
 @Component({
-  standalone: true,
   selector: 'jhi-blog-update',
   templateUrl: './blog-update.component.html',
   imports: [SharedModule, FormsModule, ReactiveFormsModule],

@@ -8,7 +8,6 @@ import { ITag } from '../tag.model';
 import { TagService } from '../service/tag.service';
 
 @Component({
-  standalone: true,
   templateUrl: './tag-delete-dialog.component.html',
   imports: [SharedModule, FormsModule],
 })

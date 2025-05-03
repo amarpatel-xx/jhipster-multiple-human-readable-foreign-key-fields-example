@@ -8,7 +8,6 @@ import { IBlog } from '../blog.model';
 import { BlogService } from '../service/blog.service';
 
 @Component({
-  standalone: true,
   templateUrl: './blog-delete-dialog.component.html',
   imports: [SharedModule, FormsModule],
 })

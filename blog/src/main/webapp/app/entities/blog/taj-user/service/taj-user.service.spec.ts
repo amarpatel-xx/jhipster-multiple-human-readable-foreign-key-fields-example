@@ -155,7 +155,7 @@ describe('TajUser Service', () => {
     });
 
     describe('compareTajUser', () => {
-      it('Should return true if both entities are null', () => {
+      it('should return true if both entities are null', () => {
         const entity1 = null;
         const entity2 = null;
 
@@ -164,8 +164,8 @@ describe('TajUser Service', () => {
         expect(compareResult).toEqual(true);
       });
 
-      it('Should return false if one entity is null', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      it('should return false if one entity is null', () => {
+        const entity1 = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
         const entity2 = null;
 
         const compareResult1 = service.compareTajUser(entity1, entity2);
@@ -175,9 +175,9 @@ describe('TajUser Service', () => {
         expect(compareResult2).toEqual(false);
       });
 
-      it('Should return false if primaryKey differs', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
-        const entity2 = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
+      it('should return false if primaryKey differs', () => {
+        const entity1 = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
+        const entity2 = { id: '114c8b82-56a8-4249-8aa3-4ef21d3cd53c' };
 
         const compareResult1 = service.compareTajUser(entity1, entity2);
         const compareResult2 = service.compareTajUser(entity2, entity1);
@@ -186,9 +186,9 @@ describe('TajUser Service', () => {
         expect(compareResult2).toEqual(false);
       });
 
-      it('Should return false if primaryKey matches', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
-        const entity2 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      it('should return false if primaryKey matches', () => {
+        const entity1 = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
+        const entity2 = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
 
         const compareResult1 = service.compareTajUser(entity1, entity2);
         const compareResult2 = service.compareTajUser(entity2, entity1);

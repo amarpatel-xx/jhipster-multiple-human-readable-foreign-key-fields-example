@@ -26,7 +26,7 @@ class ExceptionTranslatorIT {
     private WebTestClient webTestClient;
 
     @BeforeEach
-    public void setupCsrf() {
+    void setupCsrf() {
         webTestClient = webTestClient.mutateWith(csrf());
     }
 

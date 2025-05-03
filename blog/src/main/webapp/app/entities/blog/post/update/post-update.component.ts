@@ -19,7 +19,6 @@ import { IPost } from '../post.model';
 import { PostFormGroup, PostFormService } from './post-form.service';
 
 @Component({
-  standalone: true,
   selector: 'jhi-post-update',
   templateUrl: './post-update.component.html',
   imports: [SharedModule, FormsModule, ReactiveFormsModule],

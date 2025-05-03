@@ -43,8 +43,8 @@ describe('Product Management Update Component', () => {
   });
 
   describe('ngOnInit', () => {
-    it('Should update editForm', () => {
-      const product: IProduct = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
+    it('should update editForm', () => {
+      const product: IProduct = { id: '2150899e-b136-4a5a-9619-910ef7895436' };
 
       activatedRoute.data = of({ product });
       comp.ngOnInit();
@@ -54,10 +54,10 @@ describe('Product Management Update Component', () => {
   });
 
   describe('save', () => {
-    it('Should call update service on save for existing entity', () => {
+    it('should call update service on save for existing entity', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<IProduct>>();
-      const product = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const product = { id: 'a5dc69bb-51bc-4769-ba92-05d11fd5c316' };
       jest.spyOn(productFormService, 'getProduct').mockReturnValue(product);
       jest.spyOn(productService, 'update').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
@@ -77,10 +77,10 @@ describe('Product Management Update Component', () => {
       expect(comp.isSaving).toEqual(false);
     });
 
-    it('Should call create service on save for new entity', () => {
+    it('should call create service on save for new entity', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<IProduct>>();
-      const product = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const product = { id: 'a5dc69bb-51bc-4769-ba92-05d11fd5c316' };
       jest.spyOn(productFormService, 'getProduct').mockReturnValue({ id: null });
       jest.spyOn(productService, 'create').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
@@ -100,10 +100,10 @@ describe('Product Management Update Component', () => {
       expect(comp.previousState).toHaveBeenCalled();
     });
 
-    it('Should set isSaving to false on error', () => {
+    it('should set isSaving to false on error', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<IProduct>>();
-      const product = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const product = { id: 'a5dc69bb-51bc-4769-ba92-05d11fd5c316' };
       jest.spyOn(productService, 'update').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
       activatedRoute.data = of({ product });

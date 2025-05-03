@@ -79,17 +79,17 @@ class AuthorityResourceIT {
     }
 
     @BeforeEach
-    public void setupCsrf() {
+    void setupCsrf() {
         webTestClient = webTestClient.mutateWith(csrf());
     }
 
     @BeforeEach
-    public void initTest() {
+    void initTest() {
         authority = createEntity();
     }
 
     @AfterEach
-    public void cleanup() {
+    void cleanup() {
         if (insertedAuthority != null) {
             authorityRepository.delete(insertedAuthority).block();
             insertedAuthority = null;

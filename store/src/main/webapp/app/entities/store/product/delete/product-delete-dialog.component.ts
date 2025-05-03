@@ -8,7 +8,6 @@ import { IProduct } from '../product.model';
 import { ProductService } from '../service/product.service';
 
 @Component({
-  standalone: true,
   templateUrl: './product-delete-dialog.component.html',
   imports: [SharedModule, FormsModule],
 })

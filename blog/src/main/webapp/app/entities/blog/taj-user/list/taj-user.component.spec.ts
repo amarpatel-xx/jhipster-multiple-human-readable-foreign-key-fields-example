@@ -59,7 +59,7 @@ describe('TajUser Management Component', () => {
       .mockReturnValueOnce(
         of(
           new HttpResponse({
-            body: [{ id: '9fec3727-3421-4967-b213-ba36557ca194' }],
+            body: [{ id: 'a30298cf-223f-4185-9984-7ec30e626f17' }],
             headers: new HttpHeaders({
               link: '<http://localhost/api/foo?page=1&size=20>; rel="next"',
             }),
@@ -69,7 +69,7 @@ describe('TajUser Management Component', () => {
       .mockReturnValueOnce(
         of(
           new HttpResponse({
-            body: [{ id: '1361f429-3817-4123-8ee3-fdf8943310b2' }],
+            body: [{ id: '114c8b82-56a8-4249-8aa3-4ef21d3cd53c' }],
             headers: new HttpHeaders({
               link: '<http://localhost/api/foo?page=0&size=20>; rel="prev",<http://localhost/api/foo?page=2&size=20>; rel="next"',
             }),
@@ -78,18 +78,18 @@ describe('TajUser Management Component', () => {
       );
   });
 
-  it('Should call load all on init', () => {
+  it('should call load all on init', () => {
     // WHEN
     comp.ngOnInit();
 
     // THEN
     expect(service.query).toHaveBeenCalled();
-    expect(comp.tajUsers?.[0]).toEqual(expect.objectContaining({ id: '9fec3727-3421-4967-b213-ba36557ca194' }));
+    expect(comp.tajUsers()[0]).toEqual(expect.objectContaining({ id: 'a30298cf-223f-4185-9984-7ec30e626f17' }));
   });
 
   describe('trackId', () => {
-    it('Should forward to tajUserService', () => {
-      const entity = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+    it('should forward to tajUserService', () => {
+      const entity = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
       jest.spyOn(service, 'getTajUserIdentifier');
       const id = comp.trackId(entity);
       expect(service.getTajUserIdentifier).toHaveBeenCalledWith(entity);

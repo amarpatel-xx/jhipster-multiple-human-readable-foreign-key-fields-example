@@ -15,7 +15,6 @@ import { IProduct } from '../product.model';
 import { ProductFormGroup, ProductFormService } from './product-form.service';
 
 @Component({
-  standalone: true,
   selector: 'jhi-product-update',
   templateUrl: './product-update.component.html',
   imports: [SharedModule, FormsModule, ReactiveFormsModule],

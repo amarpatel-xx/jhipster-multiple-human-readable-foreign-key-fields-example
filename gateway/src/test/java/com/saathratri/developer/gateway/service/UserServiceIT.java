@@ -52,7 +52,7 @@ class UserServiceIT {
     private Map<String, Object> userDetails;
 
     @BeforeEach
-    public void init() {
+    void init() {
         user = new User();
         user.setLogin(DEFAULT_LOGIN);
         user.setActivated(true);
@@ -72,7 +72,7 @@ class UserServiceIT {
     }
 
     @AfterEach
-    public void cleanupAndCheck() {
+    void cleanupAndCheck() {
         userRepository.deleteAllUserAuthorities().block();
         userRepository.deleteAll().block();
     }

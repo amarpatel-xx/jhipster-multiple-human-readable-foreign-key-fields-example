@@ -3,30 +3,30 @@ import dayjs from 'dayjs/esm';
 import { IPost, NewPost } from './post.model';
 
 export const sampleWithRequiredData: IPost = {
-  id: '3c87121c-0361-4db6-854a-4a6ddbf6ef30',
-  title: 'notwithstanding into infatuated',
+  id: '4cb9fafc-7f7d-412c-b0f9-6053b12c4e23',
+  title: 'gadzooks ouch structure',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2024-12-20T13:58'),
+  date: dayjs('2025-05-01T18:59'),
 };
 
 export const sampleWithPartialData: IPost = {
-  id: '34aa4e3e-a96c-4e41-a3fa-c120a561405a',
-  title: 'before dandelion',
+  id: 'dc3d4738-b3fc-4ea3-b82d-a8c9da326e3a',
+  title: 'uh-huh',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2024-12-20T14:44'),
+  date: dayjs('2025-05-02T03:24'),
 };
 
 export const sampleWithFullData: IPost = {
-  id: '9350336c-dc3c-4302-acdb-08bf53a97d8c',
-  title: 'bob fooey dislocate',
+  id: '4f9013c0-1b47-4f4c-b3c6-f75f65ddd7ef',
+  title: 'eminent',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2024-12-20T16:12'),
+  date: dayjs('2025-05-02T03:26'),
 };
 
 export const sampleWithNewData: NewPost = {
-  title: 'purple irk mad',
+  title: 'willfully settler',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2024-12-20T00:55'),
+  date: dayjs('2025-05-01T18:24'),
   id: null,
 };
 

@@ -59,7 +59,7 @@ describe('Post Management Component', () => {
       .mockReturnValueOnce(
         of(
           new HttpResponse({
-            body: [{ id: '9fec3727-3421-4967-b213-ba36557ca194' }],
+            body: [{ id: 'a160eb1a-708c-49ba-b8e5-91e7bc01ba3f' }],
             headers: new HttpHeaders({
               link: '<http://localhost/api/foo?page=1&size=20>; rel="next"',
             }),
@@ -69,7 +69,7 @@ describe('Post Management Component', () => {
       .mockReturnValueOnce(
         of(
           new HttpResponse({
-            body: [{ id: '1361f429-3817-4123-8ee3-fdf8943310b2' }],
+            body: [{ id: 'b0ed8852-431a-45ab-8c51-ab3b9a46e59d' }],
             headers: new HttpHeaders({
               link: '<http://localhost/api/foo?page=0&size=20>; rel="prev",<http://localhost/api/foo?page=2&size=20>; rel="next"',
             }),
@@ -78,18 +78,18 @@ describe('Post Management Component', () => {
       );
   });
 
-  it('Should call load all on init', () => {
+  it('should call load all on init', () => {
     // WHEN
     comp.ngOnInit();
 
     // THEN
     expect(service.query).toHaveBeenCalled();
-    expect(comp.posts?.[0]).toEqual(expect.objectContaining({ id: '9fec3727-3421-4967-b213-ba36557ca194' }));
+    expect(comp.posts()[0]).toEqual(expect.objectContaining({ id: 'a160eb1a-708c-49ba-b8e5-91e7bc01ba3f' }));
   });
 
   describe('trackId', () => {
-    it('Should forward to postService', () => {
-      const entity = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+    it('should forward to postService', () => {
+      const entity = { id: 'a160eb1a-708c-49ba-b8e5-91e7bc01ba3f' };
       jest.spyOn(service, 'getPostIdentifier');
       const id = comp.trackId(entity);
       expect(service.getPostIdentifier).toHaveBeenCalledWith(entity);

@@ -43,8 +43,8 @@ describe('TajUser Management Update Component', () => {
   });
 
   describe('ngOnInit', () => {
-    it('Should update editForm', () => {
-      const tajUser: ITajUser = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
+    it('should update editForm', () => {
+      const tajUser: ITajUser = { id: '114c8b82-56a8-4249-8aa3-4ef21d3cd53c' };
 
       activatedRoute.data = of({ tajUser });
       comp.ngOnInit();
@@ -54,10 +54,10 @@ describe('TajUser Management Update Component', () => {
   });
 
   describe('save', () => {
-    it('Should call update service on save for existing entity', () => {
+    it('should call update service on save for existing entity', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<ITajUser>>();
-      const tajUser = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const tajUser = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
       jest.spyOn(tajUserFormService, 'getTajUser').mockReturnValue(tajUser);
       jest.spyOn(tajUserService, 'update').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
@@ -77,10 +77,10 @@ describe('TajUser Management Update Component', () => {
       expect(comp.isSaving).toEqual(false);
     });
 
-    it('Should call create service on save for new entity', () => {
+    it('should call create service on save for new entity', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<ITajUser>>();
-      const tajUser = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const tajUser = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
       jest.spyOn(tajUserFormService, 'getTajUser').mockReturnValue({ id: null });
       jest.spyOn(tajUserService, 'create').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
@@ -100,10 +100,10 @@ describe('TajUser Management Update Component', () => {
       expect(comp.previousState).toHaveBeenCalled();
     });
 
-    it('Should set isSaving to false on error', () => {
+    it('should set isSaving to false on error', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<ITajUser>>();
-      const tajUser = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      const tajUser = { id: 'a30298cf-223f-4185-9984-7ec30e626f17' };
       jest.spyOn(tajUserService, 'update').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
       activatedRoute.data = of({ tajUser });

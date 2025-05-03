@@ -5,14 +5,14 @@
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "2.0.10"
+        "version": "2.0.12"
       }
     ],
     "clientPackageManager": "npm",
     "directoryPath": "./",
     "dockerCompose": true,
     "entities": [],
-    "jhipsterVersion": "8.7.3",
+    "jhipsterVersion": "8.10.0",
     "monorepository": true,
     "skipJhipsterDependencies": true
   }

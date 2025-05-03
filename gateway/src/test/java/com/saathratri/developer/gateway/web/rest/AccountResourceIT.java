@@ -44,7 +44,7 @@ class AccountResourceIT {
     private ClientRegistration clientRegistration;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         claims = new HashMap<>();
         claims.put("groups", Collections.singletonList(AuthoritiesConstants.ADMIN));
         claims.put("sub", "jane");
@@ -52,7 +52,7 @@ class AccountResourceIT {
     }
 
     @AfterEach
-    public void cleanup() {
+    void cleanup() {
         // Remove syncUserWithIdp users
         userRepository.deleteAllUserAuthorities().block();
         userRepository.deleteAll().block();
@@ -90,20 +90,12 @@ class AccountResourceIT {
     @Test
     @WithUnauthenticatedMockUser
     void testNonAuthenticatedUser() {
-        webTestClient.get().uri("/api/authenticate").accept(MediaType.TEXT_PLAIN).exchange().expectStatus().isOk().expectBody().isEmpty();
+        webTestClient.get().uri("/api/authenticate").exchange().expectStatus().isUnauthorized();
     }
 
     @Test
     @WithMockUser(TEST_USER_LOGIN)
     void testAuthenticatedUser() {
-        webTestClient
-            .get()
-            .uri("/api/authenticate")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody(String.class)
-            .isEqualTo(TEST_USER_LOGIN);
+        webTestClient.get().uri("/api/authenticate").exchange().expectStatus().isNoContent();
     }
 }

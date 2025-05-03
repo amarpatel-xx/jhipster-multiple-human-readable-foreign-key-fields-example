@@ -1,11 +1,10 @@
-import { Component, NgZone, OnInit, inject } from '@angular/core';
+import { Component, NgZone, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
 import { Observable, Subscription, combineLatest, filter, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import SharedModule from 'app/shared/shared.module';
 import { SortByDirective, SortDirective, SortService, type SortState, sortStateSignal } from 'app/shared/sort';
-import { DurationPipe, FormatMediumDatePipe, FormatMediumDatetimePipe } from 'app/shared/date';
 import { FormsModule } from '@angular/forms';
 import { DEFAULT_SORT_DATA, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
 import { IBlog } from '../blog.model';
@@ -13,23 +12,13 @@ import { BlogService, EntityArrayResponseType } from '../service/blog.service';
 import { BlogDeleteDialogComponent } from '../delete/blog-delete-dialog.component';
 
 @Component({
-  standalone: true,
   selector: 'jhi-blog',
   templateUrl: './blog.component.html',
-  imports: [
-    RouterModule,
-    FormsModule,
-    SharedModule,
-    SortDirective,
-    SortByDirective,
-    DurationPipe,
-    FormatMediumDatetimePipe,
-    FormatMediumDatePipe,
-  ],
+  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective],
 })
 export class BlogComponent implements OnInit {
   subscription: Subscription | null = null;
-  blogs?: IBlog[];
+  blogs = signal<IBlog[]>([]);
   isLoading = false;
 
   sortState = sortStateSignal({});
@@ -48,8 +37,10 @@ export class BlogComponent implements OnInit {
       .pipe(
         tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
         tap(() => {
-          if (!this.blogs || this.blogs.length === 0) {
+          if (this.blogs().length === 0) {
             this.load();
+          } else {
+            this.blogs.set(this.refineData(this.blogs()));
           }
         }),
       )
@@ -86,7 +77,7 @@ export class BlogComponent implements OnInit {
 
   protected onResponseSuccess(response: EntityArrayResponseType): void {
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
-    this.blogs = this.refineData(dataFromBody);
+    this.blogs.set(this.refineData(dataFromBody));
   }
 
   protected refineData(data: IBlog[]): IBlog[] {

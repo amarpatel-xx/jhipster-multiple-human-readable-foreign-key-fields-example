@@ -1,30 +1,28 @@
 import { IProduct, NewProduct } from './product.model';
 
 export const sampleWithRequiredData: IProduct = {
-  id: 'd57b40d2-4fa4-4b12-8fda-bd283e21ed81',
-  title: 'expansion',
-  price: 21914.89,
+  id: '58da63fd-5d5c-49c2-bb80-c36259f193a1',
+  title: 'mortally loftily',
+  price: 15836.77,
 };
 
 export const sampleWithPartialData: IProduct = {
-  id: '4ee07454-4479-4133-8bde-6440cadbda81',
-  title: 'phrase while down',
-  price: 9189.48,
-  image: '../fake-data/blob/hipster.png',
-  imageContentType: 'unknown',
+  id: '7bbfd778-fc20-42b7-97cc-d85abe337d3f',
+  title: 'woot',
+  price: 14290.15,
 };
 
 export const sampleWithFullData: IProduct = {
-  id: 'c2c93bfe-e873-4934-a12b-120c55dafd9b',
-  title: 'seemingly coal via',
-  price: 10099.19,
+  id: '211a0cfe-1a07-4340-9f1a-3acd4260f789',
+  title: 'ugh exactly',
+  price: 7952.58,
   image: '../fake-data/blob/hipster.png',
   imageContentType: 'unknown',
 };
 
 export const sampleWithNewData: NewProduct = {
-  title: 'lest',
-  price: 31207.74,
+  title: 'anti inject why',
+  price: 26562.23,
   id: null,
 };
 

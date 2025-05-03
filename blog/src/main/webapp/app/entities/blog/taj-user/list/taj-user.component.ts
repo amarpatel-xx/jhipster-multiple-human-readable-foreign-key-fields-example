@@ -1,11 +1,10 @@
-import { Component, NgZone, OnInit, inject } from '@angular/core';
+import { Component, NgZone, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
 import { Observable, Subscription, combineLatest, filter, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import SharedModule from 'app/shared/shared.module';
 import { SortByDirective, SortDirective, SortService, type SortState, sortStateSignal } from 'app/shared/sort';
-import { DurationPipe, FormatMediumDatePipe, FormatMediumDatetimePipe } from 'app/shared/date';
 import { FormsModule } from '@angular/forms';
 import { DEFAULT_SORT_DATA, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
 import { ITajUser } from '../taj-user.model';
@@ -13,23 +12,13 @@ import { EntityArrayResponseType, TajUserService } from '../service/taj-user.ser
 import { TajUserDeleteDialogComponent } from '../delete/taj-user-delete-dialog.component';
 
 @Component({
-  standalone: true,
   selector: 'jhi-taj-user',
   templateUrl: './taj-user.component.html',
-  imports: [
-    RouterModule,
-    FormsModule,
-    SharedModule,
-    SortDirective,
-    SortByDirective,
-    DurationPipe,
-    FormatMediumDatetimePipe,
-    FormatMediumDatePipe,
-  ],
+  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective],
 })
 export class TajUserComponent implements OnInit {
   subscription: Subscription | null = null;
-  tajUsers?: ITajUser[];
+  tajUsers = signal<ITajUser[]>([]);
   isLoading = false;
 
   sortState = sortStateSignal({});
@@ -48,8 +37,10 @@ export class TajUserComponent implements OnInit {
       .pipe(
         tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
         tap(() => {
-          if (!this.tajUsers || this.tajUsers.length === 0) {
+          if (this.tajUsers().length === 0) {
             this.load();
+          } else {
+            this.tajUsers.set(this.refineData(this.tajUsers()));
           }
         }),
       )
@@ -86,7 +77,7 @@ export class TajUserComponent implements OnInit {
 
   protected onResponseSuccess(response: EntityArrayResponseType): void {
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
-    this.tajUsers = this.refineData(dataFromBody);
+    this.tajUsers.set(this.refineData(dataFromBody));
   }
 
   protected refineData(data: ITajUser[]): ITajUser[] {

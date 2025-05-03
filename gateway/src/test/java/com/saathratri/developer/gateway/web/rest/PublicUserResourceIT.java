@@ -33,17 +33,17 @@ class PublicUserResourceIT {
     private User user;
 
     @BeforeEach
-    public void setupCsrf() {
+    void setupCsrf() {
         webTestClient = webTestClient.mutateWith(csrf());
     }
 
     @BeforeEach
-    public void initTest() {
+    void initTest() {
         user = UserResourceIT.initTestUser();
     }
 
     @AfterEach
-    public void cleanupAndCheck() {
+    void cleanupAndCheck() {
         userRepository.deleteAllUserAuthorities().block();
         userRepository.deleteAll().block();
     }

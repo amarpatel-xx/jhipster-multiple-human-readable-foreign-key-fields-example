@@ -24,17 +24,17 @@
 
   <jhi-alert></jhi-alert>
 
-  @if (tajUsers?.length === 0) {
+  @if (tajUsers()?.length === 0) {
     <div class="alert alert-warning" id="no-result">
       <span jhiTranslate="blogApp.blogTajUser.home.notFound">No Taj Users found</span>
     </div>
   }
 
-  @if (tajUsers && tajUsers.length > 0) {
+  @if (tajUsers() && tajUsers().length > 0) {
     <div class="table-responsive table-entities" id="entities">
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
-          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+          <tr jhiSort [sortState]="sortState()" (sortChange)="navigateToWithComponentValues($event)">
             <th scope="col" jhiSortBy="id">
               <div class="d-flex">
                 <span jhiTranslate="blogApp.blogTajUser.id">Id</span>
@@ -53,7 +53,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (tajUser of tajUsers; track trackId(tajUser)) {
+          @for (tajUser of tajUsers(); track trackId(tajUser)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/blog/taj-user', tajUser.id, 'view']">{{ tajUser.id }}</a>

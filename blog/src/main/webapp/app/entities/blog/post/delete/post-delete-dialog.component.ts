@@ -8,7 +8,6 @@ import { IPost } from '../post.model';
 import { PostService } from '../service/post.service';
 
 @Component({
-  standalone: true,
   templateUrl: './post-delete-dialog.component.html',
   imports: [SharedModule, FormsModule],
 })

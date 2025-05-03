@@ -8,7 +8,6 @@ import { ITajUser } from '../taj-user.model';
 import { TajUserService } from '../service/taj-user.service';
 
 @Component({
-  standalone: true,
   templateUrl: './taj-user-delete-dialog.component.html',
   imports: [SharedModule, FormsModule],
 })

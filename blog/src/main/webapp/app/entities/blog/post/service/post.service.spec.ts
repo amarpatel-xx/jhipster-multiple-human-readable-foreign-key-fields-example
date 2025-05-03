@@ -156,7 +156,7 @@ describe('Post Service', () => {
     });
 
     describe('comparePost', () => {
-      it('Should return true if both entities are null', () => {
+      it('should return true if both entities are null', () => {
         const entity1 = null;
         const entity2 = null;
 
@@ -165,8 +165,8 @@ describe('Post Service', () => {
         expect(compareResult).toEqual(true);
       });
 
-      it('Should return false if one entity is null', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      it('should return false if one entity is null', () => {
+        const entity1 = { id: 'a160eb1a-708c-49ba-b8e5-91e7bc01ba3f' };
         const entity2 = null;
 
         const compareResult1 = service.comparePost(entity1, entity2);
@@ -176,9 +176,9 @@ describe('Post Service', () => {
         expect(compareResult2).toEqual(false);
       });
 
-      it('Should return false if primaryKey differs', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
-        const entity2 = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
+      it('should return false if primaryKey differs', () => {
+        const entity1 = { id: 'a160eb1a-708c-49ba-b8e5-91e7bc01ba3f' };
+        const entity2 = { id: 'b0ed8852-431a-45ab-8c51-ab3b9a46e59d' };
 
         const compareResult1 = service.comparePost(entity1, entity2);
         const compareResult2 = service.comparePost(entity2, entity1);
@@ -187,9 +187,9 @@ describe('Post Service', () => {
         expect(compareResult2).toEqual(false);
       });
 
-      it('Should return false if primaryKey matches', () => {
-        const entity1 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
-        const entity2 = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+      it('should return false if primaryKey matches', () => {
+        const entity1 = { id: 'a160eb1a-708c-49ba-b8e5-91e7bc01ba3f' };
+        const entity2 = { id: 'a160eb1a-708c-49ba-b8e5-91e7bc01ba3f' };
 
         const compareResult1 = service.comparePost(entity1, entity2);
         const compareResult2 = service.comparePost(entity2, entity1);

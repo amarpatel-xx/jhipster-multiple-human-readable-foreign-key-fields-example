@@ -59,7 +59,7 @@ describe('Blog Management Component', () => {
       .mockReturnValueOnce(
         of(
           new HttpResponse({
-            body: [{ id: '9fec3727-3421-4967-b213-ba36557ca194' }],
+            body: [{ id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' }],
             headers: new HttpHeaders({
               link: '<http://localhost/api/foo?page=1&size=20>; rel="next"',
             }),
@@ -69,7 +69,7 @@ describe('Blog Management Component', () => {
       .mockReturnValueOnce(
         of(
           new HttpResponse({
-            body: [{ id: '1361f429-3817-4123-8ee3-fdf8943310b2' }],
+            body: [{ id: '0b7b7e1b-829e-42cc-b398-3eae2463fe73' }],
             headers: new HttpHeaders({
               link: '<http://localhost/api/foo?page=0&size=20>; rel="prev",<http://localhost/api/foo?page=2&size=20>; rel="next"',
             }),
@@ -78,18 +78,18 @@ describe('Blog Management Component', () => {
       );
   });
 
-  it('Should call load all on init', () => {
+  it('should call load all on init', () => {
     // WHEN
     comp.ngOnInit();
 
     // THEN
     expect(service.query).toHaveBeenCalled();
-    expect(comp.blogs?.[0]).toEqual(expect.objectContaining({ id: '9fec3727-3421-4967-b213-ba36557ca194' }));
+    expect(comp.blogs()[0]).toEqual(expect.objectContaining({ id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' }));
   });
 
   describe('trackId', () => {
-    it('Should forward to blogService', () => {
-      const entity = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
+    it('should forward to blogService', () => {
+      const entity = { id: 'd97e55e3-ad93-4a91-b761-e2d09b7c888e' };
       jest.spyOn(service, 'getBlogIdentifier');
       const id = comp.trackId(entity);
       expect(service.getBlogIdentifier).toHaveBeenCalledWith(entity);
