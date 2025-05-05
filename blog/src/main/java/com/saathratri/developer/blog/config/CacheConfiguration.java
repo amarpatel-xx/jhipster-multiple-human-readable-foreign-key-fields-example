@@ -14,13 +14,10 @@ import org.springframework.boot.info.GitProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.Profiles;
-import tech.jhipster.config.JHipsterConstants;
 import tech.jhipster.config.JHipsterProperties;
 import tech.jhipster.config.cache.PrefixedKeyGenerator;
 
@@ -83,40 +80,17 @@ public class CacheConfiguration {
         JoinConfig joinConfig = networkConfig.getJoin();
         joinConfig.getMulticastConfig().setEnabled(false); // Always disable multicast
 
-        // === Development Profile: Localhost only, no clustering ===
-        if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {
-            LOG.debug("Running in dev profile: using standalone Hazelcast instance on localhost");
-
-            int hazelcastPort = serverProperties.getPort() + 5701;
-            networkConfig.setPort(hazelcastPort);
-            networkConfig.getInterfaces().setEnabled(true).addInterface("127.0.0.1");
-            joinConfig.getTcpIpConfig().setEnabled(false); // No TCP/IP cluster in dev
-
-            config.setManagementCenterConfig(new ManagementCenterConfig());
-            config.addMapConfig(initializeDefaultMapConfig(jHipsterProperties));
-            return Hazelcast.newHazelcastInstance(config);
-        }
-
-        // === Production Profile: Use DiscoveryClient ===
-        if (this.registration == null) {
-            LOG.warn("No discovery service (Registration) is set up, Hazelcast cannot form a cluster");
-            joinConfig.getTcpIpConfig().setEnabled(false);
-        } else {
-            String serviceId = registration.getServiceId();
-            LOG.debug("Configuring Hazelcast clustering for serviceId: {}", serviceId);
-
-            networkConfig.setPort(5701);
-            joinConfig.getTcpIpConfig().setEnabled(true);
-
-            for (ServiceInstance instance : discoveryClient.getInstances(serviceId)) {
-                String clusterMember = instance.getHost() + ":5701";
-                LOG.debug("Adding Hazelcast cluster member: {}", clusterMember);
-                joinConfig.getTcpIpConfig().addMember(clusterMember);
-            }
-        }
+        // === Standalone Hazelcast for both dev and prod ===
+        LOG.debug("Running in standalone mode (no clustering)");
+        int hazelcastPort = serverProperties.getPort() + 5701;
+        networkConfig.setPort(hazelcastPort);
+        networkConfig.getInterfaces().setEnabled(true).addInterface("127.0.0.1");
+        joinConfig.getTcpIpConfig().setEnabled(false); // No TCP/IP cluster
+        joinConfig.getAwsConfig().setEnabled(false); // No AWS
 
         config.setManagementCenterConfig(new ManagementCenterConfig());
         config.addMapConfig(initializeDefaultMapConfig(jHipsterProperties));
+
         return Hazelcast.newHazelcastInstance(config);
     }
 
