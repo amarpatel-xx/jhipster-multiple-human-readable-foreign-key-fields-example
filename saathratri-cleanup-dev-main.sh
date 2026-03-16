@@ -17,5 +17,5 @@ rm -fr target
 echo "Deleting .npmrc..."
 rm -f .npmrc
 echo "Deleting Gateway..."
-rm -fr gateway
+rm -fr psqlgateway
 sh saathratri-cleanup-dev-sql.sh

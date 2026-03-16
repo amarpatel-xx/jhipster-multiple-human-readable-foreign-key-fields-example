@@ -1,21 +1,16 @@
 {
-  "name": "workspaces",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Description for Workspaces",
-  "license": "UNLICENSED",
   "workspaces": {
     "packages": [
-      "gateway",
-      "blog",
-      "store"
+      "psqlblog",
+      "psqlgateway",
+      "psqlstore"
     ]
   },
   "scripts": {
-    "backend:build-cache": "concurrently npm:backend:build-cache:gateway npm:backend:build-cache:blog npm:backend:build-cache:store",
-    "backend:build-cache:blog": "npm run backend:build-cache --workspace blog --if-present",
-    "backend:build-cache:gateway": "npm run backend:build-cache --workspace gateway --if-present",
-    "backend:build-cache:store": "npm run backend:build-cache --workspace store --if-present",
+    "backend:build-cache": "concurrently npm:backend:build-cache:psqlgateway npm:backend:build-cache:psqlblog npm:backend:build-cache:psqlstore",
+    "backend:build-cache:psqlblog": "npm run backend:build-cache --workspace psqlblog --if-present",
+    "backend:build-cache:psqlgateway": "npm run backend:build-cache --workspace psqlgateway --if-present",
+    "backend:build-cache:psqlstore": "npm run backend:build-cache --workspace psqlstore --if-present",
     "ci:backend:test": "npm run ci:backend:test --workspaces --if-present",
     "ci:e2e:package": "npm run ci:docker:build --workspaces --if-present && npm run java:docker --workspaces --if-present",
     "ci:e2e:prepare": "npm run docker-compose",
@@ -23,33 +18,31 @@
     "ci:e2e:teardown": "docker compose -f docker-compose/docker-compose.yml down -v",
     "ci:frontend:test": "npm run ci:frontend:test --workspaces --if-present",
     "docker-compose": "docker compose -f docker-compose/docker-compose.yml up --wait",
-    "java:docker": "concurrently npm:java:docker:gateway npm:java:docker:blog npm:java:docker:store",
-    "java:docker:arm64": "concurrently npm:java:docker:arm64:gateway npm:java:docker:arm64:blog npm:java:docker:arm64:store",
-    "java:docker:arm64:blog": "npm run java:docker:arm64 --workspace blog --if-present",
-    "java:docker:arm64:gateway": "npm run java:docker:arm64 --workspace gateway --if-present",
-    "java:docker:arm64:store": "npm run java:docker:arm64 --workspace store --if-present",
-    "java:docker:blog": "npm run java:docker --workspace blog --if-present",
-    "java:docker:gateway": "npm run java:docker --workspace gateway --if-present",
-    "java:docker:store": "npm run java:docker --workspace store --if-present",
-    "prettier:check": "prettier --check \"{,src/**/,webpack/,.blueprint/**/}*.{md,json,yml,js,cjs,mjs,ts,cts,mts}\"",
-    "prettier:format": "prettier --write \"{,src/**/,webpack/,.blueprint/**/}*.{md,json,yml,js,cjs,mjs,ts,cts,mts}\"",
-    "watch": "concurrently npm:watch:gateway npm:watch:blog npm:watch:store",
-    "watch:blog": "npm run watch --workspace blog --if-present",
-    "watch:gateway": "npm run watch --workspace gateway --if-present",
-    "watch:store": "npm run watch --workspace store --if-present",
+    "java:docker": "concurrently npm:java:docker:psqlgateway npm:java:docker:psqlblog npm:java:docker:psqlstore",
+    "java:docker:arm64": "concurrently npm:java:docker:arm64:psqlgateway npm:java:docker:arm64:psqlblog npm:java:docker:arm64:psqlstore",
+    "java:docker:arm64:psqlblog": "npm run java:docker:arm64 --workspace psqlblog --if-present",
+    "java:docker:arm64:psqlgateway": "npm run java:docker:arm64 --workspace psqlgateway --if-present",
+    "java:docker:arm64:psqlstore": "npm run java:docker:arm64 --workspace psqlstore --if-present",
+    "java:docker:psqlblog": "npm run java:docker --workspace psqlblog --if-present",
+    "java:docker:psqlgateway": "npm run java:docker --workspace psqlgateway --if-present",
+    "java:docker:psqlstore": "npm run java:docker --workspace psqlstore --if-present",
+    "prettier:check": "prettier --check \"{,.blueprint/**/}*.{md,json,yml,js,cjs,mjs,ts,cts,mts}\"",
+    "prettier:format": "prettier --write \"{,.blueprint/**/}*.{md,json,yml,js,cjs,mjs,ts,cts,mts}\"",
+    "watch": "concurrently npm:watch:psqlgateway npm:watch:psqlblog npm:watch:psqlstore",
+    "watch:psqlblog": "npm run watch --workspace psqlblog --if-present",
+    "watch:psqlgateway": "npm run watch --workspace psqlgateway --if-present",
+    "watch:psqlstore": "npm run watch --workspace psqlstore --if-present",
     "webapp:test": "npm run webapp:test --workspaces --if-present"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "concurrently": "9.1.2",
-    "prettier": "3.5.3",
-    "prettier-plugin-java": "2.6.7",
-    "prettier-plugin-packagejson": "2.5.10",
-    "rxjs": "7.8.2"
-  },
-  "engines": {},
   "overrides": {
-    "browser-sync": "3.0.3",
-    "webpack": "5.98.0"
+    "browser-sync": "3.0.4",
+    "webpack": "5.105.4"
+  },
+  "devDependencies": {
+    "concurrently": "9.2.1",
+    "prettier": "3.8.1",
+    "prettier-plugin-java": "2.8.1",
+    "prettier-plugin-packagejson": "3.0.2",
+    "rxjs": "7.8.2"
   }
 }

@@ -1,20 +1,19 @@
-cd gateway
+cd psqlgateway
 ttab docker compose -f src/main/docker/keycloak.yml up -d
 ttab docker compose -f src/main/docker/jhipster-registry.yml up -d
 cd ..
 
-cd gateway
+cd psqlgateway
 npm run docker:db:up
 ttab ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 cd ..
 
-cd store
+cd psqlstore
 npm run docker:db:up
 ttab ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 cd ..
 
-cd blog
+cd psqlblog
 npm run docker:db:up
 ttab ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 cd ..
-

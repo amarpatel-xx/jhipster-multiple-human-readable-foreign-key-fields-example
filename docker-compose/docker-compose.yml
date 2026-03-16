@@ -1,17 +1,19 @@
 services:
-  gateway:
-    image: gateway
+  psqlgateway:
+    image: psqlgateway
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
       - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-      - SPRING_R2DBC_URL=r2dbc:postgresql://gateway-postgresql:5432/gateway
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://gateway-postgresql:5432/gateway
       - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/realms/jhipster
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=web_app
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=web_app
+      - SPRING_R2DBC_URL=r2dbc:postgresql://psqlgateway-postgresql:5432/psqlgateway
+      - SPRING_R2DBC_USERNAME=psqlgateway
+      - SPRING_R2DBC_PASSWORD=
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://psqlgateway-postgresql:5432/psqlgateway
       - JHIPSTER_REGISTRY_PASSWORD=admin
     ports:
       - 8080:8080
@@ -25,16 +27,16 @@ services:
       timeout: 5s
       retries: 40
     depends_on:
-      gateway-postgresql:
+      psqlgateway-postgresql:
         condition: service_healthy
       keycloak:
         condition: service_healthy
       jhipster-registry:
         condition: service_healthy
-  gateway-postgresql:
-    image: postgres:17.4
+  psqlgateway-postgresql:
+    image: postgres:18.3
     environment:
-      - POSTGRES_USER=gateway
+      - POSTGRES_USER=psqlgateway
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test:
@@ -44,19 +46,21 @@ services:
       timeout: 5s
       retries: 10
 
-  blog:
-    image: blog
+  psqlblog:
+    image: psqlblog
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
       - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://blog-postgresql:5432/blog
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://blog-postgresql:5432/blog
       - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/realms/jhipster
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://psqlblog-postgresql:5432/psqlblog
+      - SPRING_DATASOURCE_USERNAME=psqlblog
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://psqlblog-postgresql:5432/psqlblog
       - JHIPSTER_REGISTRY_PASSWORD=admin
     healthcheck:
       test:
@@ -68,18 +72,20 @@ services:
       timeout: 5s
       retries: 40
     depends_on:
-      blog-postgresql:
+      psqlblog-postgresql:
         condition: service_healthy
       keycloak:
         condition: service_healthy
       jhipster-registry:
         condition: service_healthy
-  blog-postgresql:
-    image: pgvector/pgvector:pg17
+  psqlblog-postgresql:
+    build:
+      context: .
+      dockerfile: postgresql/Dockerfile
     volumes:
       - ./postgresql-init-scripts:/docker-entrypoint-initdb.d/
     environment:
-      - POSTGRES_USER=blog
+      - POSTGRES_USER=psqlblog
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test:
@@ -89,19 +95,21 @@ services:
       timeout: 5s
       retries: 10
 
-  store:
-    image: store
+  psqlstore:
+    image: psqlstore
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
       - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://store-postgresql:5432/store
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://store-postgresql:5432/store
       - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/realms/jhipster
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://psqlstore-postgresql:5432/psqlstore
+      - SPRING_DATASOURCE_USERNAME=psqlstore
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://psqlstore-postgresql:5432/psqlstore
       - JHIPSTER_REGISTRY_PASSWORD=admin
     healthcheck:
       test:
@@ -113,18 +121,20 @@ services:
       timeout: 5s
       retries: 40
     depends_on:
-      store-postgresql:
+      psqlstore-postgresql:
         condition: service_healthy
       keycloak:
         condition: service_healthy
       jhipster-registry:
         condition: service_healthy
-  store-postgresql:
-    image: pgvector/pgvector:pg17
+  psqlstore-postgresql:
+    build:
+      context: .
+      dockerfile: postgresql/Dockerfile
     volumes:
       - ./postgresql-init-scripts:/docker-entrypoint-initdb.d/
     environment:
-      - POSTGRES_USER=store
+      - POSTGRES_USER=psqlstore
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test:
@@ -135,7 +145,7 @@ services:
       retries: 10
 
   jhipster-registry:
-    image: jhipster/jhipster-registry:v7.4.0
+    image: jhipster/jhipster-registry:v7.5.0
     volumes:
       - ./central-server-config:/central-config
     # By default the JHipster Registry runs with the "dev" and "native"
@@ -167,15 +177,15 @@ services:
       timeout: 5s
       retries: 10
   keycloak:
-    image: quay.io/keycloak/keycloak:26.1.4
+    image: quay.io/keycloak/keycloak:26.5.5
     command: 'start-dev --import-realm'
     volumes:
       - ./realm-config:/opt/keycloak/data/import
       - ./realm-config/keycloak-health-check.sh:/opt/keycloak/health-check.sh
     environment:
       - KC_DB=dev-file
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
       - KC_FEATURES=scripts
       - KC_HTTP_PORT=9080
       - KC_HTTPS_PORT=9443

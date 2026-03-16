@@ -1,9 +1,15 @@
 {
-  "lastUsedPort": 5435,
+  "lastUsedPort": 5437,
   "store": {
     "port": 5433
   },
   "blog": {
     "port": 5434
+  },
+  "psqlstore": {
+    "port": 5435
+  },
+  "psqlblog": {
+    "port": 5436
   }
 }

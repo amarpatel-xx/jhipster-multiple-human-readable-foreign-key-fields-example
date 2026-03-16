@@ -1,6 +1,6 @@
 application {
   config {
-    baseName gateway
+    baseName psqlgateway
     packageName com.saathratri.developer.gateway
     applicationType gateway
     authenticationType oauth2
@@ -9,13 +9,13 @@ application {
     prodDatabaseType postgresql
     serviceDiscoveryType eureka
     testFrameworks [cypress]
-    microfrontends [blog, store]
+    microfrontends [psqlblog, psqlstore]
   }
 }
 
 application {
   config {
-    baseName blog
+    baseName psqlblog
     packageName com.saathratri.developer.blog
     applicationType microservice
     authenticationType oauth2
@@ -33,7 +33,7 @@ application {
 
 application {
   config {
-    baseName store
+    baseName psqlstore
     packageName com.saathratri.developer.store
     applicationType microservice
     authenticationType oauth2
@@ -79,9 +79,19 @@ entity Product {
   image ImageBlob
 }
 
+entity Report {
+  id UUID
+  fileName String maxlength(255) required
+  fileExtension String maxlength(10) required
+  createDate Instant required
+  file AnyBlob required
+  approved Boolean
+}
+
 relationship ManyToOne {
   Blog{tajUser(login)} to TajUser
   Post{blog} to Blog{post}
+  Report{product} to Product
 }
 
 relationship ManyToMany {
@@ -90,13 +100,13 @@ relationship ManyToMany {
 
 paginate Post, Tag, Product with pagination
 
-microservice Product with store
-microservice Blog, Post, Tag with blog
+microservice Product with psqlstore
+microservice Blog, Post, Tag with psqlblog
 
 deployment {
   deploymentType docker-compose
   serviceDiscoveryType eureka
-  appsFolders [gateway, blog, store]
+  appsFolders [psqlgateway, psqlblog, psqlstore]
   dockerRepositoryName "amarppatel"
 }
 

@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 2,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "psqlstore",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "version": "2.0.13"
+      }
+    ],
+    "buildTool": "maven",
+    "clientFramework": "angular",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "devServerPort": 4202,
+    "enableHibernateCache": false,
+    "entities": ["Product"],
+    "jhipsterVersion": "9.0.0",
+    "jwtSecretKey": "NDk4ZTk3ZTNmOTBmZjFkMmJkNjhlNDI2OGFlYmZjZGU1NjRjNDk2NzgxNDBkODVmMTU2MTljZGQxYWNkMGI0YzJiZDM5YTliZTViYmMwYWZmNTYzN2I4NDc2NzY3ZGU2ODFlNjRiMjlhZTA3ZDkwZjIxNjU3NDBkZjIwM2FiZjQ=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1773668763000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageName": "com.saathratri.developer.store",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8082",
+    "serviceDiscoveryType": "eureka",
+    "skipCommitHook": true,
+    "skipJhipsterDependencies": true
+  }
+}

@@ -66,15 +66,23 @@ The underlying `generator-jhipster-multiple-human-readable-foreign-key-fields` b
 ### Build
 ### Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint 
 
-1.  To generate a microservices architecture with human-readable foreign key fields support, run the following command:
+1.  To generate a microservices architecture with human-readable foreign key fields support, run the following commands:
 ```console
 npm install -g generator-jhipster-multiple-human-readable-foreign-key-fields
 
 git clone https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example.git
 
 cd jhipster-multiple-human-readable-foreign-key-fields-example
+```
 
-sh generate-code.sh
+**Mac / Linux:**
+```console
+sh saathratri-generate-code-dev-sql.sh
+```
+
+**Windows:**
+```console
+saathratri-generate-code-dev-sql.bat
 ```
 
 2.  You should see the message:

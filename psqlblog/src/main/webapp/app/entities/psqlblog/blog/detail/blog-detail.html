@@ -1,0 +1,84 @@
+<style>
+  .saathratri-pdf-badge-link {
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .saathratri-pdf-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e53935;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    border: 2px solid #1976d2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+  .saathratri-pdf-badge:hover {
+    border-color: #0d47a1;
+    box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+    transform: scale(1.05);
+  }
+  .saathratri-pdf-badge-sm {
+    width: 40px;
+    height: 52px;
+    font-size: 0.6rem;
+  }
+  .saathratri-pdf-badge-lg {
+    width: 60px;
+    height: 78px;
+    font-size: 0.75rem;
+  }
+</style>
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (blog(); as blogRef) {
+      <div>
+        <h2 data-cy="blogDetailsHeading"><span jhiTranslate="psqlblogApp.psqlblogBlog.detail.title">Blog</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="psqlblogApp.psqlblogBlog.id">Id</span></dt>
+          <dd>
+            <span>{{ blogRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlblogApp.psqlblogBlog.name">Name</span></dt>
+          <dd>
+            <span>{{ blogRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlblogApp.psqlblogBlog.handle">Handle</span></dt>
+          <dd>
+            <span>{{ blogRef.handle }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlblogApp.psqlblogBlog.tajUser">Taj User</span></dt>
+          <dd>
+            @if (blog()!.tajUser) {
+              <div>
+                <a [routerLink]="['/psqlblog/taj-user', blog()!.tajUser?.id, 'view']">{{ blog()!.tajUser!.login }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/psqlblog/blog', blogRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

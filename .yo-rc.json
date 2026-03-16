@@ -1,19 +1,19 @@
 {
   "generator-jhipster": {
-    "appsFolders": ["gateway", "blog", "store"],
+    "appsFolders": ["psqlgateway", "psqlblog", "psqlstore"],
     "baseName": "workspaces",
     "blueprints": [
       {
         "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
-        "version": "2.0.12"
+        "version": "2.0.13"
       }
     ],
-    "clientPackageManager": "npm",
-    "directoryPath": "./",
+    "deploymentType": "none",
     "dockerCompose": true,
     "entities": [],
-    "jhipsterVersion": "8.10.0",
+    "jhipsterVersion": "9.0.0",
     "monorepository": true,
+    "nodePackageManager": "npm",
     "skipJhipsterDependencies": true
   }
 }

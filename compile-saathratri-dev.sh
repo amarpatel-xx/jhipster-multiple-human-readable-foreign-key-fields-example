@@ -1,15 +1,15 @@
 echo "Compiling Blog"
-cd blog
+cd psqlblog
 ./mvnw clean package -Pdev,api-docs -DskipTests
 cd ..
 
 echo "Compiling Store"
-cd store
+cd psqlstore
 ./mvnw clean package -Pdev,api-docs -DskipTests
 cd ..
 
-echo "Compiling Fateway"
-cd gateway
+echo "Compiling Gateway"
+cd psqlgateway
 ./mvnw clean package -Pdev,api-docs -DskipTests
 cd ..
 
