@@ -92,29 +92,29 @@ Congratulations, JHipster execution is complete!
 
 ### Run your Multiple Human-readable Foreign Key Fields Example 
 
-1.  When the process is complete, cd into the `gateway` directory and start Keycloak and Eureka using Docker Compose.
+1.  When the process is complete, cd into the `psqlgateway` directory and start Keycloak and Eureka using Docker Compose.
 ```console
 cd gateway
 docker compose -f src/main/docker/keycloak.yml up -d
 docker compose -f src/main/docker/jhipster-registry.yml up -d
 ```
 
-2.  Start `gateway` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then start the `gateway` by running the Maven command.
+2.  Start `psqlgateway` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then start the `gateway` by running the Maven command.
 ```console
 npm run docker:db:up
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-3.  Start `blog` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then, start the `blog` microservice.
+3.  Start `pslqblog` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then, start the `blog` microservice.
 ```console
-cd blog
+cd psqlblog
 npm run docker:db:up
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-4.  Start `store` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then, start the `store` microservice.
+4.  Start `psqlstore` database with Docker by opening a terminal and navigating to its directory and running the Docker command. Then, start the `store` microservice.
 ```console
-cd store
+cd psqlstore
 npm run docker:db:up
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
