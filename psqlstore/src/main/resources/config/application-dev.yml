@@ -42,6 +42,9 @@ spring:
       additional-exclude: static/**
     livereload:
       enabled: false # we use Webpack dev server + BrowserSync for livereload
+  docker:
+    compose:
+      enabled: false
   jackson2:
     serialization:
       indent-output: true
@@ -60,8 +63,7 @@ spring:
       poolName: Hikari
       auto-commit: false
   liquibase:
-    # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
+    contexts: dev
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
@@ -96,16 +98,17 @@ jhipster:
       backup-count: 1
   registry:
     password: admin
-    # CORS is disabled by default on microservices, as you should access them through a gateway.
-    # If you want to enable it, please uncomment the configuration below.
-    # cors:
-    #   allowed-origins: "http://localhost:9000,https://localhost:9000"
-    #   allowed-methods: "*"
-    #   allowed-headers: "*"
-    #   exposed-headers: "Authorization,Link,X-Total-Count"
-    #   allow-credentials: true
-    #   max-age: 1800
-    # saathratri-needle-add-cors-policy #  logging:
+  # CORS is disabled by default on microservices, as you should access them through a gateway.
+  # If you want to enable it, please uncomment the configuration below.
+  # cors:
+  #   allowed-origins: "http://localhost:9000,https://localhost:9000"
+  #   allowed-methods: "*"
+  #   allowed-headers: "*"
+  #   exposed-headers: "Authorization,Link,X-Total-Count"
+  #   allow-credentials: true
+  #   max-age: 1800
+  # saathratri-needle-add-cors-policy
+  logging:
     use-json-format: false # By default, logs are not in Json format
     logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
       enabled: false

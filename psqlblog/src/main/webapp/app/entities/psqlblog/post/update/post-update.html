@@ -112,7 +112,7 @@
           <label class="form-label" for="field_blog" jhiTranslate="psqlblogApp.psqlblogPost.blog">Blog</label>
           <select class="form-control" id="field_blog" data-cy="blog" name="blog" formControlName="blog" [compareWith]="compareBlog">
             <option [ngValue]="null"></option>
-            @for (blogOption of blogsSharedCollection; track $index) {
+            @for (blogOption of blogsSharedCollection(); track $index) {
               <option [ngValue]="blogOption">{{ blogOption.name + '-' + blogOption.handle }}</option>
             }
           </select>
@@ -120,7 +120,7 @@
         <div class="mb-3">
           <label for="field_tags" jhiTranslate="psqlblogApp.psqlblogPost.tag">Tag</label>
           <select class="form-control" id="field_tags" data-cy="tag" multiple name="tags" formControlName="tags" [compareWith]="compareTag">
-            @for (tagOption of tagsSharedCollection; track $index) {
+            @for (tagOption of tagsSharedCollection(); track $index) {
               <option [ngValue]="tagOption">{{ tagOption.name }}</option>
             }
           </select>

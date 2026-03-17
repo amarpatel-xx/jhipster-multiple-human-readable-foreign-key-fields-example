@@ -100,7 +100,7 @@
             [compareWith]="compareTajUser"
           >
             <option [ngValue]="null"></option>
-            @for (tajUserOption of tajUsersSharedCollection; track $index) {
+            @for (tajUserOption of tajUsersSharedCollection(); track $index) {
               <option [ngValue]="tajUserOption">{{ tajUserOption.login }}</option>
             }
           </select>

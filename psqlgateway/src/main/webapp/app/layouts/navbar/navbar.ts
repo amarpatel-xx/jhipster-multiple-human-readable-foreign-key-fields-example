@@ -46,7 +46,6 @@ export default class Navbar implements OnInit {
   readonly openAPIEnabled = signal(false);
   readonly version: string;
   readonly account = inject(AccountService).account;
-  entitiesNavbarItems: NavbarItem[] = [];
   psqlblogEntityNavbarItems = signal<NavbarItem[]>([]);
   psqlstoreEntityNavbarItems = signal<NavbarItem[]>([]);
 
@@ -74,8 +73,6 @@ export default class Navbar implements OnInit {
   }
 
   ngOnInit(): void {
-    // Saathratri modification - sort entity navbar items alphabetically
-    this.entitiesNavbarItems = [...EntityNavbarItems].sort((a, b) => a.name.localeCompare(b.name));
     this.profileService.getProfileInfo().subscribe(profileInfo => {
       this.inProduction.set(profileInfo.inProduction ?? true);
       this.openAPIEnabled.set(profileInfo.openAPIEnabled ?? false);

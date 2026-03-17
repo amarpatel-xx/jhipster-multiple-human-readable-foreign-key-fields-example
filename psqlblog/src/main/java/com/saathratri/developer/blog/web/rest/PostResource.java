@@ -148,7 +148,7 @@ public class PostResource {
         @org.springdoc.core.annotations.ParameterObject Pageable pageable,
         @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
     ) {
-        log.debug("REST request to get a page of Posts");
+        LOG.debug("REST request to get a page of Posts");
         Page<PostDTO> page;
         if (eagerload) {
             page = postService.findAllWithEagerRelationships(pageable);

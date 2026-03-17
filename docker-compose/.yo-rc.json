@@ -13,7 +13,7 @@
     "directoryPath": "../",
     "dockerRepositoryName": "amarppatel",
     "gatewayType": "SpringCloudGateway",
-    "jwtSecretKey": "ZDRjYWYwZDk5ZTFiMmRlYTE0OGViYTMxMmQ3ZTEzYzBmNDU1ODljZWIyNzk2YWRiYmM3MzE4ZWFmNzViNzUxMjMzZThhOGZiNjM3OTllY2I5MzRlNjE4YjZiZGZmNTFhMjVkNw==",
+    "jwtSecretKey": "NzMwMTcyYTIzNTQwZjE1ODgyMDUwZmZkN2ExYTVjMDgzMDg1ZjkzOWRkNjdkMjdkMWQ0ZWQ3ZTVkNjU0MTUzYzM0OGNkOTkwNjNkZjk5YjFhZjQyMjFhYmMwY2I3ZDJiNTU4YQ==",
     "monitoring": "no",
     "serviceDiscoveryType": "eureka"
   }

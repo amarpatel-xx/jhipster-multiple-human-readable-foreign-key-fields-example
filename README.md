@@ -94,7 +94,7 @@ Congratulations, JHipster execution is complete!
 
 1.  When the process is complete, cd into the `psqlgateway` directory and start Keycloak and Eureka using Docker Compose.
 ```console
-cd gateway
+cd psqlgateway
 docker compose -f src/main/docker/keycloak.yml up -d
 docker compose -f src/main/docker/jhipster-registry.yml up -d
 ```
@@ -135,13 +135,17 @@ okta apps create jhipster
 Now you can open your favorite browser to [http://localhost:8080](http://localhost:8080), and log in with the credentials displayed on the page.
 
 ## Then create a Blog
-1.  Open your favorite browser to [http://localhost:8080](http://localhost:8080), and log in with the credentials displayed on the page.
+1.  Open your favorite browser to [http://localhost:8080](http://localhost:8080), and log in with the credentials displayed on the page. Then navigate to the psqlblog menu item.
 2.  Then, add a user by giving it a login name.
 3.  Then, add a blog by giving it a name, handle and selecting the user.
 3.  Add a tag by giving it a name.
 4.  Finally, add a post by providing a title, content, selecting the blog and the tag.
 
 Notice the blog column of the post shows `<blog-name>-<blog-handle>` and not the UUID of the blog. That is success!
+
+## Then create a Store
+1.  Open your favorite browser to [http://localhost:8080](http://localhost:8080), and log in with the credentials displayed on the page. Then navigate to the psqlstore menu item.
+2.  Then, add a product by giving it a title, a price and an image.
 
 ## Have Fun with Micro Frontends and JHipster!
 

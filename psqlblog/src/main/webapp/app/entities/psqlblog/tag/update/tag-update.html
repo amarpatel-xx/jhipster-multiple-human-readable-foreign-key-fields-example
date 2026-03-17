@@ -82,7 +82,7 @@
             formControlName="posts"
             [compareWith]="comparePost"
           >
-            @for (postOption of postsSharedCollection; track $index) {
+            @for (postOption of postsSharedCollection(); track $index) {
               <option [ngValue]="postOption">{{ postOption.id }}</option>
             }
           </select>

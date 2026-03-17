@@ -138,7 +138,7 @@ public class TajUserResource {
      */
     @GetMapping("")
     public List<TajUserDTO> getAllTajUsers() {
-        log.debug("REST request to get all TajUsers");
+        LOG.debug("REST request to get all TajUsers");
         return tajUserService.findAll();
     }
 

@@ -42,6 +42,9 @@ spring:
       additional-exclude: static/**
     livereload:
       enabled: false # we use Webpack dev server + BrowserSync for livereload
+  docker:
+    compose:
+      enabled: false
   jackson:
     serialization:
       indent-output: true
@@ -54,8 +57,7 @@ spring:
       label: main # toggle to switch to a different version of the configuration as stored in git
       # it can be set to any label, branch or commit of the configuration source Git repository
   liquibase:
-    # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
+    contexts: dev
     url: jdbc:postgresql://localhost:5432/psqlgateway
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
@@ -63,6 +65,17 @@ spring:
     url: r2dbc:postgresql://localhost:5432/psqlgateway
   thymeleaf:
     cache: false
+  security:
+    oauth2:
+      client:
+        provider:
+          oidc:
+            issuer-uri: http://localhost:9080/realms/jhipster
+        registration:
+          oidc:
+            client-id: web_app
+            client-secret: web_app
+            scope: openid, profile, email, offline_access # last one for refresh tokens
 
 server:
   port: 8080
@@ -81,6 +94,8 @@ jhipster:
       enabled: false
       limit: 100000
       duration-in-seconds: 3600
+  registry:
+    password: admin
   # CORS is only enabled by default with the "dev" profile
   cors:
     # Allow Ionic for JHipster by default (* no longer allowed in Spring Boot 2.4+)
@@ -100,6 +115,12 @@ jhipster:
       host: localhost
       port: 5000
       ring-buffer-size: 512
+
+  security:
+    oauth2:
+      audience:
+        - account
+        - api://default
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

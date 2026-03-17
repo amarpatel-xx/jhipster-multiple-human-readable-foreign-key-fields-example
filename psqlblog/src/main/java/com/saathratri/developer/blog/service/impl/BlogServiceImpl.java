@@ -80,6 +80,29 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.findAll().stream().map(blogMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<BlogDTO> findOneWithEagerRelationships(UUID id) {
+        LOG.debug("Request to get Blog : {}", id);
+
+        return blogRepository.findOneWithEagerRelationships(id).map(blogMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<BlogDTO> findAllWithEagerRelationships() {
+        LOG.debug("Request to get all Blogs");
+
+        List<Blog> blogs = blogRepository.findAllWithEagerRelationships();
+        List<BlogDTO> blogDTOList = new java.util.ArrayList<BlogDTO>(blogs.size());
+
+        for (Blog blogDTO : blogs) {
+            blogDTOList.add(blogMapper.toDto(blogDTO));
+        }
+
+        return blogDTOList;
+    }
+
     public Page<BlogDTO> findAllWithEagerRelationships(Pageable pageable) {
         return blogRepository.findAllWithEagerRelationships(pageable).map(blogMapper::toDto);
     }
