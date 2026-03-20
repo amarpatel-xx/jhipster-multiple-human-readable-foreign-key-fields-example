@@ -22,6 +22,8 @@ import org.mapstruct.control.NoComplexMapping;
 @Mapper(componentModel = "spring", mappingControl = NoComplexMapping.class)
 public interface TagMapper extends EntityMapper<TagDTO, Tag> {
     @Mapping(target = "posts", source = "posts", qualifiedByName = "postIdSet")
+    @Mapping(target = "nameEmbedding", source = "nameEmbedding")
+    @Mapping(target = "descriptionEmbedding", source = "descriptionEmbedding")
     TagDTO toDto(Tag s);
 
     /**
@@ -32,6 +34,9 @@ public interface TagMapper extends EntityMapper<TagDTO, Tag> {
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "name")
+    @Mapping(target = "description", source = "description")
+    @Mapping(target = "nameEmbedding", source = "nameEmbedding")
+    @Mapping(target = "descriptionEmbedding", source = "descriptionEmbedding")
     @Mapping(target = "posts", ignore = true)
     TagDTO toDtoBasic(Tag tag);
 
@@ -51,5 +56,13 @@ public interface TagMapper extends EntityMapper<TagDTO, Tag> {
 
     default String map(UUID value) {
         return Objects.toString(value, null);
+    }
+
+    default String map(byte[] value) {
+        return value == null ? null : new String(value);
+    }
+
+    default byte[] map(String value) {
+        return value == null ? null : value.getBytes();
     }
 }

@@ -26,9 +26,19 @@ public class Tag implements Serializable {
     private UUID id;
 
     @NotNull
-    @Size(min = 2)
-    @Column(name = "name", nullable = false)
+    @Size(max = 100)
+    @Column(name = "name", length = 100, nullable = false)
     private String name;
+
+    @Size(max = 255)
+    @Column(name = "description", length = 255)
+    private String description;
+
+    @Column(name = "name_embedding")
+    private float[] nameEmbedding;
+
+    @Column(name = "description_embedding")
+    private float[] descriptionEmbedding;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
     @JsonIgnoreProperties(value = { "blog", "tags" }, allowSetters = true)
@@ -60,6 +70,45 @@ public class Tag implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public Tag description(String description) {
+        this.setDescription(description);
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public float[] getNameEmbedding() {
+        return this.nameEmbedding;
+    }
+
+    public Tag nameEmbedding(float[] nameEmbedding) {
+        this.setNameEmbedding(nameEmbedding);
+        return this;
+    }
+
+    public void setNameEmbedding(float[] nameEmbedding) {
+        this.nameEmbedding = nameEmbedding;
+    }
+
+    public float[] getDescriptionEmbedding() {
+        return this.descriptionEmbedding;
+    }
+
+    public Tag descriptionEmbedding(float[] descriptionEmbedding) {
+        this.setDescriptionEmbedding(descriptionEmbedding);
+        return this;
+    }
+
+    public void setDescriptionEmbedding(float[] descriptionEmbedding) {
+        this.descriptionEmbedding = descriptionEmbedding;
     }
 
     public Set<Post> getPosts() {
@@ -118,6 +167,9 @@ public class Tag implements Serializable {
         return "Tag{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", nameEmbedding='" + getNameEmbedding() + "'" +
+            ", descriptionEmbedding='" + getDescriptionEmbedding() + "'" +
             "}";
     }
 }

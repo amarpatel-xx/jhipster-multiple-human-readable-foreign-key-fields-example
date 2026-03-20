@@ -62,6 +62,44 @@
 
   <jhi-alert />
 
+  <form name="aiSearchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="aiSearchQuery">AI Search</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="aiSearchQuery"
+          id="aiSearchQuery"
+          name="aiSearchQuery"
+          placeholder="AI Search (semantic)..."
+          (keyup.enter)="performAiSearch(aiSearchQuery)"
+        />
+
+        <button class="btn btn-warning" (click)="performAiSearch(aiSearchQuery)" [disabled]="aiSearchLoading()">
+          @if (aiSearchLoading()) {
+            <fa-icon icon="sync" animation="spin" />
+          } @else {
+            <fa-icon icon="search" />
+          }
+          <span class="d-none d-md-inline">AI Search</span>
+        </button>
+
+        @if (isAiSearchActive()) {
+          <button class="btn btn-danger" (click)="clearAiSearch()">
+            <fa-icon icon="trash-alt" />
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+  @if (isAiSearchActive()) {
+    <div class="alert alert-info mt-2 mb-0">
+      <fa-icon icon="search" /> Showing AI-powered semantic search results.
+      <a href="javascript:void(0)" (click)="clearAiSearch()">Clear search</a>
+    </div>
+  }
+
   @if (tags().length === 0) {
     <div class="alert alert-warning" id="no-result">
       <span jhiTranslate="psqlblogApp.psqlblogTag.home.notFound">No Tags found</span>
@@ -85,6 +123,27 @@
                 <fa-icon class="p-1" icon="sort" />
               </div>
             </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="psqlblogApp.psqlblogTag.description">Description</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nameEmbedding">
+              <div class="d-flex">
+                <span jhiTranslate="psqlblogApp.psqlblogTag.nameEmbedding">Name Embedding</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descriptionEmbedding">
+              <div class="d-flex">
+                <span jhiTranslate="psqlblogApp.psqlblogTag.descriptionEmbedding">Description Embedding</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -95,6 +154,17 @@
                 <a [routerLink]="['/psqlblog/tag', tag.id, 'view']">{{ tag.id }}</a>
               </td>
               <td>{{ tag.name }}</td>
+              <td>{{ tag.description }}</td>
+              <td>
+                {{ tag.nameEmbedding && tag.nameEmbedding.length > 4 ? (tag.nameEmbedding | slice: 0 : 4) + '...' : tag.nameEmbedding }}
+              </td>
+              <td>
+                {{
+                  tag.descriptionEmbedding && tag.descriptionEmbedding.length > 4
+                    ? (tag.descriptionEmbedding | slice: 0 : 4) + '...'
+                    : tag.descriptionEmbedding
+                }}
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/psqlblog/tag', tag.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
@@ -119,7 +189,7 @@
       </table>
     </div>
   }
-  @if (tags().length > 0) {
+  @if (tags().length > 0 && !isAiSearchActive()) {
     <div>
       <div class="d-flex justify-content-center">
         <jhi-item-count [params]="{ page: page(), totalItems: totalItems(), itemsPerPage: itemsPerPage() }" />

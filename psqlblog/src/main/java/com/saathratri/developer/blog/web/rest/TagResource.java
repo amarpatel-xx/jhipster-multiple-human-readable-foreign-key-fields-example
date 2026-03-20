@@ -188,4 +188,102 @@ public class TagResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    // ==================== AI Text Search Endpoint ====================
+
+    /**
+     * {@code GET  /tags/ai-search} : search for Tags using AI-powered semantic similarity.
+     * Converts the text query to an embedding and searches across all vector fields.
+     *
+     * @param query the text query to search for.
+     * @param limit maximum number of results to return (default: 10).
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of matching Tags in body.
+     */
+    @GetMapping("/ai-search")
+    public ResponseEntity<List<TagDTO>> aiSearch(
+        @RequestParam("query") String query,
+        @RequestParam(value = "limit", defaultValue = "10") int limit
+    ) {
+        LOG.debug("REST request to AI search Tags for query: {}, limit: {}", query, limit);
+        List<TagDTO> result = tagService.aiSearch(query, limit);
+        return ResponseEntity.ok().body(result);
+    }
+
+    // ==================== Vector Similarity Search Endpoints ====================
+
+    /**
+     * {@code POST  /tags/vector-search/nameEmbedding} : search for Tags similar to the given embedding.
+     *
+     * @param embedding the query embedding vector as a JSON array string (e.g., "[0.1, 0.2, ...]")
+     * @param limit maximum number of results to return (default: 10)
+     * @return the list of similar Tags ordered by similarity.
+     */
+    @PostMapping("/vector-search/nameEmbedding")
+    public ResponseEntity<List<TagDTO>> searchSimilarByNameEmbedding(
+        @RequestBody String embedding,
+        @RequestParam(value = "limit", defaultValue = "10") int limit
+    ) {
+        LOG.debug("REST request to search Tags similar by nameEmbedding, limit: {}", limit);
+        List<TagDTO> result = tagService.findSimilarByNameEmbedding(embedding, limit);
+        return ResponseEntity.ok().body(result);
+    }
+
+    /**
+     * {@code POST  /tags/vector-search/nameEmbedding/threshold} : search for Tags similar to the given embedding with distance threshold.
+     *
+     * @param embedding the query embedding vector as a JSON array string (e.g., "[0.1, 0.2, ...]")
+     * @param maxDistance maximum cosine distance (0 = identical, 2 = opposite). Default: 0.5
+     * @param limit maximum number of results to return (default: 10)
+     * @return the list of similar Tags ordered by similarity.
+     */
+    @PostMapping("/vector-search/nameEmbedding/threshold")
+    public ResponseEntity<List<TagDTO>> searchSimilarByNameEmbeddingWithThreshold(
+        @RequestBody String embedding,
+        @RequestParam(value = "maxDistance", defaultValue = "0.5") double maxDistance,
+        @RequestParam(value = "limit", defaultValue = "10") int limit
+    ) {
+        LOG.debug("REST request to search Tags similar by nameEmbedding with threshold, maxDistance: {}, limit: {}", maxDistance, limit);
+        List<TagDTO> result = tagService.findSimilarByNameEmbeddingWithThreshold(embedding, maxDistance, limit);
+        return ResponseEntity.ok().body(result);
+    }
+
+    /**
+     * {@code POST  /tags/vector-search/descriptionEmbedding} : search for Tags similar to the given embedding.
+     *
+     * @param embedding the query embedding vector as a JSON array string (e.g., "[0.1, 0.2, ...]")
+     * @param limit maximum number of results to return (default: 10)
+     * @return the list of similar Tags ordered by similarity.
+     */
+    @PostMapping("/vector-search/descriptionEmbedding")
+    public ResponseEntity<List<TagDTO>> searchSimilarByDescriptionEmbedding(
+        @RequestBody String embedding,
+        @RequestParam(value = "limit", defaultValue = "10") int limit
+    ) {
+        LOG.debug("REST request to search Tags similar by descriptionEmbedding, limit: {}", limit);
+        List<TagDTO> result = tagService.findSimilarByDescriptionEmbedding(embedding, limit);
+        return ResponseEntity.ok().body(result);
+    }
+
+    /**
+     * {@code POST  /tags/vector-search/descriptionEmbedding/threshold} : search for Tags similar to the given embedding with distance threshold.
+     *
+     * @param embedding the query embedding vector as a JSON array string (e.g., "[0.1, 0.2, ...]")
+     * @param maxDistance maximum cosine distance (0 = identical, 2 = opposite). Default: 0.5
+     * @param limit maximum number of results to return (default: 10)
+     * @return the list of similar Tags ordered by similarity.
+     */
+    @PostMapping("/vector-search/descriptionEmbedding/threshold")
+    public ResponseEntity<List<TagDTO>> searchSimilarByDescriptionEmbeddingWithThreshold(
+        @RequestBody String embedding,
+        @RequestParam(value = "maxDistance", defaultValue = "0.5") double maxDistance,
+        @RequestParam(value = "limit", defaultValue = "10") int limit
+    ) {
+        LOG.debug(
+            "REST request to search Tags similar by descriptionEmbedding with threshold, maxDistance: {}, limit: {}",
+            maxDistance,
+            limit
+        );
+        List<TagDTO> result = tagService.findSimilarByDescriptionEmbeddingWithThreshold(embedding, maxDistance, limit);
+        return ResponseEntity.ok().body(result);
+    }
 }

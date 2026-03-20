@@ -19,6 +19,9 @@ type TagFormDefaults = Pick<NewTag, 'id' | 'posts'>;
 type TagFormGroupContent = {
   id: FormControl<ITag['id'] | NewTag['id']>;
   name: FormControl<ITag['name']>;
+  description: FormControl<ITag['description']>;
+  nameEmbedding: FormControl<ITag['nameEmbedding']>;
+  descriptionEmbedding: FormControl<ITag['descriptionEmbedding']>;
   posts: FormControl<ITag['posts']>;
 };
 
@@ -40,8 +43,13 @@ export class TagFormService {
         },
       ),
       name: new FormControl(tagRawValue.name, {
-        validators: [Validators.required, Validators.minLength(2)],
+        validators: [Validators.required, Validators.maxLength(100)],
       }),
+      description: new FormControl(tagRawValue.description, {
+        validators: [Validators.maxLength(255)],
+      }),
+      nameEmbedding: new FormControl(tagRawValue.nameEmbedding),
+      descriptionEmbedding: new FormControl(tagRawValue.descriptionEmbedding),
       posts: new FormControl(tagRawValue.posts ?? []),
     });
   }

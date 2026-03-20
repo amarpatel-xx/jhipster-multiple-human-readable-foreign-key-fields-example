@@ -69,7 +69,10 @@ entity Post {
 
 entity Tag {
   id UUID
-  name String required minlength(2)
+  @customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK") @customAnnotation("") name String maxlength(100) required
+  description String maxlength(255)
+  @customAnnotation("VECTOR") @customAnnotation("1536") nameEmbedding Blob
+  @customAnnotation("VECTOR") @customAnnotation("1536") descriptionEmbedding Blob
 }
 
 entity Product {

@@ -65,4 +65,56 @@ public interface TagService {
      * @param id the id of the entity.
      */
     void delete(UUID id);
+
+    // ==================== AI Text Search ====================
+
+    /**
+     * Search for tags using AI-powered semantic similarity.
+     * Converts the text query to an embedding and searches across all vector fields.
+     *
+     * @param query the text query to search for
+     * @param limit maximum number of results to return
+     * @return list of semantically similar tags
+     */
+    List<TagDTO> aiSearch(String query, int limit);
+
+    // ==================== Vector Similarity Search Methods ====================
+
+    /**
+     * Find tags similar to the given embedding vector using nameEmbedding.
+     *
+     * @param embedding the query embedding vector as a formatted string "[0.1, 0.2, ...]"
+     * @param limit maximum number of results to return
+     * @return list of tags ordered by similarity (most similar first)
+     */
+    List<TagDTO> findSimilarByNameEmbedding(String embedding, int limit);
+
+    /**
+     * Find tags similar to the given embedding vector using nameEmbedding with threshold.
+     *
+     * @param embedding the query embedding vector as a formatted string "[0.1, 0.2, ...]"
+     * @param maxDistance maximum cosine distance (0 = identical, 2 = opposite)
+     * @param limit maximum number of results to return
+     * @return list of tags ordered by similarity (most similar first)
+     */
+    List<TagDTO> findSimilarByNameEmbeddingWithThreshold(String embedding, double maxDistance, int limit);
+
+    /**
+     * Find tags similar to the given embedding vector using descriptionEmbedding.
+     *
+     * @param embedding the query embedding vector as a formatted string "[0.1, 0.2, ...]"
+     * @param limit maximum number of results to return
+     * @return list of tags ordered by similarity (most similar first)
+     */
+    List<TagDTO> findSimilarByDescriptionEmbedding(String embedding, int limit);
+
+    /**
+     * Find tags similar to the given embedding vector using descriptionEmbedding with threshold.
+     *
+     * @param embedding the query embedding vector as a formatted string "[0.1, 0.2, ...]"
+     * @param maxDistance maximum cosine distance (0 = identical, 2 = opposite)
+     * @param limit maximum number of results to return
+     * @return list of tags ordered by similarity (most similar first)
+     */
+    List<TagDTO> findSimilarByDescriptionEmbeddingWithThreshold(String embedding, double maxDistance, int limit);
 }

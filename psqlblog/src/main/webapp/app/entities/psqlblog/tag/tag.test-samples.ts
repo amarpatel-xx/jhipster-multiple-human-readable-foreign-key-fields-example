@@ -6,13 +6,16 @@ export const sampleWithRequiredData: ITag = {
 };
 
 export const sampleWithPartialData: ITag = {
-  id: 'fbcc64cf-69ea-470c-8c88-d9e082596b40',
-  name: 'toaster',
+  id: 'c64cf69e-a70c-4c88-8d9e-082596b40210',
+  name: 'afore until',
 };
 
 export const sampleWithFullData: ITag = {
   id: 'ded83ece-eec4-4adb-8fe9-01685778b4fa',
   name: 'why clone',
+  description: 'ack',
+  nameEmbedding: undefined,
+  descriptionEmbedding: undefined,
 };
 
 export const sampleWithNewData: NewTag = {

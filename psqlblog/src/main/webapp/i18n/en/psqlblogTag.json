@@ -19,6 +19,9 @@
       },
       "id": "Id",
       "name": "Name",
+      "description": "Description",
+      "nameEmbedding": "Name Embedding",
+      "descriptionEmbedding": "Description Embedding",
       "post": "Post"
     }
   }

@@ -47,7 +47,12 @@ public class TagAsserts {
     public static void assertTagUpdatableFieldsEquals(Tag expected, Tag actual) {
         assertThat(actual)
             .as("Verify Tag relevant properties")
-            .satisfies(a -> assertThat(a.getName()).as("check name").isEqualTo(expected.getName()));
+            .satisfies(a -> assertThat(a.getName()).as("check name").isEqualTo(expected.getName()))
+            .satisfies(a -> assertThat(a.getDescription()).as("check description").isEqualTo(expected.getDescription()))
+            .satisfies(a -> assertThat(a.getNameEmbedding()).as("check nameEmbedding").isEqualTo(expected.getNameEmbedding()))
+            .satisfies(a ->
+                assertThat(a.getDescriptionEmbedding()).as("check descriptionEmbedding").isEqualTo(expected.getDescriptionEmbedding())
+            );
     }
 
     /**

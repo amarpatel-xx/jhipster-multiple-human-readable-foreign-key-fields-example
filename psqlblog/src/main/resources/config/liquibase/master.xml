@@ -12,13 +12,13 @@
     <property name="timeType" value="time(6)" dbms="postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20260317135529_added_entity_Blog.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20260317135629_added_entity_Post.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20260317135729_added_entity_Tag.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20260317135829_added_entity_TajUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260320120610_added_entity_Blog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260320120710_added_entity_Post.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260320120810_added_entity_Tag.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260320120910_added_entity_TajUser.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20260317135529_added_entity_constraints_Blog.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20260317135629_added_entity_constraints_Post.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260320120610_added_entity_constraints_Blog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260320120710_added_entity_constraints_Post.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

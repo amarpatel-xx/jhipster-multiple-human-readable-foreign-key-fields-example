@@ -82,4 +82,10 @@ export class TagService extends TagsService {
     }
     return tagCollection;
   }
+
+  aiSearch(query: string, limit: number): Observable<ITag[]> {
+    return this.http.get<ITag[]>(`${this.resourceUrl}/ai-search`, {
+      params: { query, limit: String(limit) },
+    });
+  }
 }

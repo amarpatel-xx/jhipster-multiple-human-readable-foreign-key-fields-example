@@ -16,8 +16,15 @@ public class TagDTO implements Serializable {
     private UUID id;
 
     @NotNull
-    @Size(min = 2)
+    @Size(max = 100)
     private String name;
+
+    @Size(max = 255)
+    private String description;
+
+    private float[] nameEmbedding;
+
+    private float[] descriptionEmbedding;
 
     private Set<PostDTO> posts = new HashSet<>();
 
@@ -35,6 +42,30 @@ public class TagDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public float[] getNameEmbedding() {
+        return nameEmbedding;
+    }
+
+    public void setNameEmbedding(float[] nameEmbedding) {
+        this.nameEmbedding = nameEmbedding;
+    }
+
+    public float[] getDescriptionEmbedding() {
+        return descriptionEmbedding;
+    }
+
+    public void setDescriptionEmbedding(float[] descriptionEmbedding) {
+        this.descriptionEmbedding = descriptionEmbedding;
     }
 
     public Set<PostDTO> getPosts() {
@@ -72,6 +103,9 @@ public class TagDTO implements Serializable {
         return "TagDTO{" +
             "id='" + getId() + "'" +
             ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", nameEmbedding='" + getNameEmbedding() + "'" +
+            ", descriptionEmbedding='" + getDescriptionEmbedding() + "'" +
             ", posts=" + getPosts() +
             "}";
     }

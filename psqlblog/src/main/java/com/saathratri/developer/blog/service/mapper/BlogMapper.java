@@ -25,4 +25,12 @@ public interface BlogMapper extends EntityMapper<BlogDTO, Blog> {
     @Mapping(target = "id", source = "id")
     @Mapping(target = "login", source = "login")
     TajUserDTO toDtoTajUserLogin(TajUser tajUser);
+
+    default String map(byte[] value) {
+        return value == null ? null : new String(value);
+    }
+
+    default byte[] map(String value) {
+        return value == null ? null : value.getBytes();
+    }
 }

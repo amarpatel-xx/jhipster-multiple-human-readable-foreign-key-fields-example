@@ -11,7 +11,7 @@ export interface IPost {
 
   blog?: Pick<IBlog, 'id' | 'name' | 'handle'> | null;
 
-  tags?: Pick<ITag, 'id' | 'name'>[] | null;
+  tags?: Pick<ITag, 'id' | 'name' | 'name'>[] | null;
 }
 
 export type NewPost = Omit<IPost, 'id'> & { id: null };

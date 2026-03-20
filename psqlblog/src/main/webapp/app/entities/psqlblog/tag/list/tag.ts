@@ -1,3 +1,4 @@
+import { SlicePipe } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +12,7 @@ import { Subscription, combineLatest, filter, tap } from 'rxjs';
 
 import { DEFAULT_SORT_DATA, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
 import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
+import { DataUtils } from 'app/core/util/data-util.service';
 import { Alert } from 'app/shared/alert/alert';
 import { AlertError } from 'app/shared/alert/alert-error';
 import { TranslateDirective } from 'app/shared/language';
@@ -24,6 +26,7 @@ import { ITag } from '../tag.model';
   selector: 'jhi-tag',
   templateUrl: './tag.html',
   imports: [
+    SlicePipe,
     RouterLink,
     FormsModule,
     FontAwesomeModule,
@@ -38,6 +41,36 @@ import { ITag } from '../tag.model';
   ],
 })
 export class Tag implements OnInit {
+  // Saathratri modification - AI search properties
+  aiSearchQuery = '';
+  aiSearchLoading = signal(false);
+  isAiSearchActive = signal(false);
+
+  performAiSearch(query: string): void {
+    if (!query || !query.trim()) {
+      this.clearAiSearch();
+      return;
+    }
+    this.aiSearchLoading.set(true);
+    this.tagService.aiSearch(query.trim(), 20).subscribe({
+      next: results => {
+        this.tags.set(results);
+        this.isAiSearchActive.set(true);
+        this.aiSearchLoading.set(false);
+      },
+      error: () => {
+        this.aiSearchLoading.set(false);
+      },
+    });
+  }
+
+  clearAiSearch(): void {
+    this.aiSearchQuery = '';
+    this.isAiSearchActive.set(false);
+    this.load();
+  }
+  // End Saathratri modification - AI search
+
   subscription: Subscription | null = null;
   readonly tags = signal<ITag[]>([]);
 
@@ -53,6 +86,7 @@ export class Tag implements OnInit {
   readonly isLoading = this.tagService.tagsResource.isLoading;
   protected readonly activatedRoute = inject(ActivatedRoute);
   protected readonly sortService = inject(SortService);
+  protected dataUtils = inject(DataUtils);
   protected modalService = inject(NgbModal);
 
   constructor() {
@@ -76,6 +110,14 @@ export class Tag implements OnInit {
         tap(() => this.load()),
       )
       .subscribe();
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    return this.dataUtils.openFile(base64String, contentType);
   }
 
   delete(tag: ITag): void {

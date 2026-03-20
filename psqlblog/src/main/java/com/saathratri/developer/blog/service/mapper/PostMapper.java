@@ -65,4 +65,12 @@ public interface PostMapper extends EntityMapper<PostDTO, Post> {
     default String map(UUID value) {
         return Objects.toString(value, null);
     }
+
+    default String map(byte[] value) {
+        return value == null ? null : new String(value);
+    }
+
+    default byte[] map(String value) {
+        return value == null ? null : value.getBytes();
+    }
 }

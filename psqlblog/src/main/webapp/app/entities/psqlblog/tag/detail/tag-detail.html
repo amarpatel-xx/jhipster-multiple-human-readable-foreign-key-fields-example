@@ -57,6 +57,24 @@
           <dd>
             <span>{{ tagRef.name }}</span>
           </dd>
+          <dt><span jhiTranslate="psqlblogApp.psqlblogTag.description">Description</span></dt>
+          <dd>
+            <span>{{ tagRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlblogApp.psqlblogTag.nameEmbedding">Name Embedding</span></dt>
+          <dd>
+            <span>{{
+              tagRef.nameEmbedding && tagRef.nameEmbedding.length > 4 ? (tagRef.nameEmbedding | slice: 0 : 4) + '...' : tagRef.nameEmbedding
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlblogApp.psqlblogTag.descriptionEmbedding">Description Embedding</span></dt>
+          <dd>
+            <span>{{
+              tagRef.descriptionEmbedding && tagRef.descriptionEmbedding.length > 4
+                ? (tagRef.descriptionEmbedding | slice: 0 : 4) + '...'
+                : tagRef.descriptionEmbedding
+            }}</span>
+          </dd>
           <dt><span jhiTranslate="psqlblogApp.psqlblogTag.post">Post</span></dt>
           <dd>
             @for (post of tagRef.posts; track $index; let last = $last) {

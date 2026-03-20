@@ -14,4 +14,12 @@ import org.mapstruct.control.NoComplexMapping;
  * annotations for any relationship mappings.
  */
 @Mapper(componentModel = "spring", mappingControl = NoComplexMapping.class)
-public interface TajUserMapper extends EntityMapper<TajUserDTO, TajUser> {}
+public interface TajUserMapper extends EntityMapper<TajUserDTO, TajUser> {
+    default String map(byte[] value) {
+        return value == null ? null : new String(value);
+    }
+
+    default byte[] map(String value) {
+        return value == null ? null : value.getBytes();
+    }
+}

@@ -37,6 +37,15 @@ class TagResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final float[] DEFAULT_NAME_EMBEDDING = new float[] { 0.1f, 0.2f };
+    private static final float[] UPDATED_NAME_EMBEDDING = new float[] { 0.3f, 0.4f };
+
+    private static final float[] DEFAULT_DESCRIPTION_EMBEDDING = new float[] { 0.1f, 0.2f };
+    private static final float[] UPDATED_DESCRIPTION_EMBEDDING = new float[] { 0.3f, 0.4f };
+
     private static final String ENTITY_API_URL = "/api/tags";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -66,7 +75,11 @@ class TagResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Tag createEntity() {
-        return new Tag().name(DEFAULT_NAME);
+        return new Tag()
+            .name(DEFAULT_NAME)
+            .description(DEFAULT_DESCRIPTION)
+            .nameEmbedding(DEFAULT_NAME_EMBEDDING)
+            .descriptionEmbedding(DEFAULT_DESCRIPTION_EMBEDDING);
     }
 
     /**
@@ -76,7 +89,11 @@ class TagResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Tag createUpdatedEntity() {
-        return new Tag().name(UPDATED_NAME);
+        return new Tag()
+            .name(UPDATED_NAME)
+            .description(UPDATED_DESCRIPTION)
+            .nameEmbedding(UPDATED_NAME_EMBEDDING)
+            .descriptionEmbedding(UPDATED_DESCRIPTION_EMBEDDING);
     }
 
     @BeforeEach
@@ -163,7 +180,10 @@ class TagResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(tag.getId().toString())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].nameEmbedding").value(hasItem(DEFAULT_NAME_EMBEDDING)))
+            .andExpect(jsonPath("$.[*].descriptionEmbedding").value(hasItem(DEFAULT_DESCRIPTION_EMBEDDING)));
     }
 
     @Test
@@ -178,7 +198,10 @@ class TagResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(tag.getId().toString()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.nameEmbedding").value(DEFAULT_NAME_EMBEDDING))
+            .andExpect(jsonPath("$.descriptionEmbedding").value(DEFAULT_DESCRIPTION_EMBEDDING));
     }
 
     @Test
@@ -200,7 +223,11 @@ class TagResourceIT {
         Tag updatedTag = tagRepository.findById(tag.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedTag are not directly saved in db
         em.detach(updatedTag);
-        updatedTag.name(UPDATED_NAME);
+        updatedTag
+            .name(UPDATED_NAME)
+            .description(UPDATED_DESCRIPTION)
+            .nameEmbedding(UPDATED_NAME_EMBEDDING)
+            .descriptionEmbedding(UPDATED_DESCRIPTION_EMBEDDING);
         TagDTO tagDTO = tagMapper.toDto(updatedTag);
 
         restTagMockMvc
@@ -293,6 +320,8 @@ class TagResourceIT {
         Tag partialUpdatedTag = new Tag();
         partialUpdatedTag.setId(tag.getId());
 
+        partialUpdatedTag.nameEmbedding(UPDATED_NAME_EMBEDDING);
+
         restTagMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedTag.getId())
@@ -320,7 +349,11 @@ class TagResourceIT {
         Tag partialUpdatedTag = new Tag();
         partialUpdatedTag.setId(tag.getId());
 
-        partialUpdatedTag.name(UPDATED_NAME);
+        partialUpdatedTag
+            .name(UPDATED_NAME)
+            .description(UPDATED_DESCRIPTION)
+            .nameEmbedding(UPDATED_NAME_EMBEDDING)
+            .descriptionEmbedding(UPDATED_DESCRIPTION_EMBEDDING);
 
         restTagMockMvc
             .perform(

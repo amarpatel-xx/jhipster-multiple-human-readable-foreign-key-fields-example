@@ -3,6 +3,9 @@ import { IPost } from 'app/entities/psqlblog/post/post.model';
 export interface ITag {
   id: string;
   name?: string | null;
+  description?: string | null;
+  nameEmbedding?: string | null;
+  descriptionEmbedding?: string | null;
 
   posts?: Pick<IPost, 'id'>[] | null;
 }
