@@ -1,8 +1,8 @@
 # JHipster Example for Human-Readable Foreign Keys in User Interface
 
 ### About this JHipster Example
-This code was generated using the JHipster blueprint `generator-jhipster-multiple-human-readable-foreign-key-fields`. 
-The source code for the underlying JHipster generator that is used in this example is available at: https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields
+This code was generated using the JHipster blueprint `generator-jhipster-ai-postgresql`. 
+The source code for the underlying JHipster generator that is used in this example is available at: https://github.com/amarpatel-xx/generator-jhipster-ai-postgresql
 
 This code has a JDL which shows 2 foreign keys that will concatenated and shown, in the Angular user interface, in replacement of the UUID. The JDL can be modified and the `@customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK")` can be used with any fields of an entity which would make it easier to identify that entity when displayed (as part of a relationship). Sometimes having a UUID makes it difficult for the human in the loop to figure out what the entity on a relationship's other side actually is. If multiple entity fields are necessary to replace the UUID, the fields can be delimmited via a specified delimiter using a `@customAnnotation`, as well (see the example JDL file included as part of this project).
 
@@ -29,7 +29,7 @@ Matt Raible's frequently used the blog and store examples in his capability demo
 
 ## Improvements Since v2.0.12
 
-The underlying `generator-jhipster-multiple-human-readable-foreign-key-fields` blueprint has received significant improvements since the last open-source tagged release (v2.0.12). Regenerating this example with the latest blueprint version will include:
+The underlying `generator-jhipster-ai-postgresql` blueprint has received significant improvements since the last open-source tagged release (v2.0.12). Regenerating this example with the latest blueprint version will include:
 
 ### pgvector / AI Semantic Search
 - Added full **PostgreSQL pgvector** support for AI-powered semantic search on entity fields.
@@ -123,11 +123,11 @@ Without the API key, the application runs normally but embedding generation and 
 
 1.  To generate a microservices architecture with human-readable foreign key fields support, run the following commands:
 ```console
-npm install -g generator-jhipster-multiple-human-readable-foreign-key-fields
+npm install -g generator-jhipster-ai-postgresql
 
-git clone https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example.git
+git clone https://github.com/amarpatel-xx/jhipster-ai-postgresql-example.git
 
-cd jhipster-multiple-human-readable-foreign-key-fields-example
+cd jhipster-ai-postgresql-example
 ```
 
 **Mac / Linux:**
@@ -210,9 +210,9 @@ If you configured the OpenAI API key, go to the Tag list page and use the **AI S
 
 I hope you enjoyed this demo, and it helped you understand how to build better microservice architectures with human-readable foreign key fields.
 
-☕️ Find the code for the underlying blueprint used here to  generate a JHipster application on GitHub: https://github.com/amarpatel-xx/generator-jhipster-multiple-human-readable-foreign-key-fields
+☕️ Find the code for the underlying blueprint used here to  generate a JHipster application on GitHub: https://github.com/amarpatel-xx/generator-jhipster-ai-postgresql
 
-☕️ Find the example code that uses the blueprint to generate a JHipster application  on GitHub: https://github.com/amarpatel-xx/jhipster-multiple-human-readable-foreign-key-fields-example
+☕️ Find the example code that uses the blueprint to generate a JHipster application  on GitHub: https://github.com/amarpatel-xx/jhipster-ai-postgresql-example
 
 
 🤓 Read the following blog post, by Matt Raible, that was used as inspiration for this project: [Micro Frontends for Java Microservices](https://auth0.com/blog/micro-frontends-for-java-microservices/)
