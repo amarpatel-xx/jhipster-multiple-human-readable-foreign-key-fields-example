@@ -31,14 +31,17 @@ Matt Raible's frequently used the blog and store examples in his capability demo
 
 The underlying `generator-jhipster-multiple-human-readable-foreign-key-fields` blueprint has received significant improvements since the last open-source tagged release (v2.0.12). Regenerating this example with the latest blueprint version will include:
 
-### pgvector / AI Embeddings Support
+### pgvector / AI Semantic Search
 - Added full **PostgreSQL pgvector** support for AI-powered semantic search on entity fields.
+- **Automatic embedding generation** on create and update -- when an entity with vector fields is saved, embeddings are generated from source text fields (e.g., `name` -> `nameEmbedding`) using the OpenAI Embedding API.
+- **AI semantic search bar** on list pages for entities with vector fields -- users can type natural language queries and find semantically similar records.
 - Vector embedding fields are automatically excluded from DTOs to keep payloads clean, while remaining in JPA entities for database operations.
-- Added **vector similarity search REST endpoints** that perform cosine distance queries against pgvector columns.
-- Generates `EmbeddingConfiguration` with OpenAI embeddings (1536 dimensions) and a `PgVectorConverter` for proper `float[]` serialization.
-- Added **automatic embedding migration on startup** -- similar to how Liquibase runs, embeddings are generated for any rows missing them.
-- Added `@ColumnTransformer` annotations for explicit vector casting in Hibernate queries.
-- Angular UI truncates long vector arrays for readable display.
+- **Cosine similarity search** with distance threshold filters out unrelated results -- only semantically relevant matches are returned.
+- **HNSW indexes** are automatically created on vector columns for fast approximate nearest neighbor search.
+- Generates `EmbeddingConfiguration` with Spring AI and OpenAI embeddings (text-embedding-3-small, 1536 dimensions).
+- `PgVectorConverter` with `autoApply=true` handles `float[]` <-> PostgreSQL `vector` serialization transparently.
+- **Automatic embedding migration on startup** -- similar to how Liquibase runs, embeddings are generated for any rows missing them.
+- Angular UI shows vector fields as **readonly** on update forms and **truncates** long vector arrays on list and detail pages.
 
 ### PDF Blob Support
 - Added **PDF thumbnail and download** support for `blobContentTypeAny` fields in list, detail, and update page templates.
@@ -61,7 +64,24 @@ The underlying `generator-jhipster-multiple-human-readable-foreign-key-fields` b
 - [Java](https://sdkman.io/) 21+
 - [Node.js](https://nodejs.org/) 20+
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [JHipster](https://www.jhipster.tech/installation/) 8.6.0
+- [JHipster](https://www.jhipster.tech/installation/) 9.0.0
+
+### AI Semantic Search (Optional)
+
+To enable AI-powered semantic search, set your OpenAI API key as an environment variable:
+
+```console
+export OPENAI_API_KEY=sk-your-key-here
+```
+
+Or add it to your microservice's `application-dev.yml`:
+
+```yaml
+openai:
+  api-key: sk-your-key-here
+```
+
+Without the API key, the application runs normally but embedding generation and AI search are disabled.
 
 ### Build
 ### Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint 
@@ -138,10 +158,13 @@ Now you can open your favorite browser to [http://localhost:8080](http://localho
 1.  Open your favorite browser to [http://localhost:8080](http://localhost:8080), and log in with the credentials displayed on the page. Then navigate to the psqlblog menu item.
 2.  Then, add a user by giving it a login name.
 3.  Then, add a blog by giving it a name, handle and selecting the user.
-3.  Add a tag by giving it a name.
-4.  Finally, add a post by providing a title, content, selecting the blog and the tag.
+4.  Add a tag by giving it a name and description. If the OpenAI API key is configured, embeddings are automatically generated when you save.
+5.  Finally, add a post by providing a title, content, selecting the blog and the tag.
 
 Notice the blog column of the post shows `<blog-name>-<blog-handle>` and not the UUID of the blog. That is success!
+
+### Try AI Semantic Search
+If you configured the OpenAI API key, go to the Tag list page and use the **AI Search** bar. Type a natural language query (e.g., "animals" or "vehicles") and the search will find tags with semantically similar names or descriptions using cosine similarity against pgvector embeddings.
 
 ## Then create a Store
 1.  Open your favorite browser to [http://localhost:8080](http://localhost:8080), and log in with the credentials displayed on the page. Then navigate to the psqlstore menu item.
