@@ -43,6 +43,20 @@ The underlying `generator-jhipster-multiple-human-readable-foreign-key-fields` b
 - **Automatic embedding migration on startup** -- similar to how Liquibase runs, embeddings are generated for any rows missing them.
 - Angular UI shows vector fields as **readonly** on update forms and **truncates** long vector arrays on list and detail pages.
 
+#### AI Semantic Search Screenshots
+
+Searching for **"camry"** returns Toyota (a car brand) and Cat (less relevant, ranked lower):
+
+![Semantic Search - Camry](screenshots/Semantic%20Search%20-%20Camry.png)
+
+Searching for **"cheetah"** returns Cat first (both are felines), then Dog and Toyota ranked by similarity:
+
+![Semantic Search - Cheetah](screenshots/Semantic%20Search%20-%20Cheetah.png)
+
+Searching for **"german shepherd"** returns Dog first (a dog breed), then Cat (also an animal), then Toyota (least similar):
+
+![Semantic Search - German Shepherd](screenshots/Semantic%20Search%20-%20German%20Shepherd.png)
+
 ### PDF Blob Support
 - Added **PDF thumbnail and download** support for `blobContentTypeAny` fields in list, detail, and update page templates.
 - PDF icon styling matches across list and detail views with shadow and download link.
