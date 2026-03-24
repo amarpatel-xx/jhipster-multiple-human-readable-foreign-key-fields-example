@@ -4,7 +4,7 @@
     "baseName": "workspaces",
     "blueprints": [
       {
-        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "name": "generator-jhipster-ai-postgresql",
         "version": "2.0.13"
       }
     ],

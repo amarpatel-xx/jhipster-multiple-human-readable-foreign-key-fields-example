@@ -104,8 +104,8 @@ public class TagServiceImpl implements TagService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<TagDTO> aiSearch(String query, int limit) {
-        LOG.debug("Request to AI search Tags for query: {}, limit: {}", query, limit);
+    public List<TagDTO> aiSearch(String query, int limit, List<String> fields) {
+        LOG.debug("Request to AI search Tags for query: {}, limit: {}, fields: {}", query, limit, fields);
 
         if (query == null || query.isBlank()) {
             return List.of();
@@ -122,25 +122,30 @@ public class TagServiceImpl implements TagService {
             return List.of();
         }
 
-        // Search across all vector fields and merge results (deduplicated by ID)
+        // Search across selected vector fields (or all if none specified) and merge results (deduplicated by ID)
         // Use cosine distance threshold of 0.8 to filter out unrelated results
         // Cosine distance: 0 = identical, 1 = orthogonal, 2 = opposite
         double maxDistance = 0.8;
+        boolean searchAll = (fields == null || fields.isEmpty());
         java.util.Map<UUID, TagDTO> resultMap = new java.util.LinkedHashMap<>();
 
         // Search by nameEmbedding
-        tagRepository
-            .findSimilarByNameEmbeddingWithThreshold(embeddingStr, maxDistance, limit)
-            .stream()
-            .map(tagMapper::toDto)
-            .forEach(item -> resultMap.putIfAbsent(item.getId(), item));
+        if (searchAll || fields.contains("nameEmbedding")) {
+            tagRepository
+                .findSimilarByNameEmbeddingWithThreshold(embeddingStr, maxDistance, limit)
+                .stream()
+                .map(tagMapper::toDto)
+                .forEach(item -> resultMap.putIfAbsent(item.getId(), item));
+        }
 
         // Search by descriptionEmbedding
-        tagRepository
-            .findSimilarByDescriptionEmbeddingWithThreshold(embeddingStr, maxDistance, limit)
-            .stream()
-            .map(tagMapper::toDto)
-            .forEach(item -> resultMap.putIfAbsent(item.getId(), item));
+        if (searchAll || fields.contains("descriptionEmbedding")) {
+            tagRepository
+                .findSimilarByDescriptionEmbeddingWithThreshold(embeddingStr, maxDistance, limit)
+                .stream()
+                .map(tagMapper::toDto)
+                .forEach(item -> resultMap.putIfAbsent(item.getId(), item));
+        }
 
         return new java.util.ArrayList<>(resultMap.values());
     }

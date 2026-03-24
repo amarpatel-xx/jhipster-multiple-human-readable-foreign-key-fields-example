@@ -70,13 +70,15 @@ public interface TagService {
 
     /**
      * Search for tags using AI-powered semantic similarity.
-     * Converts the text query to an embedding and searches across all vector fields.
+     * Converts the text query to an embedding and searches across all vector fields,
+     * or only the specified fields if the 'fields' parameter is provided.
      *
      * @param query the text query to search for
      * @param limit maximum number of results to return
+     * @param fields optional list of vector field names to search in (null or empty searches all)
      * @return list of semantically similar tags
      */
-    List<TagDTO> aiSearch(String query, int limit);
+    List<TagDTO> aiSearch(String query, int limit, List<String> fields);
 
     // ==================== Vector Similarity Search Methods ====================
 

@@ -18,7 +18,7 @@
     "baseName": "psqlgateway",
     "blueprints": [
       {
-        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "name": "generator-jhipster-ai-postgresql",
         "version": "2.0.13"
       }
     ],
@@ -27,7 +27,7 @@
     "devServerPort": 4200,
     "entities": [],
     "jhipsterVersion": "9.0.0",
-    "jwtSecretKey": "NmVmYWQ0YjU2NmYyYjcyYmVhNmFkOGQ1NWE2NzFjMTI1YWQ3MGVmOTBiNTY1NGFhYTUyOTIyY2QzZDg5YmNjNmZjNmZiNTYxYjFhOWIxMjRjMTMxMjNiYzY4OWFmYjU4Mzc2Y2FmYTM5NGQzNGZjNGFmMWM0YzZiYzI2YzcwZDE=",
+    "jwtSecretKey": "ZDJkODE0MTYyOGU4ZGQ0ZWVhMThkMDE4YWY1YTNkZWZjNWVhMzI5NDhjNGMyN2UxZWMxMTBlNjdmNzY3ZGIyMzEwMzU0OTE4YmNjZTg0NGNkZjk3YjZhYzkyY2QzZWNjOTA1MzAwOTJmMWM5MDdiOTVlYTg5YWExODhiNDM0OTY=",
     "languages": ["en"],
     "microfrontends": [
       {

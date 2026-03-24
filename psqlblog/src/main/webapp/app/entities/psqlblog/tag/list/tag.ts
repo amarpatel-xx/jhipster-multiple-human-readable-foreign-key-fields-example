@@ -45,6 +45,17 @@ export class Tag implements OnInit {
   aiSearchQuery = '';
   aiSearchLoading = signal(false);
   isAiSearchActive = signal(false);
+  aiSearchSelectedFields: { [key: string]: boolean } = { nameEmbedding: true, descriptionEmbedding: true };
+
+  toggleAiSearchField(fieldName: string): void {
+    this.aiSearchSelectedFields[fieldName] = !this.aiSearchSelectedFields[fieldName];
+  }
+
+  private getSelectedAiSearchFields(): string[] {
+    const allFields = ['nameEmbedding', 'descriptionEmbedding'];
+    const selected = allFields.filter(f => this.aiSearchSelectedFields[f]);
+    return selected.length > 0 ? selected : allFields;
+  }
 
   performAiSearch(query: string): void {
     if (!query || !query.trim()) {
@@ -52,7 +63,8 @@ export class Tag implements OnInit {
       return;
     }
     this.aiSearchLoading.set(true);
-    this.tagService.aiSearch(query.trim(), 20).subscribe({
+    const fields = this.getSelectedAiSearchFields();
+    this.tagService.aiSearch(query.trim(), 20, fields).subscribe({
       next: results => {
         this.tags.set(results);
         this.isAiSearchActive.set(true);

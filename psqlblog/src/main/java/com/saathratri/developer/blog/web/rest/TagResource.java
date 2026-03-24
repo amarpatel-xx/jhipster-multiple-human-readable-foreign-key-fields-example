@@ -193,19 +193,30 @@ public class TagResource {
 
     /**
      * {@code GET  /tags/ai-search} : search for Tags using AI-powered semantic similarity.
-     * Converts the text query to an embedding and searches across all vector fields.
+     * Converts the text query to an embedding and searches across all vector fields,
+     * or only the specified fields if the 'fields' parameter is provided.
      *
      * @param query the text query to search for.
      * @param limit maximum number of results to return (default: 10).
+     * @param fields optional comma-separated list of vector field names to search in.
+     *               If not provided or empty, all vector fields are searched.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of matching Tags in body.
      */
     @GetMapping("/ai-search")
     public ResponseEntity<List<TagDTO>> aiSearch(
         @RequestParam("query") String query,
-        @RequestParam(value = "limit", defaultValue = "10") int limit
+        @RequestParam(value = "limit", defaultValue = "10") int limit,
+        @RequestParam(value = "fields", required = false) String fields
     ) {
-        LOG.debug("REST request to AI search Tags for query: {}, limit: {}", query, limit);
-        List<TagDTO> result = tagService.aiSearch(query, limit);
+        LOG.debug("REST request to AI search Tags for query: {}, limit: {}, fields: {}", query, limit, fields);
+        List<String> fieldList = null;
+        if (fields != null && !fields.isBlank()) {
+            fieldList = java.util.Arrays.stream(fields.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .collect(java.util.stream.Collectors.toList());
+        }
+        List<TagDTO> result = tagService.aiSearch(query, limit, fieldList);
         return ResponseEntity.ok().body(result);
     }
 

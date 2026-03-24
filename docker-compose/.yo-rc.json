@@ -4,7 +4,7 @@
     "appsFolders": ["psqlgateway", "psqlblog", "psqlstore"],
     "blueprints": [
       {
-        "name": "generator-jhipster-multiple-human-readable-foreign-key-fields",
+        "name": "generator-jhipster-ai-postgresql",
         "version": "2.0.13"
       }
     ],
@@ -13,7 +13,7 @@
     "directoryPath": "../",
     "dockerRepositoryName": "amarppatel",
     "gatewayType": "SpringCloudGateway",
-    "jwtSecretKey": "MTdjOGUxMDU3Yzg1ZWYzYjg5ZjMxZThiODUxNTcwYWNiM2JmNDU2NGNhNDM4NTk3YjAwZTk0NDNmMmY0NGM5ZmJlOTE1ZTc5ZTI0YjJiNjliNWZiYTA0ODQ4MDU0M2EwMzFiYQ==",
+    "jwtSecretKey": "MTVjNzQ4ZTViMGQ3N2FkMjc5N2U1NTY4YmRmZTJiM2RhNzM1MDE2MzRlZDQzMDFkYjkwMTliNGNmODU4Zjg2YTFiOGJhNzQ4ZjBmYWU1OWIxMTQxM2VkM2Y4MWI0OWRmMTc1MA==",
     "monitoring": "no",
     "serviceDiscoveryType": "eureka"
   }
