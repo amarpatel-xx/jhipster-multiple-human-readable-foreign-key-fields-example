@@ -95,30 +95,30 @@
 
         <div class="mb-3">
           <label class="form-label" for="field_nameEmbedding" jhiTranslate="psqlblogApp.psqlblogTag.nameEmbedding">Name Embedding</label>
-          <input
-            type="text"
-            class="form-control"
-            name="nameEmbedding"
-            id="field_nameEmbedding"
-            data-cy="nameEmbedding"
-            formControlName="nameEmbedding"
-            [readonly]="true"
-          />
+          @if (tag?.nameEmbedding && tag!.nameEmbedding!.length > 0) {
+            <textarea class="form-control font-monospace" readonly rows="4" style="font-size: 0.75rem">{{
+              tag!.nameEmbedding! | json
+            }}</textarea>
+          } @else {
+            <div class="form-control bg-light">
+              <small class="text-muted"><em>Not generated yet</em></small>
+            </div>
+          }
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="field_descriptionEmbedding" jhiTranslate="psqlblogApp.psqlblogTag.descriptionEmbedding"
             >Description Embedding</label
           >
-          <input
-            type="text"
-            class="form-control"
-            name="descriptionEmbedding"
-            id="field_descriptionEmbedding"
-            data-cy="descriptionEmbedding"
-            formControlName="descriptionEmbedding"
-            [readonly]="true"
-          />
+          @if (tag?.descriptionEmbedding && tag!.descriptionEmbedding!.length > 0) {
+            <textarea class="form-control font-monospace" readonly rows="4" style="font-size: 0.75rem">{{
+              tag!.descriptionEmbedding! | json
+            }}</textarea>
+          } @else {
+            <div class="form-control bg-light">
+              <small class="text-muted"><em>Not generated yet</em></small>
+            </div>
+          }
         </div>
 
         <div class="mb-3">

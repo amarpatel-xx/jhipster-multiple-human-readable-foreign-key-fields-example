@@ -179,14 +179,24 @@
               <td>{{ tag.name }}</td>
               <td>{{ tag.description }}</td>
               <td>
-                {{ tag.nameEmbedding && tag.nameEmbedding.length > 4 ? (tag.nameEmbedding | slice: 0 : 4) + '...' : tag.nameEmbedding }}
+                <small class="text-muted">
+                  @if (tag.nameEmbedding && tag.nameEmbedding.length > 0) {
+                    [{{ tag.nameEmbedding[0] | number: '1.0-5' }}, {{ tag.nameEmbedding[1] | number: '1.0-5' }},
+                    {{ tag.nameEmbedding[2] | number: '1.0-5' }}, ...]
+                  } @else {
+                    <em>Not generated</em>
+                  }
+                </small>
               </td>
               <td>
-                {{
-                  tag.descriptionEmbedding && tag.descriptionEmbedding.length > 4
-                    ? (tag.descriptionEmbedding | slice: 0 : 4) + '...'
-                    : tag.descriptionEmbedding
-                }}
+                <small class="text-muted">
+                  @if (tag.descriptionEmbedding && tag.descriptionEmbedding.length > 0) {
+                    [{{ tag.descriptionEmbedding[0] | number: '1.0-5' }}, {{ tag.descriptionEmbedding[1] | number: '1.0-5' }},
+                    {{ tag.descriptionEmbedding[2] | number: '1.0-5' }}, ...]
+                  } @else {
+                    <em>Not generated</em>
+                  }
+                </small>
               </td>
               <td class="text-end">
                 <div class="btn-group">

@@ -27,7 +27,7 @@
     "devServerPort": 4200,
     "entities": [],
     "jhipsterVersion": "9.0.0",
-    "jwtSecretKey": "ZDJkODE0MTYyOGU4ZGQ0ZWVhMThkMDE4YWY1YTNkZWZjNWVhMzI5NDhjNGMyN2UxZWMxMTBlNjdmNzY3ZGIyMzEwMzU0OTE4YmNjZTg0NGNkZjk3YjZhYzkyY2QzZWNjOTA1MzAwOTJmMWM5MDdiOTVlYTg5YWExODhiNDM0OTY=",
+    "jwtSecretKey": "ODQ2OWVjYzhjYzhlNjE0MzU1ZmIzODg4NTEzOTg3YmQ0NWZkNTcyOTViNjA4MTFiMGZmYTRkMWIyNTliZjY0NGI5OGEzMjc4YTYyMjlhODIwYWMwMDk1MTBjZmI0YmZlYzU2Yjc3MjZjMWE1ODVhMTNiM2UwNmE0ZWZiZmExZTk=",
     "languages": ["en"],
     "microfrontends": [
       {

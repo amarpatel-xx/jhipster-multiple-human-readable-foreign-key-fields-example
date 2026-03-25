@@ -22,9 +22,15 @@ import org.mapstruct.control.NoComplexMapping;
 @Mapper(componentModel = "spring", mappingControl = NoComplexMapping.class)
 public interface TagMapper extends EntityMapper<TagDTO, Tag> {
     @Mapping(target = "posts", source = "posts", qualifiedByName = "postIdSet")
-    @Mapping(target = "nameEmbedding", source = "nameEmbedding")
-    @Mapping(target = "descriptionEmbedding", source = "descriptionEmbedding")
     TagDTO toDto(Tag s);
+
+    @Mapping(target = "nameEmbedding", ignore = true)
+    @Mapping(target = "descriptionEmbedding", ignore = true)
+    Tag toEntity(TagDTO tagDTO);
+
+    @Mapping(target = "nameEmbedding", ignore = true)
+    @Mapping(target = "descriptionEmbedding", ignore = true)
+    void partialUpdate(@MappingTarget Tag entity, TagDTO dto);
 
     /**
      * Lightweight mapper for list views that doesn't trigger lazy loading of collections.
@@ -64,5 +70,16 @@ public interface TagMapper extends EntityMapper<TagDTO, Tag> {
 
     default byte[] map(String value) {
         return value == null ? null : value.getBytes();
+    }
+
+    default java.util.List<Float> mapFloatArrayToList(float[] array) {
+        if (array == null) {
+            return null;
+        }
+        java.util.List<Float> list = new java.util.ArrayList<>(array.length);
+        for (float f : array) {
+            list.add(f);
+        }
+        return list;
     }
 }

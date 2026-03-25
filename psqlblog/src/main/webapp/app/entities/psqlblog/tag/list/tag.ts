@@ -1,4 +1,4 @@
-import { SlicePipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +26,7 @@ import { ITag } from '../tag.model';
   selector: 'jhi-tag',
   templateUrl: './tag.html',
   imports: [
-    SlicePipe,
+    DecimalPipe,
     RouterLink,
     FormsModule,
     FontAwesomeModule,

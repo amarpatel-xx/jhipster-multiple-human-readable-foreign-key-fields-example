@@ -1,4 +1,4 @@
-import { SlicePipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { ITag } from '../tag.model';
 @Component({
   selector: 'jhi-tag-detail',
   templateUrl: './tag-detail.html',
-  imports: [SlicePipe, FontAwesomeModule, Alert, AlertError, TranslateDirective, TranslateModule, RouterLink],
+  imports: [DecimalPipe, FontAwesomeModule, Alert, AlertError, TranslateDirective, TranslateModule, RouterLink],
 })
 export class TagDetail {
   readonly tag = input<ITag | null>(null);

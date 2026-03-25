@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +24,7 @@ import { TagFormGroup, TagFormService } from './tag-form.service';
 @Component({
   selector: 'jhi-tag-update',
   templateUrl: './tag-update.html',
-  imports: [TranslateDirective, TranslateModule, FontAwesomeModule, AlertError, ReactiveFormsModule],
+  imports: [JsonPipe, TranslateDirective, TranslateModule, FontAwesomeModule, AlertError, ReactiveFormsModule],
 })
 export class TagUpdate implements OnInit {
   readonly isSaving = signal(false);

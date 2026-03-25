@@ -4,8 +4,8 @@ export interface ITag {
   id: string;
   name?: string | null;
   description?: string | null;
-  nameEmbedding?: string | null;
-  descriptionEmbedding?: string | null;
+  nameEmbedding?: number[] | null;
+  descriptionEmbedding?: number[] | null;
 
   posts?: Pick<IPost, 'id'>[] | null;
 }
