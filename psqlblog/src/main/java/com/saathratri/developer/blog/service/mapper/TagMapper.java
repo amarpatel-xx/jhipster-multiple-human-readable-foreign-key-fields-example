@@ -26,10 +26,6 @@ public interface TagMapper extends EntityMapper<TagDTO, Tag> {
 
     @Mapping(target = "nameEmbedding", ignore = true)
     @Mapping(target = "descriptionEmbedding", ignore = true)
-    Tag toEntity(TagDTO tagDTO);
-
-    @Mapping(target = "nameEmbedding", ignore = true)
-    @Mapping(target = "descriptionEmbedding", ignore = true)
     void partialUpdate(@MappingTarget Tag entity, TagDTO dto);
 
     /**
@@ -48,6 +44,8 @@ public interface TagMapper extends EntityMapper<TagDTO, Tag> {
 
     @Mapping(target = "posts", ignore = true)
     @Mapping(target = "removePost", ignore = true)
+    @Mapping(target = "nameEmbedding", ignore = true)
+    @Mapping(target = "descriptionEmbedding", ignore = true)
     Tag toEntity(TagDTO tagDTO);
 
     @Named("postId")
