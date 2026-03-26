@@ -103,7 +103,7 @@ relationship ManyToMany {
 
 paginate Post, Tag, Product with pagination
 
-microservice Product with psqlstore
+microservice Product, Report with psqlstore
 microservice Blog, Post, Tag with psqlblog
 
 deployment {

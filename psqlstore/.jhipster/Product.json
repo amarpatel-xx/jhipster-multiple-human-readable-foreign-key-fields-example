@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20260325195532"
+    "changelogDate": "20260326024228"
   },
   "applications": ["psqlstore"],
   "clientRootFolder": "psqlstore",
