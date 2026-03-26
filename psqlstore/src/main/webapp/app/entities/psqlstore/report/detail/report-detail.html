@@ -1,0 +1,107 @@
+<style>
+  .saathratri-pdf-badge-link {
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .saathratri-pdf-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e53935;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    border: 2px solid #1976d2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+  .saathratri-pdf-badge:hover {
+    border-color: #0d47a1;
+    box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+    transform: scale(1.05);
+  }
+  .saathratri-pdf-badge-sm {
+    width: 40px;
+    height: 52px;
+    font-size: 0.6rem;
+  }
+  .saathratri-pdf-badge-lg {
+    width: 60px;
+    height: 78px;
+    font-size: 0.75rem;
+  }
+</style>
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (report(); as reportRef) {
+      <div>
+        <h2 data-cy="reportDetailsHeading"><span jhiTranslate="psqlstoreApp.psqlstoreReport.detail.title">Report</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="psqlstoreApp.psqlstoreReport.id">Id</span></dt>
+          <dd>
+            <span>{{ reportRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlstoreApp.psqlstoreReport.fileName">File Name</span></dt>
+          <dd>
+            <span>{{ reportRef.fileName }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlstoreApp.psqlstoreReport.fileExtension">File Extension</span></dt>
+          <dd>
+            <span>{{ reportRef.fileExtension }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlstoreApp.psqlstoreReport.createDate">Create Date</span></dt>
+          <dd>
+            <span>{{ reportRef.createDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlstoreApp.psqlstoreReport.file">File</span></dt>
+          <dd>
+            @if (reportRef.file) {
+              <div>
+                @if (reportRef.fileContentType === 'application/pdf') {
+                  <a class="saathratri-pdf-badge-link" (click)="openFile(reportRef.file ?? '', reportRef.fileContentType)">
+                    <div class="saathratri-pdf-badge saathratri-pdf-badge-lg">PDF</div>
+                  </a>
+                } @else {
+                  <a (click)="openFile(reportRef.file ?? '', reportRef.fileContentType)" jhiTranslate="entity.action.open">Open</a>
+                }
+                &nbsp;{{ reportRef.fileContentType }}, {{ byteSize(reportRef.file ?? '') }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="psqlstoreApp.psqlstoreReport.approved">Approved</span></dt>
+          <dd>
+            <span>{{ reportRef.approved }}</span>
+          </dd>
+          <dt><span jhiTranslate="psqlstoreApp.psqlstoreReport.product">Product</span></dt>
+          <dd>
+            @if (report()!.product) {
+              <div>
+                <a [routerLink]="['/psqlstore/product', report()!.product?.id, 'view']">{{ report()!.product!.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/psqlstore/report', reportRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

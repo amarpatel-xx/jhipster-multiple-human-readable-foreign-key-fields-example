@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20260326025724"
+  },
+  "applications": ["psqlstore"],
+  "clientRootFolder": "psqlstore",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "fileName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "fileExtension",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "file",
+      "fieldType": "AnyBlob",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "approved",
+      "fieldType": "Boolean"
+    }
+  ],
+  "microserviceName": "psqlstore",
+  "name": "Report",
+  "relationships": [
+    {
+      "otherEntityName": "product",
+      "relationshipName": "product",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

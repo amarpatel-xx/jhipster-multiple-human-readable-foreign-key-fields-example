@@ -6,15 +6,15 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     <!--
-        Added the constraints for entity Blog.
+        Added the constraints for entity Report.
     -->
-    <changeSet id="20260326024228-2" author="jhipster">
+    <changeSet id="20260326025724-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="taj_user_id"
-                                 baseTableName="blog"
-                                 constraintName="fk_blog__taj_user_id"
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="report"
+                                 constraintName="fk_report__product_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="taj_user"
+                                 referencedTableName="product"
                                  />
     </changeSet>
 </databaseChangeLog>

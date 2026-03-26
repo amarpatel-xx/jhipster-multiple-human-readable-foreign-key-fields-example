@@ -46,7 +46,7 @@ application {
     serviceDiscoveryType eureka
     clientFramework angularX
   }
-  entities Product
+  entities Product, Report
 }
 
 entity TajUser {
