@@ -1,7 +1,7 @@
 # JHipster Example for Human-Readable Foreign Keys in User Interface
 
 ### About this JHipster Example
-This code was generated using the JHipster blueprint `generator-jhipster-ai-postgresql`. 
+This code was generated using the JHipster blueprint `generator-jhipster-ai-postgresql`.
 The source code for the underlying JHipster generator that is used in this example is available at: https://github.com/amarpatel-xx/generator-jhipster-ai-postgresql
 
 This code has a JDL which shows 2 foreign keys that will concatenated and shown, in the Angular user interface, in replacement of the UUID. The JDL can be modified and the `@customAnnotation("DISPLAY_IN_GUI_RELATIONSHIP_LINK")` can be used with any fields of an entity which would make it easier to identify that entity when displayed (as part of a relationship). Sometimes having a UUID makes it difficult for the human in the loop to figure out what the entity on a relationship's other side actually is. If multiple entity fields are necessary to replace the UUID, the fields can be delimmited via a specified delimiter using a `@customAnnotation`, as well (see the example JDL file included as part of this project).
