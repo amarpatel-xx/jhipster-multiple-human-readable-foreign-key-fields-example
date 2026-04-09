@@ -7,7 +7,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-ai-postgresql",
-        "version": "2.0.13"
+        "version": "2.0.14"
       }
     ],
     "buildTool": "maven",
@@ -18,9 +18,9 @@
     "enableHibernateCache": false,
     "entities": ["Blog", "Post", "Tag", "TajUser"],
     "jhipsterVersion": "9.0.0",
-    "jwtSecretKey": "Mjc2YjZhNDNmNGQyZDE2MjE2MGM0ZDJkMGY2YjlmNWVjN2QwMzA3ZDBkZDZiZjNkOTk4ODQ1YTZkNmY1MjhjYzY0MGNkYTNhNzM3OTg2NjViYzE4MWI5MWFhNTRmOGJkZjE0MjQxYWRmYjY3MTU1ODljMTk2ODNlNjgwNGViNjA=",
+    "jwtSecretKey": "NjZhYzMzYWViY2UyYmI5Y2VjNWQ0MzViMTdjNzYyMWUxN2FjOGM5NDJkZWRiMmU1OWU0OTM4NWJiODU3MWQ2YjA2NTE2ODkwMzdkMzc0NjRjMDZiYTc3OTE1N2RjYmJkY2I3MTgxNTYxZDEzZDVmYzM1M2U1MGE4MDM4NmY1NDI=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1774493964000,
+    "lastLiquibaseTimestamp": 1775739879000,
     "monorepository": true,
     "nativeLanguage": "en",
     "packageName": "com.saathratri.developer.blog",

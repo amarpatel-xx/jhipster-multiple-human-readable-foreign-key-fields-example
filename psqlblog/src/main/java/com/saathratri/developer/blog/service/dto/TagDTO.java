@@ -22,11 +22,10 @@ public class TagDTO implements Serializable {
     @Size(max = 255)
     private String description;
 
-    private float[] nameEmbedding;
-
-    private float[] descriptionEmbedding;
-
     private Set<PostDTO> posts = new HashSet<>();
+
+    private java.util.List<Float> nameEmbedding;
+    private java.util.List<Float> descriptionEmbedding;
 
     public UUID getId() {
         return id;
@@ -52,28 +51,28 @@ public class TagDTO implements Serializable {
         this.description = description;
     }
 
-    public float[] getNameEmbedding() {
-        return nameEmbedding;
-    }
-
-    public void setNameEmbedding(float[] nameEmbedding) {
-        this.nameEmbedding = nameEmbedding;
-    }
-
-    public float[] getDescriptionEmbedding() {
-        return descriptionEmbedding;
-    }
-
-    public void setDescriptionEmbedding(float[] descriptionEmbedding) {
-        this.descriptionEmbedding = descriptionEmbedding;
-    }
-
     public Set<PostDTO> getPosts() {
         return posts;
     }
 
     public void setPosts(Set<PostDTO> posts) {
         this.posts = posts;
+    }
+
+    public java.util.List<Float> getNameEmbedding() {
+        return nameEmbedding;
+    }
+
+    public void setNameEmbedding(java.util.List<Float> nameEmbedding) {
+        this.nameEmbedding = nameEmbedding;
+    }
+
+    public java.util.List<Float> getDescriptionEmbedding() {
+        return descriptionEmbedding;
+    }
+
+    public void setDescriptionEmbedding(java.util.List<Float> descriptionEmbedding) {
+        this.descriptionEmbedding = descriptionEmbedding;
     }
 
     @Override
@@ -104,8 +103,6 @@ public class TagDTO implements Serializable {
             "id='" + getId() + "'" +
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
-            ", nameEmbedding='" + getNameEmbedding() + "'" +
-            ", descriptionEmbedding='" + getDescriptionEmbedding() + "'" +
             ", posts=" + getPosts() +
             "}";
     }

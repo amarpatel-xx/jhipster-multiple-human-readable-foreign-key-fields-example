@@ -7,7 +7,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-ai-postgresql",
-        "version": "2.0.13"
+        "version": "2.0.14"
       }
     ],
     "buildTool": "maven",
@@ -18,9 +18,9 @@
     "enableHibernateCache": false,
     "entities": ["Product", "Report"],
     "jhipsterVersion": "9.0.0",
-    "jwtSecretKey": "YjVhNWM0YjQ5ODk2MjZkODMxMDZiOGVlNDA3MjA1YzE5NDU4YzY3MzgwYmRkZWE5Yjc5NGZlMDhiYThiZmRkNmViMjNkZWMyNTQyZDA2Mzc4Y2JlNzU4MGVhMjMwYTA4ZDE3ZTYzNDlmMjc4MjhjNjc4MmUwNTg2YzkxMzFmNzY=",
+    "jwtSecretKey": "ZmEyNzU2YzNkYjQzMjExOTYxMjQwYmNmN2I0YjczNGFhZDUyYzI3MGU4NTM1NDBkOTNkYmNkYTA3ZDYwYTdmODI4YThjNDEzYWY3MGM1MTllYTc4NWI1NzY5Yjk4YzkyZGM5NGFjODM4Yzg2OTVjMzMyMTgxMTZiZTM0YTc5YWM=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1774493844000,
+    "lastLiquibaseTimestamp": 1775739759000,
     "monorepository": true,
     "nativeLanguage": "en",
     "packageName": "com.saathratri.developer.store",

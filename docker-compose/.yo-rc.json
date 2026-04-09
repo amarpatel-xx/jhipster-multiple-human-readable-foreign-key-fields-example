@@ -5,7 +5,7 @@
     "blueprints": [
       {
         "name": "generator-jhipster-ai-postgresql",
-        "version": "2.0.13"
+        "version": "2.0.14"
       }
     ],
     "clusteredDbApps": [],
@@ -13,7 +13,7 @@
     "directoryPath": "../",
     "dockerRepositoryName": "amarppatel",
     "gatewayType": "SpringCloudGateway",
-    "jwtSecretKey": "MDgxM2Q2ODc2MjcyNTg3OGVlZWY5MTA0ZWJkZTZhYzQ3Yjc3ZjVjYzQ4MzJhOWNlMTYyMzJlMDFmMjljMzQyZDc5ZDJhOTUzMjMwNmRiODI0NWU1YWNjMzBiYmY4NTVlNTU5Yw==",
+    "jwtSecretKey": "ZjRhM2Q5MTMzZTRlZTg1OGZjYTliOTRlOWNkZTI4NTNkZmYzZjMyOGQ3ZDUwOGMyODE0Yzg5MjM0YWM3YTE1Y2IxMzM1ZjIwZGQ4NTYwMTZkODlhOWRjMDQ4YTgxMDBmZDQ5Zg==",
     "monitoring": "no",
     "serviceDiscoveryType": "eureka"
   }

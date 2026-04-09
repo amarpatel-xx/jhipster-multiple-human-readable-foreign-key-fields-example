@@ -31,7 +31,7 @@
           <li
             ngbDropdown
             class="nav-item dropdown pointer"
-            display="dynamic"
+            display="static"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             data-cy="entity"
@@ -75,7 +75,7 @@
           *jhiHasAnyAuthority="'ROLE_ADMIN'"
           ngbDropdown
           class="nav-item dropdown pointer"
-          display="dynamic"
+          display="static"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
           data-cy="adminMenu"
@@ -91,7 +91,7 @@
           </ul>
         </li>
         @if (languages && languages.length > 1) {
-          <li ngbDropdown class="nav-item dropdown pointer" display="dynamic">
+          <li ngbDropdown class="nav-item dropdown pointer" display="static">
             <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
               <span>
                 <fa-icon icon="flag" />
@@ -116,7 +116,7 @@
         <li
           ngbDropdown
           class="nav-item dropdown pointer"
-          display="dynamic"
+          display="static"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
           data-cy="accountMenu"

@@ -18,6 +18,7 @@ let sharedDependencies = shareDependencies({ skipList: ['@angular/localize'] });
 sharedDependencies = {
   ...sharedDependencies,
   '@angular/common/http': sharedDependencies['@angular/common'],
+  '@angular/core/rxjs-interop': sharedDependencies['@angular/core'],
   'rxjs/operators': sharedDependencies.rxjs,
 };
 

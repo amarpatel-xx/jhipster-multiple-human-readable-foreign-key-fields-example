@@ -8,7 +8,7 @@
     <!--
         Added the constraints for entity Report.
     -->
-    <changeSet id="20260326025724-2" author="jhipster">
+    <changeSet id="20260409130239-2" author="jhipster">
 
         <addForeignKeyConstraint baseColumnNames="product_id"
                                  baseTableName="report"
