@@ -27,9 +27,9 @@ Matt Raible's frequently used the blog and store examples in his capability demo
     }
 ```
 
-## Improvements Since v2.0.12
+## Improvements Since v2.0.14
 
-The underlying `generator-jhipster-ai-postgresql` blueprint has received significant improvements since the last open-source tagged release (v2.0.12). Regenerating this example with the latest blueprint version will include:
+The underlying `generator-jhipster-ai-postgresql` blueprint has received significant improvements since the last open-source tagged release (v2.0.14). Regenerating this example with the latest blueprint version will include:
 
 ### pgvector / AI Semantic Search
 - Added full **PostgreSQL pgvector** support for AI-powered semantic search on entity fields.
