@@ -174,6 +174,59 @@ npm run docker:db:up
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
+## Testing the Generated Code
+
+Every application generated into this example ships with a full test suite — both
+**backend** (JUnit + Testcontainers) and **frontend** (ESLint + Vitest). All three
+services (`psqlgateway`, `psqlblog`, `psqlstore`) are tested the same way.
+
+> Integration tests use **Testcontainers**, so **Docker Desktop must be running**. The
+> `*IT` tests start a real **PostgreSQL (with the pgvector extension)** container
+> automatically — no manual database setup is required. Note: the OpenAI API key is **not**
+> needed to run the tests (it is only used at runtime for embedding generation / AI search);
+> the suite passes without it.
+
+### Backend tests (per service)
+
+Run from each service directory (`psqlgateway`, `psqlblog`, `psqlstore`):
+
+```console
+./mvnw -ntp -DskipTests -Dskip.npm package   # compile + package only (no Docker)
+./mvnw -ntp -Dskip.npm verify                 # unit + integration tests (Docker required)
+```
+
+(On Windows, use `mvnw.cmd` instead of `./mvnw`.)
+
+`verify` runs the unit tests plus the entity REST CRUD integration tests (`*IT`):
+create / get-one / get-all / update / partial update / delete and their negative cases.
+The blueprint's additions — the extra human-readable foreign-key display columns and the
+pgvector embedding columns — are exercised against the live PostgreSQL/pgvector container.
+
+### Frontend tests (per service)
+
+Each service has an Angular microfrontend. Run from each service directory:
+
+```console
+npm install
+npm test
+```
+
+`npm test` runs **`eslint .` first** (the `pretest` hook) — if lint fails, the unit tests
+never run — then the Angular unit tests on **Vitest** (`ng test --coverage`). The lint
+gate fails only on **errors**, not warnings. To run just one half: `npx eslint .` (lint
+only) or `npx ng test` (Vitest only).
+
+### Debugging test failures
+
+This example is **generated code** — do not fix a failing test by hand-editing the
+generated app, because the next regeneration overwrites it. Instead, fix the **blueprint
+template** that produced the code, then regenerate. The full debugging runbook (the
+generate-sample tight loop, backend integration-test tips, and frontend bug patterns)
+lives in the blueprint repo:
+**[`generator-jhipster-ai-postgresql/TESTING.md`](https://github.com/amarpatel-xx/generator-jhipster-ai-postgresql/blob/main/TESTING.md)**
+(with a deeper companion catalogue in
+[`generator-jhipster-cassandra/TESTING.md`](https://github.com/amarpatel-xx/generator-jhipster-cassandra/blob/main/TESTING.md)).
+
 ### Switch Identity Providers
 
 JHipster ships with Keycloak when you choose OAuth 2.0 / OIDC as the authentication type.
