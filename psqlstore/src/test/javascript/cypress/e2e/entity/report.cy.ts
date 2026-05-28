@@ -36,7 +36,7 @@ describe('Report e2e test', () => {
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/psqlstore/api/reports**').as('entitiesRequest');
+    cy.intercept('GET', /^\/services\/psqlstore\/api\/reports\b/).as('entitiesRequest');
     cy.intercept('POST', '/services/psqlstore/api/reports').as('postEntityRequest');
     cy.intercept('DELETE', '/services/psqlstore/api/reports/*').as('deleteEntityRequest');
   });
@@ -98,7 +98,7 @@ describe('Report e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/psqlstore/api/reports**',
+              url: /^\/services\/psqlstore\/api\/reports\b/,
               times: 1,
             },
             {

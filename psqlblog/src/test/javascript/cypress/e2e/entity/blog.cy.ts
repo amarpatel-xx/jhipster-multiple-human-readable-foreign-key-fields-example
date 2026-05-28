@@ -30,7 +30,7 @@ describe('Blog e2e test', () => {
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/psqlblog/api/blogs**').as('entitiesRequest');
+    cy.intercept('GET', /^\/services\/psqlblog\/api\/blogs\b/).as('entitiesRequest');
     cy.intercept('POST', '/services/psqlblog/api/blogs').as('postEntityRequest');
     cy.intercept('DELETE', '/services/psqlblog/api/blogs/*').as('deleteEntityRequest');
   });
@@ -92,7 +92,7 @@ describe('Blog e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/psqlblog/api/blogs**',
+              url: /^\/services\/psqlblog\/api\/blogs\b/,
               times: 1,
             },
             {
