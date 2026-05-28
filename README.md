@@ -145,6 +145,15 @@ saathratri-generate-code-dev-sql.bat
 Congratulations, JHipster execution is complete!
 ```
 
+> **Note on regen prompts:** `saathratri-generate-code-dev-sql.{sh,bat}` calls
+> `saathratri-cleanup-dev-main.{sh,bat}` first, which now wipes the root-level
+> `.prettierignore`, `.prettierrc.yml`, `.gitattributes`, and `.gitignore` files in addition to the
+> per-service dirs (`psqlgateway/`, `psqlblog/`, `psqlstore/`). Without those deletions, JHipster's
+> monorepo mode (`--monorepository --workspaces`) would prompt
+> `Overwrite .prettierignore? (ynadxreiH)` on every regen because the previous run left them at the
+> repo root. If you still see overwrite prompts inside a service dir, an IDE or `mvnw` process
+> likely has a file handle on one of its files — close it and re-run.
+
 ### Run your Multiple Human-readable Foreign Key Fields Example 
 
 1.  When the process is complete, cd into the `psqlgateway` directory and start Keycloak and Eureka using Docker Compose.

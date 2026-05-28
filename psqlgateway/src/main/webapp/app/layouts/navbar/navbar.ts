@@ -98,11 +98,6 @@ export default class Navbar implements OnInit {
     this.router.navigate(['']);
   }
 
-  // Saathratri modification - alphabetical sorting helper
-  private sortNavbarItemsAlphabetically(items: NavbarItem[]): NavbarItem[] {
-    return [...items].sort((a, b) => a.name.localeCompare(b.name));
-  }
-
   loadMicrofrontendsEntities(): void {
     // Lazy load microfrontend entities.
     loadNavbarItems('psqlblog').then(
@@ -137,5 +132,10 @@ export default class Navbar implements OnInit {
         console.log('Error loading psqlstore entities', error);
       },
     );
+  }
+
+  // Saathratri modification - alphabetical sorting helper
+  private sortNavbarItemsAlphabetically(items: NavbarItem[]): NavbarItem[] {
+    return [...items].sort((a, b) => a.name.localeCompare(b.name));
   }
 }
