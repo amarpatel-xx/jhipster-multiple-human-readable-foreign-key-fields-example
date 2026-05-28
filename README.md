@@ -217,13 +217,17 @@ Each service has an Angular microfrontend. Run from each service directory:
 
 ```console
 npm install
-npm test
+npm test            # runs once and exits (eslint pretest + Vitest)
+npm run test:watch  # same, but keeps Vitest in watch mode for iterative TDD
 ```
 
 `npm test` runs **`eslint .` first** (the `pretest` hook) — if lint fails, the unit tests
-never run — then the Angular unit tests on **Vitest** (`ng test --coverage`). The lint
-gate fails only on **errors**, not warnings. To run just one half: `npx eslint .` (lint
-only) or `npx ng test` (Vitest only).
+never run — then the Angular unit tests on **Vitest** (`ng test --coverage --watch=false`),
+**one-shot**. The `--watch=false` flag is added by the ai-postgresql blueprint to work around
+an upstream JHipster bug: their Angular generator emits plain `"ng test --coverage"`, which
+after the Karma→Vitest switch defaults to watch mode and never exits. The lint gate fails
+only on **errors**, not warnings. To run just one half: `npx eslint .` (lint only) or
+`npx ng test --watch=false` (Vitest only — bare `npx ng test` re-enters watch mode).
 
 ### End-to-End (E2E) tests with Cypress
 
