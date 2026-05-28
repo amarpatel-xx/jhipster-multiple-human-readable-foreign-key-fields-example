@@ -135,10 +135,13 @@ cd jhipster-ai-postgresql-example
 sh saathratri-generate-code-dev-sql.sh
 ```
 
-**Windows:**
-```console
-saathratri-generate-code-dev-sql.bat
+**Windows (PowerShell):**
+```powershell
+.\saathratri-generate-code-dev-sql.bat
 ```
+
+> PowerShell does not auto-run executables from the current directory — the leading `.\`
+> is required.
 
 2.  You should see the message:
 ```console
@@ -204,7 +207,7 @@ Run from each service directory (`psqlgateway`, `psqlblog`, `psqlstore`):
 ./mvnw -ntp -Dskip.npm verify                 # unit + integration tests (Docker required)
 ```
 
-(On Windows, use `mvnw.cmd` instead of `./mvnw`.)
+(On Windows PowerShell, use `.\mvnw.cmd` instead of `./mvnw`, and quote `-D` properties that contain a dot — e.g. `.\mvnw.cmd -ntp -DskipTests "-Dskip.npm" package` — otherwise PowerShell parses `-Dskip.npm` as `-Dskip` + a `.npm` member-access token.)
 
 `verify` runs the unit tests plus the entity REST CRUD integration tests (`*IT`):
 create / get-one / get-all / update / partial update / delete and their negative cases.
@@ -250,7 +253,7 @@ sh compile-saathratri-dev.sh   # package all three apps (backend + Angular clien
 sh saathratri-deploy.sh        # Keycloak + JHipster Registry, then each DB + mvnw spring-boot:run
 ```
 
-(On Windows, use `compile-saathratri-dev.bat` and `saathratri-deploy.bat`.)
+(On Windows PowerShell, use `.\compile-saathratri-dev.bat` and `.\saathratri-deploy.bat` — the leading `.\` is required.)
 
 Either way, wait until all three services appear in the registry at <http://localhost:8761>
 and the gateway UI loads at <http://localhost:8080>. Login uses the bundled Keycloak realm
