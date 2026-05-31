@@ -189,6 +189,8 @@ entity detail page css
       border-bottom: 1px solid #eee;
       padding: 0.5em 0;
       margin-left: 0;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
   }
 }

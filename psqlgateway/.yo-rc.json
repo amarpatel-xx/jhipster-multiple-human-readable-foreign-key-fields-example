@@ -19,15 +19,15 @@
     "blueprints": [
       {
         "name": "generator-jhipster-ai-postgresql",
-        "version": "2.0.14"
+        "version": "2.0.15"
       }
     ],
     "buildTool": "maven",
-    "clientFramework": "angular",
+    "clientFramework": "angularX",
     "devServerPort": 4200,
     "entities": [],
     "jhipsterVersion": "9.0.0",
-    "jwtSecretKey": "NWM2Y2MxMjExNmM1YmYxMGEzODk5MjBjMjdiNWUyZGY1NjhkOTViNDg4Y2QzMWRkZjIxY2U1NzI1NjU2YzZhZDRjYWRkNzYwZTgyMTlkYTVlZGU5YTMyMTZlM2JmOWEyM2E2NTMxNzlkZmE4YTA2NjQ0NDFiYjhhN2VmYTliN2U=",
+    "jwtSecretKey": "YTcyZDEyNGRiZTYzNjUwYWRmYzNkNmMxNGQwYTI1YWQ3ZmJjYTJlYzRkM2Q3YzQzODVlN2UwOTk1ZmE4Yzk1NjhjODRiZTVhMzA1ODQ3OWJjNTJiMTAwMDRlNGUzZTFiYzNmZDg2OWUxMjYwMmNhYTU3MjlkM2RjYzhmNWJmY2Q=",
     "languages": ["en"],
     "microfrontends": [
       {

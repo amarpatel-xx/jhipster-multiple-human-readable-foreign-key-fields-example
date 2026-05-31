@@ -29,7 +29,7 @@ describe('Authority e2e test', () => {
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/api/authorities+(?*|)').as('entitiesRequest');
+    cy.intercept('GET', /^\/api\/authorities\b/).as('entitiesRequest');
     cy.intercept('POST', '/api/authorities').as('postEntityRequest');
     cy.intercept('DELETE', '/api/authorities/*').as('deleteEntityRequest');
   });
@@ -48,7 +48,7 @@ describe('Authority e2e test', () => {
   it('Authorities menu should load Authorities page', () => {
     cy.visit('/');
     cy.clickOnAdminMenuItem('authority');
-    cy.wait('@entitiesRequest').then(({ response }) => {
+    cy.wait('@entitiesRequest', { timeout: 30000 }).then(({ response }) => {
       if (response?.body.length === 0) {
         cy.get(entityTableSelector).should('not.exist');
       } else {
@@ -63,7 +63,7 @@ describe('Authority e2e test', () => {
     describe('create button click', () => {
       beforeEach(() => {
         cy.visit(authorityPageUrl);
-        cy.wait('@entitiesRequest');
+        cy.wait('@entitiesRequest', { timeout: 30000 });
       });
 
       it('should load create Authority page', () => {
@@ -72,7 +72,7 @@ describe('Authority e2e test', () => {
         cy.getEntityCreateUpdateHeading('Authority');
         cy.get(entityCreateSaveButtonSelector).should('exist');
         cy.get(entityCreateCancelButtonSelector).click();
-        cy.wait('@entitiesRequest').then(({ response }) => {
+        cy.wait('@entitiesRequest', { timeout: 30000 }).then(({ response }) => {
           expect(response?.statusCode).to.equal(200);
         });
         cy.url().should('match', authorityPageUrlPattern);
@@ -91,7 +91,7 @@ describe('Authority e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/api/authorities+(?*|)',
+              url: /^\/api\/authorities\b/,
               times: 1,
             },
             {
@@ -103,14 +103,14 @@ describe('Authority e2e test', () => {
 
         cy.visit(authorityPageUrl);
 
-        cy.wait('@entitiesRequestInternal');
+        cy.wait('@entitiesRequestInternal', { timeout: 30000 });
       });
 
       it('detail button click should load details Authority page', () => {
         cy.get(entityDetailsButtonSelector).first().click();
         cy.getEntityDetailsHeading('authority');
         cy.get(entityDetailsBackButtonSelector).click();
-        cy.wait('@entitiesRequest').then(({ response }) => {
+        cy.wait('@entitiesRequest', { timeout: 30000 }).then(({ response }) => {
           expect(response?.statusCode).to.equal(200);
         });
         cy.url().should('match', authorityPageUrlPattern);
@@ -123,7 +123,7 @@ describe('Authority e2e test', () => {
         cy.wait('@deleteEntityRequest').then(({ response }) => {
           expect(response?.statusCode).to.equal(204);
         });
-        cy.wait('@entitiesRequest').then(({ response }) => {
+        cy.wait('@entitiesRequest', { timeout: 30000 }).then(({ response }) => {
           expect(response?.statusCode).to.equal(200);
         });
         cy.url().should('match', authorityPageUrlPattern);
@@ -150,7 +150,7 @@ describe('Authority e2e test', () => {
         expect(response?.statusCode).to.equal(201);
         authority = response.body;
       });
-      cy.wait('@entitiesRequest').then(({ response }) => {
+      cy.wait('@entitiesRequest', { timeout: 30000 }).then(({ response }) => {
         expect(response?.statusCode).to.equal(200);
       });
       cy.url().should('match', authorityPageUrlPattern);

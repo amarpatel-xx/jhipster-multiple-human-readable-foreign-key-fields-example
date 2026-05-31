@@ -186,4 +186,14 @@ describe('Tag e2e test', () => {
       cy.url().should('match', tagPageUrlPattern);
     });
   });
+
+  it('should run an AI semantic search', () => {
+    cy.intercept('GET', /\/api\/tags\/ai-search/).as('aiSearchRequest');
+    cy.visit('/');
+    cy.clickOnEntityMenuItem('psqlblog/tag');
+    cy.wait('@entitiesRequest', { timeout: 30000 });
+    cy.get('[data-cy="aiSearchInput"]').type('semantic query');
+    cy.get('[data-cy="aiSearchButton"]').click();
+    cy.wait('@aiSearchRequest', { timeout: 30000 }).its('response.statusCode').should('eq', 200);
+  });
 });

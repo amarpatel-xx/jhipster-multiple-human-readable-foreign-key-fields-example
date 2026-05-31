@@ -27,6 +27,7 @@ application {
     serverPort 8081
     serviceDiscoveryType eureka
     clientFramework angularX
+	testFrameworks [cypress]
   }
   entities Blog, Post, Tag, TajUser
 }
@@ -45,6 +46,7 @@ application {
     serverPort 8082
     serviceDiscoveryType eureka
     clientFramework angularX
+	testFrameworks [cypress]
   }
   entities Product, Report
 }

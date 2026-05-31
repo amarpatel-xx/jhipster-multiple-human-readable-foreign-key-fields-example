@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20260409130239"
+    "changelogDate": "20260528175256"
   },
   "applications": ["psqlblog"],
   "clientRootFolder": "psqlblog",

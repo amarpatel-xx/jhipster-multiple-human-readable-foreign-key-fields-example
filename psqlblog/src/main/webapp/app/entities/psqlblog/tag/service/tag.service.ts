@@ -84,7 +84,7 @@ export class TagService extends TagsService {
   }
 
   aiSearch(query: string, limit: number, fields?: string[]): Observable<ITag[]> {
-    const params: { [key: string]: string | string[] } = { query, limit: String(limit) };
+    const params: Record<string, string | string[]> = { query, limit: String(limit) };
     if (fields && fields.length > 0) {
       params.fields = fields.join(',');
     }

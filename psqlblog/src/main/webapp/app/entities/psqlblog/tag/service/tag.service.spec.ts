@@ -195,4 +195,19 @@ describe('Tag Service', () => {
   afterEach(() => {
     httpMock.verify();
   });
+
+  // Saathratri modification - AI search service test
+  it('should perform an AI search', () => {
+    const aiResults = [{ id: '9fec3727-3421-4967-b213-ba36557ca194' }];
+    service.aiSearch('hello', 20, ['nameEmbedding']).subscribe(resp => (expectedResult = resp));
+
+    const req = httpMock.expectOne(request => request.method === 'GET' && request.url.endsWith('/ai-search'));
+    expect(req.request.params.get('query')).toEqual('hello');
+    expect(req.request.params.get('limit')).toEqual('20');
+    expect(req.request.params.get('fields')).toEqual('nameEmbedding');
+    req.flush(aiResults);
+
+    expect(expectedResult).toEqual(aiResults);
+  });
+  // End Saathratri modification - AI search service test
 });

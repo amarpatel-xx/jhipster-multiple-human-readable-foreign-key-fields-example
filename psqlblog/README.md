@@ -332,6 +332,28 @@ Unit tests are run by Vitest. They're located near components and can be run wit
 ./npmw test
 ```
 
+#### E2E tests
+
+UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress/](src/test/javascript/cypress/)
+and can be run by starting Spring Boot in one terminal (`./npmw run app:start`) and running the tests (`./npmw run e2e`) in a second one.
+
+Before running Cypress tests, it's possible to specify user credentials by overriding the `CYPRESS_E2E_USERNAME` and `CYPRESS_E2E_PASSWORD` environment variables.
+
+```bash
+export CYPRESS_E2E_USERNAME="<your-username>"
+export CYPRESS_E2E_PASSWORD="<your-password>"
+```
+
+See Cypress documentation for setting OS [environment variables](https://docs.cypress.io/app/references/environment-variables#Setting) to learn more.
+
+#### Lighthouse audits
+
+You can execute automated [Lighthouse audits](https://developer.chrome.com/docs/lighthouse/overview) with [cypress-audit](https://github.com/mfrachet/cypress-audit) by running `./npmw run e2e:cypress:audits`.
+
+You should only run the audits when your application is packaged with the production profile.
+
+The Lighthouse report is created in `target/cypress/lhreport.html`.
+
 ## Others
 
 ### Code quality using Sonar
@@ -438,3 +460,4 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 - [Leaflet](https://leafletjs.com/)
 - [DefinitelyTyped](https://definitelytyped.org/)
 - [Angular CLI](https://angular.dev/tools/cli)
+- [Cypress](https://www.cypress.io/)

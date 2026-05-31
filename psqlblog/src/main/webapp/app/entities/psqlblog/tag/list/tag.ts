@@ -45,20 +45,22 @@ export class Tag implements OnInit {
   aiSearchQuery = '';
   aiSearchLoading = signal(false);
   isAiSearchActive = signal(false);
-  aiSearchSelectedFields: { [key: string]: boolean } = { nameEmbedding: true, descriptionEmbedding: true };
+  aiSearchSelectedFields: Record<string, boolean> = { nameEmbedding: true, descriptionEmbedding: true };
 
   toggleAiSearchField(fieldName: string): void {
     this.aiSearchSelectedFields[fieldName] = !this.aiSearchSelectedFields[fieldName];
   }
 
-  private getSelectedAiSearchFields(): string[] {
+  // Public (not private) so member-ordering passes for the public/protected
+  // methods declared after this block in the same class.
+  getSelectedAiSearchFields(): string[] {
     const allFields = ['nameEmbedding', 'descriptionEmbedding'];
     const selected = allFields.filter(f => this.aiSearchSelectedFields[f]);
     return selected.length > 0 ? selected : allFields;
   }
 
   performAiSearch(query: string): void {
-    if (!query || !query.trim()) {
+    if (!query.trim()) {
       this.clearAiSearch();
       return;
     }

@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faEye, faPencilAlt, faPlus, faSort, faSortDown, faSortUp, faSync, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faPencilAlt, faPlus, faSearch, faSort, faSortDown, faSortUp, faSync, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal';
 import { TranslateModule } from '@ngx-translate/core';
 import { Subject, of } from 'rxjs';
@@ -60,7 +60,7 @@ describe('Tag Management Component', () => {
     routerNavigateSpy = vitest.spyOn(comp.router, 'navigate');
 
     const library = TestBed.inject(FaIconLibrary);
-    library.addIcons(faEye, faPencilAlt, faPlus, faSort, faSortDown, faSortUp, faSync, faTimes);
+    library.addIcons(faEye, faPencilAlt, faPlus, faSort, faSortDown, faSortUp, faSync, faTimes, faSearch);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -208,4 +208,37 @@ describe('Tag Management Component', () => {
       expect(comp.load).not.toHaveBeenCalled();
     }));
   });
+
+  // Saathratri modification - AI search component tests
+  it('should start with AI search inactive and all vector fields selected', () => {
+    expect(comp.isAiSearchActive()).toBe(false);
+    expect(comp.getSelectedAiSearchFields()).toEqual(['nameEmbedding', 'descriptionEmbedding']);
+  });
+
+  it('should perform AI search and populate results', () => {
+    const aiResults = [{ id: '9fec3727-3421-4967-b213-ba36557ca194' }];
+    vitest.spyOn(service, 'aiSearch').mockReturnValue(of(aiResults));
+
+    comp.performAiSearch('hello world');
+
+    expect(service.aiSearch).toHaveBeenCalledWith('hello world', 20, ['nameEmbedding', 'descriptionEmbedding']);
+    expect(comp.tags()).toEqual(aiResults);
+    expect(comp.isAiSearchActive()).toBe(true);
+    expect(comp.aiSearchLoading()).toBe(false);
+  });
+
+  it('should toggle the AI search field selection', () => {
+    expect(comp.getSelectedAiSearchFields()).toContain('nameEmbedding');
+    comp.toggleAiSearchField('nameEmbedding');
+    expect(comp.aiSearchSelectedFields.nameEmbedding).toBe(false);
+  });
+
+  it('should clear AI search and reload the list', () => {
+    const loadSpy = vitest.spyOn(comp, 'load').mockImplementation(() => {});
+    comp.isAiSearchActive.set(true);
+    comp.clearAiSearch();
+    expect(comp.isAiSearchActive()).toBe(false);
+    expect(loadSpy).toHaveBeenCalled();
+  });
+  // End Saathratri modification - AI search component tests
 });

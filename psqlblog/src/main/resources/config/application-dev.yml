@@ -58,7 +58,7 @@ spring:
       # it can be set to any label, branch or commit of the configuration source Git repository
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5436/psqlblog?stringtype=unspecified
+    url: jdbc:postgresql://localhost:5436/psqlblog
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -70,6 +70,9 @@ spring:
     cache: false
   security:
     oauth2:
+      audience:
+        - account
+        - api://default
       client:
         provider:
           oidc:
@@ -107,7 +110,6 @@ jhipster:
   #   exposed-headers: "Authorization,Link,X-Total-Count"
   #   allow-credentials: true
   #   max-age: 1800
-  # saathratri-needle-add-cors-policy
   logging:
     use-json-format: false # By default, logs are not in Json format
     logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
@@ -116,11 +118,6 @@ jhipster:
       port: 5000
       ring-buffer-size: 512
 
-  security:
-    oauth2:
-      audience:
-        - account
-        - api://default
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

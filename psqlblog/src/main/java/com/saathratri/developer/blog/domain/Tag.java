@@ -1,6 +1,7 @@
 package com.saathratri.developer.blog.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.saathratri.developer.blog.domain.converter.PgVectorType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serial;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import org.hibernate.annotations.Type;
 
 /**
  * A Tag.
@@ -34,9 +36,11 @@ public class Tag implements Serializable {
     @Column(name = "description", length = 255)
     private String description;
 
+    @Type(PgVectorType.class)
     @Column(name = "name_embedding")
     private float[] nameEmbedding;
 
+    @Type(PgVectorType.class)
     @Column(name = "description_embedding")
     private float[] descriptionEmbedding;
 

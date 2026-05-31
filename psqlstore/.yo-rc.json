@@ -7,20 +7,20 @@
     "blueprints": [
       {
         "name": "generator-jhipster-ai-postgresql",
-        "version": "2.0.14"
+        "version": "2.0.15"
       }
     ],
     "buildTool": "maven",
-    "clientFramework": "angular",
+    "clientFramework": "angularX",
     "databaseType": "sql",
     "devDatabaseType": "postgresql",
     "devServerPort": 4202,
     "enableHibernateCache": false,
     "entities": ["Product", "Report"],
     "jhipsterVersion": "9.0.0",
-    "jwtSecretKey": "ZmEyNzU2YzNkYjQzMjExOTYxMjQwYmNmN2I0YjczNGFhZDUyYzI3MGU4NTM1NDBkOTNkYmNkYTA3ZDYwYTdmODI4YThjNDEzYWY3MGM1MTllYTc4NWI1NzY5Yjk4YzkyZGM5NGFjODM4Yzg2OTVjMzMyMTgxMTZiZTM0YTc5YWM=",
+    "jwtSecretKey": "YTYzZTJkYjJlNjBlYWIyNDQ5MWIyNTk4ZDY4NDkzYjI3YWFjNTczMjZkODc5ODQzMDI3NTM2YWUwMWY0MGQyM2M3NTFkZGRjMzUzNGNkNTNjOGFjY2Q1ZGMxNGI1YmMwYTRhMmFmNmZkNTVmZGM0ZDdiYjBmZTNlNGI1YmQwZjg=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1775739759000,
+    "lastLiquibaseTimestamp": 1779990776000,
     "monorepository": true,
     "nativeLanguage": "en",
     "packageName": "com.saathratri.developer.store",
@@ -28,6 +28,7 @@
     "serverPort": "8082",
     "serviceDiscoveryType": "eureka",
     "skipCommitHook": true,
-    "skipJhipsterDependencies": true
+    "skipJhipsterDependencies": true,
+    "testFrameworks": ["cypress"]
   }
 }

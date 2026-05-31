@@ -64,7 +64,7 @@
         <resource.delimiter>@</resource.delimiter>
         <sonar-maven-plugin.version>5.5.0.6356</sonar-maven-plugin.version>
         <spotless-maven-plugin.version>3.3.0</spotless-maven-plugin.version>
-        <spring-ai.version>2.0.0-M3</spring-ai.version>
+        <spring-ai.version>2.0.0-M7</spring-ai.version>
         <spring-cloud-dependencies.version>2025.1.1</spring-cloud-dependencies.version>
         <spring.profiles.active>dev</spring.profiles.active>
         <springdoc-openapi-starter-webmvc-api.version>3.0.2</springdoc-openapi-starter-webmvc-api.version>
@@ -937,6 +937,15 @@
                     <optional>true</optional>
                 </dependency>
             </dependencies>
+        </profile>
+        <profile>
+            <id>e2e</id>
+            <properties>
+                <profile.e2e>,e2e</profile.e2e>
+            </properties>
+            <build>
+                <finalName>e2e</finalName>
+            </build>
         </profile>
         <profile>
             <!-- This is automatically activated when working in Eclipse -->

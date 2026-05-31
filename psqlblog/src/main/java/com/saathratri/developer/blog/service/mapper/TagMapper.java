@@ -24,6 +24,8 @@ public interface TagMapper extends EntityMapper<TagDTO, Tag> {
     @Mapping(target = "posts", source = "posts", qualifiedByName = "postIdSet")
     TagDTO toDto(Tag s);
 
+    @Named("partialUpdate")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "nameEmbedding", ignore = true)
     @Mapping(target = "descriptionEmbedding", ignore = true)
     void partialUpdate(@MappingTarget Tag entity, TagDTO dto);

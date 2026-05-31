@@ -7,20 +7,20 @@
     "blueprints": [
       {
         "name": "generator-jhipster-ai-postgresql",
-        "version": "2.0.14"
+        "version": "2.0.15"
       }
     ],
     "buildTool": "maven",
-    "clientFramework": "angular",
+    "clientFramework": "angularX",
     "databaseType": "sql",
     "devDatabaseType": "postgresql",
     "devServerPort": 4201,
     "enableHibernateCache": false,
     "entities": ["Blog", "Post", "Tag", "TajUser"],
     "jhipsterVersion": "9.0.0",
-    "jwtSecretKey": "NjZhYzMzYWViY2UyYmI5Y2VjNWQ0MzViMTdjNzYyMWUxN2FjOGM5NDJkZWRiMmU1OWU0OTM4NWJiODU3MWQ2YjA2NTE2ODkwMzdkMzc0NjRjMDZiYTc3OTE1N2RjYmJkY2I3MTgxNTYxZDEzZDVmYzM1M2U1MGE4MDM4NmY1NDI=",
+    "jwtSecretKey": "YmIwMWY4OWE5NmJiMWJhZDc2M2Y3NmUwYjgzMzJmNGZkMWVlMmNmYTAxYTM4ZmZkZjgzNWM1NTA3OTAxNmE1ZmU4NDQxYTAxZmY3Njg4YzUxMjExYTYxNzlkODliYWVhM2Y5YjVhZDVlNzlhZTkyMzYyZGNkNmUxMTdkNWY5OTA=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1775739879000,
+    "lastLiquibaseTimestamp": 1779990896000,
     "monorepository": true,
     "nativeLanguage": "en",
     "packageName": "com.saathratri.developer.blog",
@@ -28,6 +28,7 @@
     "serverPort": "8081",
     "serviceDiscoveryType": "eureka",
     "skipCommitHook": true,
-    "skipJhipsterDependencies": true
+    "skipJhipsterDependencies": true,
+    "testFrameworks": ["cypress"]
   }
 }

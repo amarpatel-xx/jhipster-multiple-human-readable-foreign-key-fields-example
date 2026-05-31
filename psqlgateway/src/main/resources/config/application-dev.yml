@@ -67,6 +67,9 @@ spring:
     cache: false
   security:
     oauth2:
+      audience:
+        - account
+        - api://default
       client:
         provider:
           oidc:
@@ -116,11 +119,6 @@ jhipster:
       port: 5000
       ring-buffer-size: 512
 
-  security:
-    oauth2:
-      audience:
-        - account
-        - api://default
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

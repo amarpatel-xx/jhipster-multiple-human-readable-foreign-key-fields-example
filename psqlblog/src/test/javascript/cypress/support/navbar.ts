@@ -44,11 +44,7 @@ Cypress.Commands.add('clickOnAdminMenuItem', (item: string) => {
 
 Cypress.Commands.add('clickOnEntityMenuItem', (entityName: string) => {
   cy.get(navbarSelector).find(entityItemSelector).click();
-  // Dropdown items live in a sibling <ul ngbDropdownMenu>, not inside the toggle.
-  return cy
-    .get(navbarSelector)
-    .find(`.dropdown-item[href="/${entityName}"]`, /* SAATHRATRI mf nav */ { timeout: 30000 })
-    .click();
+  return cy.get(navbarSelector).find(`.dropdown-item[href="/${entityName}"]`, /* SAATHRATRI mf nav */ { timeout: 30000 }).click();
 });
 
 declare global {
