@@ -77,7 +77,7 @@ export class ReportFormService {
   }
 
   getReport(form: ReportFormGroup): IReport | NewReport {
-    return this.convertReportRawValueToReport(form.getRawValue() as ReportFormRawValue | NewReportFormRawValue);
+    return this.convertReportRawValueToReport(form.getRawValue());
   }
 
   resetForm(form: ReportFormGroup, report: ReportFormGroupInput): void {

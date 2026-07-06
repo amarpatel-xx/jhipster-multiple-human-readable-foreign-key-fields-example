@@ -51,7 +51,7 @@ export class BlogFormService {
   }
 
   getBlog(form: BlogFormGroup): IBlog | NewBlog {
-    return form.getRawValue() as IBlog | NewBlog;
+    return form.getRawValue();
   }
 
   resetForm(form: BlogFormGroup, blog: BlogFormGroupInput): void {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,6 +12,7 @@ import { TagService } from '../service/tag.service';
 import { ITag } from '../tag.model';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './tag-delete-dialog.html',
   imports: [TranslateDirective, TranslateModule, FormsModule, FontAwesomeModule, AlertError],
 })

@@ -118,7 +118,7 @@ public class EmbeddingMigrationService {
             }
         }
 
-        String result = String.format("Tag: processed=%d, updated=%d, errors=%d", processed.get(), updated.get(), errors.get());
+        String result = "Tag: processed=%d, updated=%d, errors=%d".formatted(processed.get(), updated.get(), errors.get());
         LOG.info(result);
         return result;
     }

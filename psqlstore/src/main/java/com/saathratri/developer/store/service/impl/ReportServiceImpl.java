@@ -60,6 +60,7 @@ public class ReportServiceImpl implements ReportService {
 
                 return existingReport;
             })
+
             .map(reportRepository::save)
             .map(reportMapper::toDto);
     }

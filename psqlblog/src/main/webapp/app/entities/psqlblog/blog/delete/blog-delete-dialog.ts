@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,6 +12,7 @@ import { IBlog } from '../blog.model';
 import { BlogService } from '../service/blog.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './blog-delete-dialog.html',
   imports: [TranslateDirective, TranslateModule, FormsModule, FontAwesomeModule, AlertError],
 })

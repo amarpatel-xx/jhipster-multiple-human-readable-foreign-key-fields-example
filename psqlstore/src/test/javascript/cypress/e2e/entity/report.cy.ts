@@ -18,7 +18,7 @@ describe('Report e2e test', () => {
   const reportSample = {
     fileName: 'pfft',
     fileExtension: 'stake but ',
-    createDate: '2026-05-27T18:43:55.221Z',
+    createDate: '2026-07-05T15:42:49.221Z',
     file: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=',
     fileContentType: 'unknown',
   };
@@ -67,6 +67,11 @@ describe('Report e2e test', () => {
   });
 
   describe('Report page', () => {
+    it('should have translated page title', () => {
+      cy.visit(reportPageUrl);
+      cy.getEntityHeading('Report').should('not.contain', 'psqlstoreApp.psqlstoreReport.home.title');
+    });
+
     describe('create button click', () => {
       beforeEach(() => {
         cy.visit(reportPageUrl);
@@ -175,9 +180,9 @@ describe('Report e2e test', () => {
       cy.get(`[data-cy="fileExtension"]`).type('venom next');
       cy.get(`[data-cy="fileExtension"]`).should('have.value', 'venom next');
 
-      cy.get(`[data-cy="createDate"]`).type('2026-05-28T13:45');
+      cy.get(`[data-cy="createDate"]`).type('2026-07-06T10:44');
       cy.get(`[data-cy="createDate"]`).blur();
-      cy.get(`[data-cy="createDate"]`).should('have.value', '2026-05-28T13:45');
+      cy.get(`[data-cy="createDate"]`).should('have.value', '2026-07-06T10:44');
 
       cy.setFieldImageAsBytesOfEntity('file', 'integration-test.png', 'image/png');
 

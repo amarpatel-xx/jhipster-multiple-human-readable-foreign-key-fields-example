@@ -16,7 +16,7 @@ import reactor.util.context.Context;
 class SecurityUtilsUnitTest {
 
     @Test
-    void testgetCurrentUserLogin() {
+    void testGetCurrentUserLogin() {
         String login = SecurityUtils.getCurrentUserLogin()
             .contextWrite(ReactiveSecurityContextHolder.withAuthentication(new UsernamePasswordAuthenticationToken("admin", "admin")))
             .block();

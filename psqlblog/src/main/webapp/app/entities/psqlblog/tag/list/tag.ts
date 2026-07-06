@@ -1,6 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
 
@@ -23,6 +23,7 @@ import { TagService } from '../service/tag.service';
 import { ITag } from '../tag.model';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'jhi-tag',
   templateUrl: './tag.html',
   imports: [

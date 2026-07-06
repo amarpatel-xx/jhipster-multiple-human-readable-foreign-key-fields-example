@@ -1,12 +1,11 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { Observable, finalize, map } from 'rxjs';
 
 import { TajUserService } from 'app/entities/psqlblog/taj-user/service/taj-user.service';
 import { ITajUser } from 'app/entities/psqlblog/taj-user/taj-user.model';
@@ -18,6 +17,7 @@ import { BlogService } from '../service/blog.service';
 import { BlogFormGroup, BlogFormService } from './blog-form.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'jhi-blog-update',
   templateUrl: './blog-update.html',
   imports: [TranslateDirective, TranslateModule, FontAwesomeModule, AlertError, ReactiveFormsModule],

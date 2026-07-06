@@ -1,6 +1,7 @@
 cd psqlgateway
-ttab docker compose -f src/main/docker/keycloak.yml up -d
-ttab docker compose -f src/main/docker/jhipster-registry.yml up -d
+# Keycloak must be healthy before the registry starts (its oauth2 profile
+# resolves the OIDC issuer at boot), so run them sequentially in one tab.
+ttab "docker compose -f src/main/docker/keycloak.yml up -d --wait && docker compose -f src/main/docker/jhipster-registry.yml up -d"
 cd ..
 
 cd psqlgateway

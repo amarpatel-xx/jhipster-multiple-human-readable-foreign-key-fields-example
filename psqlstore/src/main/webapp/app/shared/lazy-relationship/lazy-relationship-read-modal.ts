@@ -103,7 +103,7 @@ export class LazyRelationshipReadModalComponent implements OnInit {
     if (this.displayLabelField && item[this.displayLabelField] != null) {
       return String(item[this.displayLabelField]);
     }
-    const id = item.id;
+    const { id } = item;
     return id != null ? String(id) : '';
   }
 

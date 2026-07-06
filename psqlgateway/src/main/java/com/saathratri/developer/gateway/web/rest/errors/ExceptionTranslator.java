@@ -3,7 +3,6 @@ package com.saathratri.developer.gateway.web.rest.errors;
 import static org.springframework.core.annotation.AnnotatedElementUtils.findMergedAnnotation;
 
 import java.net.URI;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +83,7 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler implemen
         HttpStatusCode statusCode,
         ServerWebExchange request
     ) {
-        body = body == null ? wrapAndCustomizeProblem((Throwable) ex, (ServerWebExchange) request) : body;
+        body = body == null ? wrapAndCustomizeProblem(ex, (ServerWebExchange) request) : body;
         if (request.getResponse().isCommitted()) {
             return Mono.error(ex);
         }
@@ -173,7 +172,7 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler implemen
     }
 
     private ResponseStatus extractResponseStatus(final Throwable throwable) {
-        return Optional.ofNullable(resolveResponseStatus(throwable)).orElse(null);
+        return resolveResponseStatus(throwable);
     }
 
     private ResponseStatus resolveResponseStatus(final Throwable type) {
@@ -203,7 +202,7 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler implemen
     }
 
     private String getCustomizedErrorDetails(Throwable err) {
-        Collection<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
+        Collection<String> activeProfiles = List.of(env.getActiveProfiles());
         if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_PRODUCTION)) {
             if (err instanceof HttpMessageConversionException) return "Unable to convert http message";
             if (err instanceof DataAccessException) return "Failure during data access";

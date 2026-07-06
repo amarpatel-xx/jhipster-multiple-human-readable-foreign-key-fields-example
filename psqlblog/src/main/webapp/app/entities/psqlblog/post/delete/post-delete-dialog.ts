@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,6 +12,7 @@ import { IPost } from '../post.model';
 import { PostService } from '../service/post.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './post-delete-dialog.html',
   imports: [TranslateDirective, TranslateModule, FormsModule, FontAwesomeModule, AlertError],
 })

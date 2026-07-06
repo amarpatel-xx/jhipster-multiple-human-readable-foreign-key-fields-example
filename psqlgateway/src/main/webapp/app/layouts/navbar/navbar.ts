@@ -1,12 +1,12 @@
-import { Component, Injector, OnInit, createNgModule, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, OnInit, createNgModule, effect, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap/collapse';
 import { NgbDropdown, NgbDropdownMenu, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap/dropdown';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-
 import { environment } from 'environments/environment';
+
 import { LANGUAGES } from 'app/config/language.constants';
 import { AccountService } from 'app/core/auth/account.service';
 import { StateStorageService } from 'app/core/auth/state-storage.service';
@@ -22,6 +22,7 @@ import NavbarItem from './navbar-item.model';
 
 @Component({
   selector: 'jhi-navbar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
   imports: [

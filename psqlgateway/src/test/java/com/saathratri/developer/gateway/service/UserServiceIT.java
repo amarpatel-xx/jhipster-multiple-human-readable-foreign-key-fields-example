@@ -9,8 +9,8 @@ import com.saathratri.developer.gateway.repository.UserRepository;
 import com.saathratri.developer.gateway.security.AuthoritiesConstants;
 import com.saathratri.developer.gateway.service.dto.AdminUserDTO;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -144,7 +144,7 @@ class UserServiceIT {
     }
 
     private OAuth2AuthenticationToken createMockOAuth2AuthenticationToken(Map<String, Object> userDetails) {
-        Collection<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(AuthoritiesConstants.ANONYMOUS));
+        Collection<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(AuthoritiesConstants.ANONYMOUS));
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
             "anonymous",
             "anonymous",

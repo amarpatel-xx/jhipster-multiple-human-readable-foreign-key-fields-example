@@ -14,7 +14,7 @@ import org.springframework.test.context.MergedContextConfiguration;
 
 public class SqlTestContainersSpringContextCustomizerFactory implements ContextCustomizerFactory {
 
-    private Logger log = LoggerFactory.getLogger(SqlTestContainersSpringContextCustomizerFactory.class);
+    private final Logger log = LoggerFactory.getLogger(SqlTestContainersSpringContextCustomizerFactory.class);
 
     private static SqlTestContainer prodTestcontainer;
 
@@ -31,9 +31,9 @@ public class SqlTestContainersSpringContextCustomizerFactory implements ContextC
                     log.info("Warming up the sql database");
                     if (null == prodTestcontainer) {
                         try {
-                            Class<? extends SqlTestContainer> containerClass = (Class<? extends SqlTestContainer>) Class.forName(
+                            Class<? extends SqlTestContainer> containerClass = Class.forName(
                                 this.getClass().getPackageName() + ".DatabaseTestcontainer"
-                            );
+                            ).asSubclass(SqlTestContainer.class);
                             prodTestcontainer = beanFactory.createBean(containerClass);
                             beanFactory.registerSingleton(containerClass.getName(), prodTestcontainer);
                             /**

@@ -1,11 +1,10 @@
-import { Component, ElementRef, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { Observable, finalize } from 'rxjs';
 
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
@@ -18,6 +17,7 @@ import { ProductService } from '../service/product.service';
 import { ProductFormGroup, ProductFormService } from './product-form.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'jhi-product-update',
   templateUrl: './product-update.html',
   imports: [TranslateDirective, TranslateModule, FontAwesomeModule, AlertError, ReactiveFormsModule],

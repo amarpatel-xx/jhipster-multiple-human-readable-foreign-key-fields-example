@@ -7,8 +7,8 @@ import static org.springframework.security.test.web.reactive.server.SecurityMock
 
 import com.saathratri.developer.gateway.IntegrationTest;
 import com.saathratri.developer.gateway.security.AuthoritiesConstants;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ class LogoutResourceIT {
     @BeforeEach
     void before() {
         claims = new HashMap<>();
-        claims.put("groups", Collections.singletonList(AuthoritiesConstants.USER));
+        claims.put("groups", List.of(AuthoritiesConstants.USER));
         claims.put("sub", 123);
 
         this.webTestClient = WebTestClient.bindToApplicationContext(this.context).apply(springSecurity()).configureClient().build();
@@ -55,11 +55,13 @@ class LogoutResourceIT {
     @Test
     void getLogoutInformation() {
         final String ORIGIN_URL = "http://localhost:8080";
-        String logoutUrl = this.registrations.findByRegistrationId("oidc")
+        String logoutUrl = this.registrations
+            .findByRegistrationId("oidc")
             .map(oidc -> oidc.getProviderDetails().getConfigurationMetadata().get("end_session_endpoint").toString())
             .block();
         logoutUrl = logoutUrl + "?id_token_hint=" + ID_TOKEN + "&post_logout_redirect_uri=" + ORIGIN_URL;
-        this.webTestClient.mutateWith(csrf())
+        this.webTestClient
+            .mutateWith(csrf())
             .mutateWith(
                 mockAuthentication(registerAuthenticationToken(authorizedClientService, clientRegistration, authenticationToken(claims)))
             )

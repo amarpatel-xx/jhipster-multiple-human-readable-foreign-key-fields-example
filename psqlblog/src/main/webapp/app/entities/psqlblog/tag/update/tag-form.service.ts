@@ -55,7 +55,7 @@ export class TagFormService {
   }
 
   getTag(form: TagFormGroup): ITag | NewTag {
-    return form.getRawValue() as ITag | NewTag;
+    return form.getRawValue();
   }
 
   resetForm(form: TagFormGroup, tag: TagFormGroupInput): void {

@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -40,7 +40,7 @@ module.exports = async (config, options, targetOptions) => {
       new BrowserSyncPlugin(
         {
           host: 'localhost',
-          port: 9000,
+          port: 9001,
           https: tls,
           proxy: {
             target: `http${tls ? 's' : ''}://localhost:${targetOptions.target === 'serve' ? '4201' : '8080'}`,
@@ -51,7 +51,7 @@ module.exports = async (config, options, targetOptions) => {
             proxyReq: [
               function (proxyReq) {
                 // URI that will be retrieved by the ForwardedHeaderFilter on the server side
-                proxyReq.setHeader('X-Forwarded-Host', 'localhost:9000');
+                proxyReq.setHeader('X-Forwarded-Host', 'localhost:9001');
                 proxyReq.setHeader('X-Forwarded-Proto', `http${tls ? 's' : ''}`);
               },
             ],

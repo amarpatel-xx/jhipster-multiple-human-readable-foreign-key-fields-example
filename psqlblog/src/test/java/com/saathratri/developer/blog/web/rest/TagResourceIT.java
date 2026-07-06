@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.saathratri.developer.blog.IntegrationTest;
 import com.saathratri.developer.blog.domain.Tag;
 import com.saathratri.developer.blog.repository.TagRepository;
+import com.saathratri.developer.blog.service.TagService;
 import com.saathratri.developer.blog.service.dto.TagDTO;
 import com.saathratri.developer.blog.service.mapper.TagMapper;
 import jakarta.persistence.EntityManager;
@@ -616,7 +617,11 @@ class TagResourceIT {
         );
 
         restTagMockMvc
-            .perform(get(ENTITY_API_URL + "/ai-search").param("query", "find similar rows").param("limit", "10"))
+            .perform(
+                get(ENTITY_API_URL + "/ai-search")
+                    .param("query", "find similar rows")
+                    .param("limit", "10")
+            )
             .andExpect(status().isOk())
             .andExpect(jsonPath("$").isArray())
             .andExpect(jsonPath("$.[*].id").value(hasItem(insertedTag.getId().toString())));
@@ -626,7 +631,11 @@ class TagResourceIT {
     @Transactional
     void aiSearchReturnsEmptyForBlankQuery() throws Exception {
         restTagMockMvc
-            .perform(get(ENTITY_API_URL + "/ai-search").param("query", "  ").param("limit", "10"))
+            .perform(
+                get(ENTITY_API_URL + "/ai-search")
+                    .param("query", "  ")
+                    .param("limit", "10")
+            )
             .andExpect(status().isOk())
             .andExpect(jsonPath("$").isArray())
             .andExpect(jsonPath("$.length()").value(0));
@@ -651,5 +660,60 @@ class TagResourceIT {
         String vectorText = storedVector.toString().trim();
         assertThat(vectorText).startsWith("[").endsWith("]");
         assertThat(vectorText.substring(1, vectorText.length() - 1).split(",")).hasSize(DEFAULT_NAME_EMBEDDING.length);
+    }
+
+    // ---- Embedding lifecycle: generated on create, regenerated on update / partial update ----
+
+    @Autowired
+    private TagService tagServiceSaathratri;
+
+    @Test
+    @Transactional
+    void serviceSaveGeneratesEmbeddingsFromSourceFields() {
+        // The embedding model is stubbed, so save() must populate every vector field from its source text.
+        when(embeddingModelSaathratriMock.embedForResponse(any())).thenReturn(
+            new EmbeddingResponse(List.of(new Embedding(DEFAULT_NAME_EMBEDDING, 0)))
+        );
+
+        TagDTO saved = tagServiceSaathratri.save(tagMapper.toDto(tag));
+        insertedTag = tagRepository.findById(saved.getId()).orElseThrow();
+
+        assertThat(insertedTag.getNameEmbedding()).containsExactly(DEFAULT_NAME_EMBEDDING);
+        assertThat(insertedTag.getDescriptionEmbedding()).containsExactly(DEFAULT_NAME_EMBEDDING);
+    }
+
+    @Test
+    @Transactional
+    void serviceUpdateRegeneratesEmbeddings() {
+        tag.setNameEmbedding(DEFAULT_NAME_EMBEDDING);
+        insertedTag = tagRepository.saveAndFlush(tag);
+        // The model now embeds to a DIFFERENT vector; update() must overwrite the stored one.
+        float[] regenerated = sampleVectorSaathratri(1536, 0.20f);
+        when(embeddingModelSaathratriMock.embedForResponse(any())).thenReturn(
+            new EmbeddingResponse(List.of(new Embedding(regenerated, 0)))
+        );
+
+        tagServiceSaathratri.update(tagMapper.toDto(insertedTag));
+
+        Tag persisted = tagRepository.findById(insertedTag.getId()).orElseThrow();
+        assertThat(persisted.getNameEmbedding()).containsExactly(regenerated);
+    }
+
+    @Test
+    @Transactional
+    void servicePartialUpdateRegeneratesEmbeddings() {
+        // Guards the PATCH staleness fix: without regeneration in partialUpdate, the previously
+        // stored vector would survive a patch that changes its source text.
+        tag.setNameEmbedding(DEFAULT_NAME_EMBEDDING);
+        insertedTag = tagRepository.saveAndFlush(tag);
+        float[] regenerated = sampleVectorSaathratri(1536, 0.20f);
+        when(embeddingModelSaathratriMock.embedForResponse(any())).thenReturn(
+            new EmbeddingResponse(List.of(new Embedding(regenerated, 0)))
+        );
+
+        tagServiceSaathratri.partialUpdate(tagMapper.toDto(insertedTag)).orElseThrow();
+
+        Tag persisted = tagRepository.findById(insertedTag.getId()).orElseThrow();
+        assertThat(persisted.getNameEmbedding()).containsExactly(regenerated);
     }
 }

@@ -103,20 +103,32 @@ Searching for **"german shepherd"** returns Dog first (a dog breed), then Cat (a
 
 ### AI Semantic Search (Optional)
 
-To enable AI-powered semantic search, set your OpenAI API key as an environment variable:
+To enable AI-powered semantic search, supply your OpenAI API key in any of these ways (checked in this order):
 
-```console
-export OPENAI_API_KEY=sk-your-key-here
-```
+1. **`application-dev.yml`** in the microservice:
 
-Or add it to your microservice's `application-dev.yml`:
+   ```yaml
+   openai:
+     api-key: sk-your-key-here
+   ```
 
-```yaml
-openai:
-  api-key: sk-your-key-here
-```
+2. **Environment variable**, set before starting the services:
+
+   ```console
+   export OPENAI_API_KEY=sk-your-key-here
+   ```
+
+3. **A `.env` file** in the app root (e.g. `psqlblog/.env`). Each vector-enabled app has a checked-in `.env.example` — copy it and fill in the key:
+
+   ```console
+   cp psqlblog/.env.example psqlblog/.env    # then edit: OPENAI_API_KEY=sk-your-key-here
+   ```
+
+   `.env` is git-ignored, so the key can never be committed; only `.env.example` (with an empty value) is checked in.
 
 Without the API key, the application runs normally but embedding generation and AI search are disabled.
+
+**Offline/e2e alternative — fake embedding model.** Set `OPENAI_EMBEDDING_FAKE=true` to replace the OpenAI model with a deterministic offline one (same text → same vector), so exact-text semantic search works with no key and no API cost. The Cypress suite includes an embedding-lifecycle e2e that requires this mode (skipped unless `CYPRESS_fakeEmbeddings=true`); `saathratri-run-all-tests.sh` enables both automatically during its e2e phase.
 
 ### Build
 ### Build Java Microservices using the Multiple Human-readable Foreign Key Fields Blueprint 
@@ -249,11 +261,11 @@ The helper scripts do the same thing in one go (packaging first so each gateway/
 its compiled Angular bundle, which micro frontend module federation needs at runtime):
 
 ```console
-sh compile-saathratri-dev.sh   # package all three apps (backend + Angular client)
+sh saathratri-compile-dev.sh   # package all three apps (backend + Angular client)
 sh saathratri-deploy.sh        # Keycloak + JHipster Registry, then each DB + mvnw spring-boot:run
 ```
 
-(On Windows PowerShell, use `.\compile-saathratri-dev.bat` and `.\saathratri-deploy.bat` — the leading `.\` is required.)
+(On Windows PowerShell, use `.\saathratri-compile-dev.bat` and `.\saathratri-deploy.bat` — the leading `.\` is required.)
 
 Either way, wait until all three services appear in the registry at <http://localhost:8761>
 and the gateway UI loads at <http://localhost:8080>. Login uses the bundled Keycloak realm

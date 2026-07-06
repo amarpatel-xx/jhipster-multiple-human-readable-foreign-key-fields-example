@@ -3,7 +3,6 @@ package com.saathratri.developer.blog.repository;
 import com.saathratri.developer.blog.domain.Tag;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +33,7 @@ public class TagRepositoryWithBagRelationshipsImpl implements TagRepositoryWithB
 
     @Override
     public List<Tag> fetchBagRelationships(List<Tag> tags) {
-        return Optional.of(tags).map(this::fetchPosts).orElse(Collections.emptyList());
+        return Optional.of(tags).map(this::fetchPosts).orElse(List.of());
     }
 
     Tag fetchPosts(Tag result) {
@@ -51,7 +50,7 @@ public class TagRepositoryWithBagRelationshipsImpl implements TagRepositoryWithB
             .createQuery("select tag from Tag tag left join fetch tag.posts where tag in :tags", Tag.class)
             .setParameter(TAGS_PARAMETER, tags)
             .getResultList();
-        Collections.sort(result, (o1, o2) -> Integer.compare(order.get(o1.getId()), order.get(o2.getId())));
+        result.sort((o1, o2) -> Integer.compare(order.get(o1.getId()), order.get(o2.getId())));
         return result;
     }
 }

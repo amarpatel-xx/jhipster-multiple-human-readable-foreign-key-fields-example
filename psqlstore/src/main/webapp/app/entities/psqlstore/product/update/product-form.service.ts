@@ -53,7 +53,7 @@ export class ProductFormService {
   }
 
   getProduct(form: ProductFormGroup): IProduct | NewProduct {
-    return form.getRawValue() as IProduct | NewProduct;
+    return form.getRawValue();
   }
 
   resetForm(form: ProductFormGroup, product: ProductFormGroupInput): void {

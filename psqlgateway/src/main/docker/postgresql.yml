@@ -2,7 +2,7 @@
 name: psqlgateway
 services:
   postgresql:
-    image: postgres:18.3
+    image: postgres:18.4
     # volumes:
     #   - ~/volumes/jhipster/psqlgateway/postgresql/:/var/lib/postgresql/data/
     environment:

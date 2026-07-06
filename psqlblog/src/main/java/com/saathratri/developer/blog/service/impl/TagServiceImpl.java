@@ -67,8 +67,10 @@ public class TagServiceImpl implements TagService {
             .map(existingTag -> {
                 tagMapper.partialUpdate(existingTag, tagDTO);
 
+                generateEmbeddings(existingTag);
                 return existingTag;
             })
+
             .map(tagRepository::save)
             .map(tagMapper::toDto);
     }

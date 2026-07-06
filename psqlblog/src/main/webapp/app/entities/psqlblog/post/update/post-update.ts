@@ -1,12 +1,11 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { Observable, finalize, map } from 'rxjs';
 
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
@@ -15,15 +14,15 @@ import { BlogService } from 'app/entities/psqlblog/blog/service/blog.service';
 import { TagService } from 'app/entities/psqlblog/tag/service/tag.service';
 import { ITag } from 'app/entities/psqlblog/tag/tag.model';
 import { AlertError } from 'app/shared/alert/alert-error';
+import { AlertErrorModel } from 'app/shared/alert/alert-error.model';
 import { TranslateDirective } from 'app/shared/language';
-
 import { IPost } from '../post.model';
 import { PostService } from '../service/post.service';
 
 import { PostFormGroup, PostFormService } from './post-form.service';
-import { AlertErrorModel } from 'app/shared/alert/alert-error.model';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'jhi-post-update',
   templateUrl: './post-update.html',
   imports: [TranslateDirective, TranslateModule, FontAwesomeModule, AlertError, ReactiveFormsModule],

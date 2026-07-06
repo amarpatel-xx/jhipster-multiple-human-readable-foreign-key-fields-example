@@ -8,8 +8,8 @@ import static org.springframework.security.test.web.reactive.server.SecurityMock
 import com.saathratri.developer.gateway.IntegrationTest;
 import com.saathratri.developer.gateway.repository.UserRepository;
 import com.saathratri.developer.gateway.security.AuthoritiesConstants;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,7 +46,7 @@ class AccountResourceIT {
     @BeforeEach
     void setup() {
         claims = new HashMap<>();
-        claims.put("groups", Collections.singletonList(AuthoritiesConstants.ADMIN));
+        claims.put("groups", List.of(AuthoritiesConstants.ADMIN));
         claims.put("sub", "jane");
         claims.put("email", "jane.doe@jhipster.com");
     }

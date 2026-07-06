@@ -151,3 +151,6 @@ Desktop.ini
 ######################
 coverage/
 .nyc_output/
+
+# Local secrets (OpenAI API key) — see .env.example; never commit
+.env

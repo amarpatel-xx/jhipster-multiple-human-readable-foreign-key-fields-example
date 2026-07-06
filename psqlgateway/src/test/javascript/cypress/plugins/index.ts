@@ -10,11 +10,15 @@
 
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
+import installLogsPrinter from 'cypress-terminal-report/src/installLogsPrinter';
 
 export default (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) => {
+  installLogsPrinter(on);
   on('before:browser:launch', (browser, launchOptions) => {
     if (browser.name === 'chrome' && browser.isHeadless) {
       launchOptions.args.push('--disable-gpu');
+      launchOptions.args.push('--no-sandbox');
+      launchOptions.args.push('--disable-dev-shm-usage');
       return launchOptions;
     }
   });

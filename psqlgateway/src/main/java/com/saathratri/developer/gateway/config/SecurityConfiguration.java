@@ -81,12 +81,11 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http
-            .securityMatcher(
-                new NegatedServerWebExchangeMatcher(
-                    new OrServerWebExchangeMatcher(pathMatchers("/app/**", "/i18n/**", "/content/**", "/swagger-ui/**"))
-                )
+        http.securityMatcher(
+            new NegatedServerWebExchangeMatcher(
+                new OrServerWebExchangeMatcher(pathMatchers("/app/**", "/i18n/**", "/content/**", "/swagger-ui/**"))
             )
+        )
             .cors(withDefaults())
             .csrf(csrf ->
                 csrf
@@ -184,24 +183,17 @@ public class SecurityConfiguration {
 
         return userRequest -> {
             // Delegate to the default implementation for loading a user
-            return delegate
-                .loadUser(userRequest)
-                .map(user -> {
-                    Set<GrantedAuthority> mappedAuthorities = new HashSet<>();
+            return delegate.loadUser(userRequest).map(user -> {
+                Set<GrantedAuthority> mappedAuthorities = new HashSet<>();
 
-                    user
-                        .getAuthorities()
-                        .forEach(authority -> {
-                            if (authority instanceof OidcUserAuthority) {
-                                OidcUserAuthority oidcUserAuthority = (OidcUserAuthority) authority;
-                                mappedAuthorities.addAll(
-                                    SecurityUtils.extractAuthorityFromClaims(oidcUserAuthority.getUserInfo().getClaims())
-                                );
-                            }
-                        });
-
-                    return new DefaultOidcUser(mappedAuthorities, user.getIdToken(), user.getUserInfo(), PREFERRED_USERNAME);
+                user.getAuthorities().forEach(authority -> {
+                    if (authority instanceof OidcUserAuthority oidcUserAuthority) {
+                        mappedAuthorities.addAll(SecurityUtils.extractAuthorityFromClaims(oidcUserAuthority.getUserInfo().getClaims()));
+                    }
                 });
+
+                return new DefaultOidcUser(mappedAuthorities, user.getIdToken(), user.getUserInfo(), PREFERRED_USERNAME);
+            });
         };
     }
 
@@ -240,40 +232,40 @@ public class SecurityConfiguration {
                     return Mono.just(jwt);
                 }
                 // Get user info from `users` cache if present
-                return Optional.ofNullable(users.getIfPresent(jwt.getSubject())).orElseGet(
-                    () -> // Retrieve user info from OAuth provider if not already loaded
-                        WebClient.create()
-                            .get()
-                            .uri(userInfoUri)
-                            .headers(headers -> headers.setBearerAuth(token))
-                            .retrieve()
-                            .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
-                            .map(userInfo ->
-                                Jwt.withTokenValue(jwt.getTokenValue())
-                                    .subject(jwt.getSubject())
-                                    .audience(jwt.getAudience())
-                                    .headers(headers -> headers.putAll(jwt.getHeaders()))
-                                    .claims(claims -> {
-                                        String username = userInfo.get("preferred_username").toString();
-                                        // special handling for Auth0
-                                        if (userInfo.get("sub").toString().contains("|") && username.contains("@")) {
-                                            userInfo.put("email", username);
+                return Optional.ofNullable(users.getIfPresent(jwt.getSubject())).orElseGet(() ->
+                    // Retrieve user info from OAuth provider if not already loaded
+                    WebClient.create()
+                        .get()
+                        .uri(userInfoUri)
+                        .headers(headers -> headers.setBearerAuth(token))
+                        .retrieve()
+                        .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                        .map(userInfo ->
+                            Jwt.withTokenValue(jwt.getTokenValue())
+                                .subject(jwt.getSubject())
+                                .audience(jwt.getAudience())
+                                .headers(headers -> headers.putAll(jwt.getHeaders()))
+                                .claims(claims -> {
+                                    String username = userInfo.get("preferred_username").toString();
+                                    // special handling for Auth0
+                                    if (userInfo.get("sub").toString().contains("|") && username.contains("@")) {
+                                        userInfo.put("email", username);
+                                    }
+                                    // Allow full name in a name claim - happens with Auth0
+                                    if (userInfo.get("name") != null) {
+                                        String[] name = userInfo.get("name").toString().split("\\s+");
+                                        if (name.length > 0) {
+                                            userInfo.put("given_name", name[0]);
+                                            userInfo.put("family_name", String.join(" ", Arrays.copyOfRange(name, 1, name.length)));
                                         }
-                                        // Allow full name in a name claim - happens with Auth0
-                                        if (userInfo.get("name") != null) {
-                                            String[] name = userInfo.get("name").toString().split("\\s+");
-                                            if (name.length > 0) {
-                                                userInfo.put("given_name", name[0]);
-                                                userInfo.put("family_name", String.join(" ", Arrays.copyOfRange(name, 1, name.length)));
-                                            }
-                                        }
-                                        claims.putAll(userInfo);
-                                    })
-                                    .claims(claims -> claims.putAll(jwt.getClaims()))
-                                    .build()
-                            )
-                            // Put user info into the `users` cache
-                            .doOnNext(newJwt -> users.put(jwt.getSubject(), Mono.just(newJwt)))
+                                    }
+                                    claims.putAll(userInfo);
+                                })
+                                .claims(claims -> claims.putAll(jwt.getClaims()))
+                                .build()
+                        )
+                        // Put user info into the `users` cache
+                        .doOnNext(newJwt -> users.put(jwt.getSubject(), Mono.just(newJwt)))
                 );
             }
         };

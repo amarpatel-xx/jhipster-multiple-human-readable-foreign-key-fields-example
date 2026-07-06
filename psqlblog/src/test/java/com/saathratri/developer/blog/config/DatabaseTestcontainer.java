@@ -11,6 +11,7 @@ public interface DatabaseTestcontainer {
     @Container
     PostgreSQLContainer databaseContainer = new PostgreSQLContainer("pgvector/pgvector:pg17")
         .withDatabaseName("psqlblog")
+
         .withLogConsumer(new Slf4jLogConsumer(LoggerFactory.getLogger(DatabaseTestcontainer.class)))
         .withReuse(true);
 

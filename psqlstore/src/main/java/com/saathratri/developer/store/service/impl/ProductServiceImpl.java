@@ -62,6 +62,7 @@ public class ProductServiceImpl implements ProductService {
 
                 return existingProduct;
             })
+
             .map(productRepository::save)
             .map(productMapper::toDto);
     }

@@ -61,7 +61,9 @@ public class DatabaseConfiguration {
     }
 
     @WritingConverter
-    public enum InstantWriteConverter implements Converter<Instant, LocalDateTime> {
+    public enum InstantWriteConverter
+        implements Converter<Instant, LocalDateTime>
+    {
         INSTANCE;
 
         public LocalDateTime convert(Instant source) {
@@ -70,7 +72,9 @@ public class DatabaseConfiguration {
     }
 
     @ReadingConverter
-    public enum InstantReadConverter implements Converter<LocalDateTime, Instant> {
+    public enum InstantReadConverter
+        implements Converter<LocalDateTime, Instant>
+    {
         INSTANCE;
 
         @Override
@@ -80,7 +84,9 @@ public class DatabaseConfiguration {
     }
 
     @ReadingConverter
-    public enum BitSetReadConverter implements Converter<BitSet, Boolean> {
+    public enum BitSetReadConverter
+        implements Converter<BitSet, Boolean>
+    {
         INSTANCE;
 
         @Override
@@ -90,7 +96,9 @@ public class DatabaseConfiguration {
     }
 
     @ReadingConverter
-    public enum ZonedDateTimeReadConverter implements Converter<LocalDateTime, ZonedDateTime> {
+    public enum ZonedDateTimeReadConverter
+        implements Converter<LocalDateTime, ZonedDateTime>
+    {
         INSTANCE;
 
         @Override
@@ -101,7 +109,9 @@ public class DatabaseConfiguration {
     }
 
     @WritingConverter
-    public enum ZonedDateTimeWriteConverter implements Converter<ZonedDateTime, LocalDateTime> {
+    public enum ZonedDateTimeWriteConverter
+        implements Converter<ZonedDateTime, LocalDateTime>
+    {
         INSTANCE;
 
         @Override
@@ -111,7 +121,9 @@ public class DatabaseConfiguration {
     }
 
     @WritingConverter
-    public enum DurationWriteConverter implements Converter<Duration, Long> {
+    public enum DurationWriteConverter
+        implements Converter<Duration, Long>
+    {
         INSTANCE;
 
         @Override
@@ -121,7 +133,9 @@ public class DatabaseConfiguration {
     }
 
     @ReadingConverter
-    public enum DurationReadConverter implements Converter<Long, Duration> {
+    public enum DurationReadConverter
+        implements Converter<Long, Duration>
+    {
         INSTANCE;
 
         @Override

@@ -2,14 +2,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 
-import { EMPTY, Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { EMPTY, Observable, catchError, of } from 'rxjs';
 
 import { TajUserService } from '../service/taj-user.service';
 import { ITajUser } from '../taj-user.model';
 
 const tajUserResolve = (route: ActivatedRouteSnapshot): Observable<null | ITajUser> => {
-  const id = route.params.id;
+  const { id } = route.params;
   if (id) {
     const router = inject(Router);
     const service = inject(TajUserService);

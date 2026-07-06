@@ -110,12 +110,12 @@ export class LazyRelationshipEditModalComponent implements OnInit {
   }
 
   isSelected(item: Record<string, unknown>): boolean {
-    const id = item.id;
+    const { id } = item;
     return id != null && this.selectedIds().has(String(id));
   }
 
   toggle(item: Record<string, unknown>): void {
-    const id = item.id;
+    const { id } = item;
     if (id == null) return;
     const next = new Set(this.selectedIds());
     const key = String(id);
@@ -138,7 +138,7 @@ export class LazyRelationshipEditModalComponent implements OnInit {
     if (this.displayLabelField && item[this.displayLabelField] != null) {
       return String(item[this.displayLabelField]);
     }
-    const id = item.id;
+    const { id } = item;
     return id != null ? String(id) : '';
   }
 

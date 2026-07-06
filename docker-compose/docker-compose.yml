@@ -3,7 +3,7 @@ services:
     image: psqlgateway
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
-      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - SPRING_PROFILES_ACTIVE=prod,api-docs,secret-samples
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
       - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
@@ -19,10 +19,8 @@ services:
       - 8080:8080
     healthcheck:
       test:
-        - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - CMD-SHELL
+        - "bash -c 'exec 3<>/dev/tcp/127.0.0.1/8080; printf \"GET /management/health HTTP/1.0\\r\\nHost: localhost\\r\\n\\r\\n\" >&3; grep -q \"\\\"status\\\":\\\"UP\\\"\" <&3'"
       interval: 5s
       timeout: 5s
       retries: 40
@@ -34,7 +32,7 @@ services:
       jhipster-registry:
         condition: service_healthy
   psqlgateway-postgresql:
-    image: postgres:18.3
+    image: postgres:18.4
     environment:
       - POSTGRES_USER=psqlgateway
       - POSTGRES_HOST_AUTH_METHOD=trust
@@ -50,7 +48,7 @@ services:
     image: psqlblog
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
-      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - SPRING_PROFILES_ACTIVE=prod,api-docs,secret-samples
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
       - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
@@ -64,10 +62,8 @@ services:
       - JHIPSTER_REGISTRY_PASSWORD=admin
     healthcheck:
       test:
-        - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - CMD-SHELL
+        - "bash -c 'exec 3<>/dev/tcp/127.0.0.1/8081; printf \"GET /management/health HTTP/1.0\\r\\nHost: localhost\\r\\n\\r\\n\" >&3; grep -q \"\\\"status\\\":\\\"UP\\\"\" <&3'"
       interval: 5s
       timeout: 5s
       retries: 40
@@ -99,7 +95,7 @@ services:
     image: psqlstore
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
-      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - SPRING_PROFILES_ACTIVE=prod,api-docs,secret-samples
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
       - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
@@ -113,10 +109,8 @@ services:
       - JHIPSTER_REGISTRY_PASSWORD=admin
     healthcheck:
       test:
-        - CMD
-        - curl
-        - -f
-        - http://localhost:8082/management/health
+        - CMD-SHELL
+        - "bash -c 'exec 3<>/dev/tcp/127.0.0.1/8082; printf \"GET /management/health HTTP/1.0\\r\\nHost: localhost\\r\\n\\r\\n\" >&3; grep -q \"\\\"status\\\":\\\"UP\\\"\" <&3'"
       interval: 5s
       timeout: 5s
       retries: 40
@@ -151,7 +145,7 @@ services:
     # By default the JHipster Registry runs with the "dev" and "native"
     # Spring profiles.
     # "native" profile means the filesystem is used to store data, see
-    # http://cloud.spring.io/spring-cloud-config/spring-cloud-config.html
+    # https://docs.spring.io/spring-cloud-config/docs/current/reference/html/
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=dev,oauth2
@@ -177,7 +171,7 @@ services:
       timeout: 5s
       retries: 10
   keycloak:
-    image: quay.io/keycloak/keycloak:26.5.5
+    image: quay.io/keycloak/keycloak:26.6.2
     command: 'start-dev --import-realm'
     volumes:
       - ./realm-config:/opt/keycloak/data/import

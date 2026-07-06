@@ -45,7 +45,7 @@ export class TajUserFormService {
   }
 
   getTajUser(form: TajUserFormGroup): ITajUser | NewTajUser {
-    return form.getRawValue() as ITajUser | NewTajUser;
+    return form.getRawValue();
   }
 
   resetForm(form: TajUserFormGroup, tajUser: TajUserFormGroupInput): void {

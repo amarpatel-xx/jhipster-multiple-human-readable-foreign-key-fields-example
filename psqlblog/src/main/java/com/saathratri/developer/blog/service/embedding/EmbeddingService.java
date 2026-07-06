@@ -136,7 +136,7 @@ public class EmbeddingService {
         return (
             "[" +
             Arrays.stream(toFloatObjectArray(floats))
-                .map(f -> String.format("%.8f", f))
+                .map(f -> "%.8f".formatted(f))
                 .collect(Collectors.joining(", ")) +
             "]"
         );

@@ -71,7 +71,7 @@ export class PostFormService {
   }
 
   getPost(form: PostFormGroup): IPost | NewPost {
-    return this.convertPostRawValueToPost(form.getRawValue() as PostFormRawValue | NewPostFormRawValue);
+    return this.convertPostRawValueToPost(form.getRawValue());
   }
 
   resetForm(form: PostFormGroup, post: PostFormGroupInput): void {

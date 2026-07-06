@@ -1,10 +1,10 @@
 import { SlicePipe } from '@angular/common';
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
-import { finalize, map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs';
 
 import { TranslateDirective } from 'app/shared/language';
 import { SortByDirective, SortDirective, SortService, sortStateSignal } from 'app/shared/sort';
@@ -15,6 +15,7 @@ import { LogsService } from './logs.service';
 
 @Component({
   selector: 'jhi-logs',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './logs.html',
   providers: [GatewayRoutesService],
   imports: [TranslateDirective, TranslateModule, FontAwesomeModule, FormsModule, SortDirective, SortByDirective, SlicePipe],

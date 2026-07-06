@@ -61,6 +61,11 @@ describe('Tag e2e test', () => {
   });
 
   describe('Tag page', () => {
+    it('should have translated page title', () => {
+      cy.visit(tagPageUrl);
+      cy.getEntityHeading('Tag').should('not.contain', 'psqlblogApp.psqlblogTag.home.title');
+    });
+
     describe('create button click', () => {
       beforeEach(() => {
         cy.visit(tagPageUrl);
@@ -195,5 +200,46 @@ describe('Tag e2e test', () => {
     cy.get('[data-cy="aiSearchInput"]').type('semantic query');
     cy.get('[data-cy="aiSearchButton"]').click();
     cy.wait('@aiSearchRequest', { timeout: 30000 }).its('response.statusCode').should('eq', 200);
+  });
+
+  it('should generate embeddings on create and regenerate on update (fake embedding model)', function () {
+    cy.env(['fakeEmbeddings']).then(({ fakeEmbeddings }) => {
+      if (!fakeEmbeddings) this.skip();
+    });
+    const createdText = `cypress embed ${Date.now()}`;
+    const updatedText = `cypress reembed ${Date.now()}`;
+    cy.authenticatedRequest({ method: 'POST', url: '/services/psqlblog/api/tags', body: { ...tagSample, name: createdText } }).then(
+      ({ body }) => {
+        tag = body;
+        cy.visit('/');
+        cy.clickOnEntityMenuItem('psqlblog/tag');
+        cy.wait('@entitiesRequest', { timeout: 30000 });
+        // Embedding created on insert: AI search finds the new row by its exact text.
+        cy.intercept('GET', /\/api\/tags\/ai-search/).as('aiSearchCreated');
+        cy.get('[data-cy="aiSearchInput"]').clear().type(createdText);
+        cy.get('[data-cy="aiSearchButton"]').click();
+        cy.wait('@aiSearchCreated', { timeout: 30000 }).then(({ response }) => {
+          expect(response.statusCode).to.eq(200);
+          expect(response.body.map(row => row.id)).to.include(tag.id);
+        });
+        // Update the source text through the API; the stored vector must be regenerated.
+        cy.authenticatedRequest({ method: 'PUT', url: `/services/psqlblog/api/tags/${tag.id}`, body: { ...tag, name: updatedText } });
+        cy.intercept('GET', /\/api\/tags\/ai-search/).as('aiSearchUpdated');
+        cy.get('[data-cy="aiSearchInput"]').clear().type(updatedText);
+        cy.get('[data-cy="aiSearchButton"]').click();
+        cy.wait('@aiSearchUpdated', { timeout: 30000 }).then(({ response }) => {
+          expect(response.statusCode).to.eq(200);
+          expect(response.body.map(row => row.id)).to.include(tag.id);
+        });
+        // The OLD text must no longer match: proves the vector was replaced, not kept.
+        cy.intercept('GET', /\/api\/tags\/ai-search/).as('aiSearchStale');
+        cy.get('[data-cy="aiSearchInput"]').clear().type(createdText);
+        cy.get('[data-cy="aiSearchButton"]').click();
+        cy.wait('@aiSearchStale', { timeout: 30000 }).then(({ response }) => {
+          expect(response.statusCode).to.eq(200);
+          expect(response.body.map(row => row.id)).to.not.include(tag.id);
+        });
+      },
+    );
   });
 });

@@ -5,13 +5,14 @@
     "blueprints": [
       {
         "name": "generator-jhipster-ai-postgresql",
-        "version": "2.0.15"
+        "version": "2.0.17"
       }
     ],
+    "defaultCommand": "workspaces",
     "deploymentType": "none",
     "dockerCompose": true,
     "entities": [],
-    "jhipsterVersion": "9.0.0",
+    "jhipsterVersion": "9.1.0",
     "monorepository": true,
     "nodePackageManager": "npm",
     "skipJhipsterDependencies": true
