@@ -18,7 +18,7 @@ describe('Report e2e test', () => {
   const reportSample = {
     fileName: 'pfft',
     fileExtension: 'stake but ',
-    createDate: '2026-07-05T15:42:49.221Z',
+    createDate: '2026-07-06T15:27:59.221Z',
     file: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=',
     fileContentType: 'unknown',
   };
@@ -180,9 +180,9 @@ describe('Report e2e test', () => {
       cy.get(`[data-cy="fileExtension"]`).type('venom next');
       cy.get(`[data-cy="fileExtension"]`).should('have.value', 'venom next');
 
-      cy.get(`[data-cy="createDate"]`).type('2026-07-06T10:44');
+      cy.get(`[data-cy="createDate"]`).type('2026-07-07T10:29');
       cy.get(`[data-cy="createDate"]`).blur();
-      cy.get(`[data-cy="createDate"]`).should('have.value', '2026-07-06T10:44');
+      cy.get(`[data-cy="createDate"]`).should('have.value', '2026-07-07T10:29');
 
       cy.setFieldImageAsBytesOfEntity('file', 'integration-test.png', 'image/png');
 

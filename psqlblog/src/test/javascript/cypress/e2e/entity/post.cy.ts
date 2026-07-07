@@ -18,7 +18,7 @@ describe('Post e2e test', () => {
   const postSample = {
     title: 'complete overdue till',
     content: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-    date: '2026-07-06T12:30:49.976Z',
+    date: '2026-07-07T12:15:59.976Z',
   };
 
   let post;
@@ -181,9 +181,9 @@ describe('Post e2e test', () => {
       cy.get(`[data-cy="content"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="content"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
 
-      cy.get(`[data-cy="date"]`).type('2026-07-05T23:21');
+      cy.get(`[data-cy="date"]`).type('2026-07-06T23:07');
       cy.get(`[data-cy="date"]`).blur();
-      cy.get(`[data-cy="date"]`).should('have.value', '2026-07-05T23:21');
+      cy.get(`[data-cy="date"]`).should('have.value', '2026-07-06T23:07');
 
       cy.get(entityCreateSaveButtonSelector).click();
 
