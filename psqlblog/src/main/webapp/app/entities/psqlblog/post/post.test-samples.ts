@@ -6,27 +6,27 @@ export const sampleWithRequiredData: IPost = {
   id: '4cb9fafc-7f7d-412c-b0f9-6053b12c4e23',
   title: 'gadzooks ouch structure',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2026-07-06T17:21'),
+  date: dayjs('2026-07-06T18:25'),
 };
 
 export const sampleWithPartialData: IPost = {
   id: 'dc3d4738-b3fc-4ea3-b82d-a8c9da326e3a',
   title: 'uh-huh',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2026-07-07T01:46'),
+  date: dayjs('2026-07-07T02:49'),
 };
 
 export const sampleWithFullData: IPost = {
   id: '4f9013c0-1b47-4f4c-b3c6-f75f65ddd7ef',
   title: 'eminent',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2026-07-07T01:47'),
+  date: dayjs('2026-07-07T02:51'),
 };
 
 export const sampleWithNewData: NewPost = {
   title: 'willfully settler',
   content: '../fake-data/blob/hipster.txt',
-  date: dayjs('2026-07-06T16:46'),
+  date: dayjs('2026-07-06T17:49'),
   id: null,
 };
 

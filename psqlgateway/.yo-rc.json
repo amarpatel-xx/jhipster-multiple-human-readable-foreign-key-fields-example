@@ -27,7 +27,7 @@
     "devServerPort": null,
     "entities": [],
     "jhipsterVersion": "9.1.0",
-    "jwtSecretKey": "NGY5MDg4OTc0YmYxODFiOTE3YTI3ZGI1MWUwYjRkZTdlNTZiZDdiNzQ3MTkzODBlMThjMTA5ODI2OTQ1YWFiZDZhMTY0MWQ4Nzc3ZjgwNjEzNzlkNDM0ZmRjYWE0MTA3YmEyN2UwNTE4M2RhODg1MzdkZWJiNjIxNWIwNTk0YTk=",
+    "jwtSecretKey": "ZDQ5ODdmODUzNDE4YTAwMTAwYjU1M2M1YWEzNjA3Y2YyZjUzOTY3NjlmNjg3Mzc3NjA2Zjg4YTdjOWM2MWYyY2IxNDA0OGNhNWVmMTAzNmY1NzQ3ZGM1OTliYjU3YjgyNzIzYmY0MmRiZjdhNThhMGJjNjdjZDM3MTBhNWMxMWU=",
     "languages": ["en"],
     "microfrontends": [
       {
