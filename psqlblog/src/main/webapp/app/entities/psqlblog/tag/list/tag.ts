@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
- * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
- * Proprietary and confidential - see LICENSE in the repository root.
- */
-
 import { DecimalPipe } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit, effect, inject, signal } from '@angular/core';

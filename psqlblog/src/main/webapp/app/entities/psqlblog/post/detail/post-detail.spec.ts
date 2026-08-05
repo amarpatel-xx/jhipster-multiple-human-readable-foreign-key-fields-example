@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
- * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
- * Proprietary and confidential - see LICENSE in the repository root.
- */
-
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, withComponentInputBinding } from '@angular/router';

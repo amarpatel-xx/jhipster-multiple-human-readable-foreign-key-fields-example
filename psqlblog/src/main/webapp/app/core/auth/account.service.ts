@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
- * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
- * Proprietary and confidential - see LICENSE in the repository root.
- */
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';

@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
- * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
- * Proprietary and confidential - see LICENSE in the repository root.
- */
-
 /**
  * Problem details defined in RFC 7807.
  * @see https://datatracker.ietf.org/doc/html/rfc7807#section-3.1
