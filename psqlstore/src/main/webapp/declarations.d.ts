@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
+ * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
+ * Proprietary and confidential - see LICENSE in the repository root.
+ */
+
 // These constants are injected via webpack DefinePlugin variables.
 // You can add more variables in webpack.common.js or in profile specific webpack.<dev|prod>.js files.
 // If you change the values in the webpack config files, you need to re run webpack to update the application

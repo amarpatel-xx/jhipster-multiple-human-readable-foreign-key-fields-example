@@ -1,3 +1,5 @@
 {
-  "type": "commonjs"
+  "type": "commonjs",
+  "license": "UNLICENSED",
+  "private": true
 }

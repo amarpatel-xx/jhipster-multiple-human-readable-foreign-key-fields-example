@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
+ * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
+ * Proprietary and confidential - see LICENSE in the repository root.
+ */
+
 package com.saathratri.developer.gateway.web.rest;
 
 import static com.saathratri.developer.gateway.test.util.OAuth2TestUtil.TEST_USER_LOGIN;

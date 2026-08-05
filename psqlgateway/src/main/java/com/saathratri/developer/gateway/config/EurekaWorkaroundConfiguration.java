@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
+ * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
+ * Proprietary and confidential - see LICENSE in the repository root.
+ */
+
 // This is a workaround for
 // https://github.com/jhipster/jhipster-registry/issues/537
 // https://github.com/jhipster/generator-jhipster/issues/18533

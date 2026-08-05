@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
+ * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
+ * Proprietary and confidential - see LICENSE in the repository root.
+ */
+
 import { ChangeDetectionStrategy, Component, Injector, OnInit, Signal, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 

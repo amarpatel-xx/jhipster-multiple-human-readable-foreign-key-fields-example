@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2023-2026 Saathratri, LLC. All rights reserved.
+ * SPDX-License-Identifier: LicenseRef-Saathratri-Proprietary
+ * Proprietary and confidential - see LICENSE in the repository root.
+ */
+
 import { Directive, TemplateRef, ViewContainerRef, computed, effect, inject, input } from '@angular/core';
 
 import { AccountService } from 'app/core/auth/account.service';
